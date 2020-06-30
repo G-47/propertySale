@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "propertySale"
+    }
+  },
+  "defaultProject": "propertySale",
+  "cli": {
+    "analytics": "fc0eb839-9dfc-4758-b355-a84125ac1d20"
+  }
 }
