@@ -1,3 +1,7 @@
+.navbar-fix {
+  height: 64px;
+}
+
 form {
   background-color: #ffffff;
   display: flex;
@@ -32,6 +36,7 @@ input:focus {
   width: 768px;
   max-width: 100%;
   min-height: 480px;
+  margin: 100px auto;
 }
 
 .form-container {

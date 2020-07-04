@@ -10,6 +10,7 @@ import { DirectComponent } from './components/viewAd/direct/direct.component';
 import { OctionComponent } from './components/viewAd/oction/oction.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SignupComponent } from './components/signup/signup.component';
     OctionComponent,
     LoginComponent,
     SignupComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
