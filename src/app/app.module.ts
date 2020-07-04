@@ -8,6 +8,8 @@ import { CardComponent } from './components/homePage/card/card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DirectComponent } from './components/viewAd/direct/direct.component';
 import { OctionComponent } from './components/viewAd/oction/oction.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,12 @@ import { OctionComponent } from './components/viewAd/oction/oction.component';
     CardComponent,
     NavbarComponent,
     DirectComponent,
-    OctionComponent
+    OctionComponent,
+    LoginComponent,
+    SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
