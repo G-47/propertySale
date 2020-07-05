@@ -6,9 +6,89 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  lands = [];
 
-  x = [1, 1, 1, 1, 1, 1];
+  constructor() {
+    this.createLand(
+      'https://www.primelands.lk/resources/857/image%20001.jpg',
+      'Land for sale in Matara',
+      '500,000',
+      '20',
+      'Bare Land',
+      'Matara',
+      '2'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/843/WEB-03.jpg',
+      'Heaven Land in Galle',
+      '700,000',
+      '15',
+      'Bare Land',
+      'Galle',
+      '10'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/834/01.jpg',
+      'Land for sale in Weligama',
+      '350,000',
+      '40',
+      'Bare Lands',
+      'Weligama',
+      '15'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/447/image1.jpg',
+      'Green Heaven Galle',
+      '1,000,000',
+      '35',
+      'Bare Land',
+      'Galle',
+      '18'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/859/image%20001.jpg',
+      'Prime capital - Hambantota',
+      '850,000',
+      '80',
+      'Coconut Land',
+      'Hambantota',
+      '15'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/855/image%20001.png',
+      'Super Land in Walasmulla',
+      '680,000',
+      '40',
+      'Cultivated Land',
+      'Walasmulla',
+      '12'
+    );
+    this.createLand(
+      'https://www.primelands.lk/resources/778/image%20001.jpg',
+      'Beautiful Land in Dickwella',
+      '360,000',
+      '30',
+      'Bare Lands',
+      'Dickwella',
+      '20'
+    );
+
+    const x = this.lands.filter((item) => item.location.includes('Gal'));
+
+    console.log(x);
+  }
+
+  createLand(image, title, price, size, type, location, time) {
+    this.lands.push({
+      image,
+      title,
+      price,
+      size,
+      type,
+      location,
+      time,
+    });
+  }
 
   ngOnInit(): void {}
 }
