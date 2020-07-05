@@ -11,6 +11,8 @@ import { OctionComponent } from './components/viewAd/oction/oction.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MypropertiesComponent } from './components/profile/myproperties/myproperties.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     SignupComponent,
     FooterComponent,
+    ProfileComponent,
+    MypropertiesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
