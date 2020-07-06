@@ -83,20 +83,20 @@ export class HomeComponent implements OnInit {
     );
 
     this.createHouse(
-      'https://www.primelands.lk/resources/857/image%20001.jpg',
-      'Land for sale in Matara',
+      'https://www.lankaad.lk/uploads/files/lk/7674/thumb-816x460-0e36fbd8797e87dea066127a93c8807f.JPG',
+      'Luxury House in matara',
       '500,000',
       '20',
-      'Bare Land',
+      'Luxury House',
       'Matara',
       '2'
     );
     this.createHouse(
-      'https://www.primelands.lk/resources/843/WEB-03.jpg',
-      'Heaven Land in Galle',
+      'https://www.lankapropertyweb.com/pics/335040/xthumb_424_335040_1582642645_6476.JPG.pagespeed.ic.83iRcIO4uD.jpg',
+      'House for sale in Galle',
       '700,000',
       '15',
-      'Bare Land',
+      'Luxury House',
       'Galle',
       '10'
     );
