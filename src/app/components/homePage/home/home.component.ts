@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   lands = [];
+  houses = [];
+  selectedArray = [];
+  selectedArrayIndex = 1;
 
-  constructor() {
+  SearchForm = this.formBuilder.group({
+    word: [''],
+  });
+
+  constructor(private formBuilder: FormBuilder) {
     this.createLand(
       'https://www.primelands.lk/resources/857/image%20001.jpg',
       'Land for sale in Matara',
@@ -73,10 +81,36 @@ export class HomeComponent implements OnInit {
       '20'
     );
 
-    const x = this.lands.filter((item) => item.location.includes('Gal'));
+    this.createHouse(
+      'https://www.primelands.lk/resources/857/image%20001.jpg',
+      'Land for sale in Matara',
+      '500,000',
+      '20',
+      'Bare Land',
+      'Matara',
+      '2'
+    );
+    this.createHouse(
+      'https://www.primelands.lk/resources/843/WEB-03.jpg',
+      'Heaven Land in Galle',
+      '700,000',
+      '15',
+      'Bare Land',
+      'Galle',
+      '10'
+    );
+
+    this.selectedArray = this.lands;
+    this.selectedArrayIndex = 1;
+
+    const x = this.selectedArray.filter((item) =>
+      item.location.includes('Gal')
+    );
 
     console.log(x);
   }
+
+  ngOnInit(): void {}
 
   createLand(image, title, price, size, type, location, time) {
     this.lands.push({
@@ -90,5 +124,37 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  createHouse(image, title, price, size, type, location, time) {
+    this.houses.push({
+      image,
+      title,
+      price,
+      size,
+      type,
+      location,
+      time,
+    });
+  }
+
+  changeArray(type) {
+    if (type === 'lands') {
+      this.selectedArray = this.lands;
+      this.selectedArrayIndex = 1;
+    } else {
+      this.selectedArray = this.houses;
+      this.selectedArrayIndex = 2;
+    }
+  }
+
+  search(form) {
+    if (this.selectedArrayIndex === 1) {
+      this.selectedArray = this.lands.filter((item) =>
+        item.location.toLowerCase().includes(form.word.toLowerCase())
+      );
+    } else {
+      this.selectedArray = this.houses.filter((item) =>
+        item.location.toLowerCase().includes(form.word.toLowerCase())
+      );
+    }
+  }
 }
