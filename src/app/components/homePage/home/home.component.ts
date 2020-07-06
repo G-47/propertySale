@@ -137,6 +137,8 @@ export class HomeComponent implements OnInit {
   }
 
   changeArray(type) {
+    this.SearchForm.reset();
+
     if (type === 'lands') {
       this.selectedArray = this.lands;
       this.selectedArrayIndex = 1;
