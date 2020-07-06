@@ -45,5 +45,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  clickhandle(){
+    console.log("you fucking clicked");
+  }
+
   ngOnInit(): void {}
 }
