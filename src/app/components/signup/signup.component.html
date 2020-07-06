@@ -1,6 +1,168 @@
 <div class="navbar-fix"></div>
 <div class="container" id="container">
-  <form class="input-group">
+  <div class="heading">
+    Signup
+  </div>
+
+  <form [formGroup]="RegisterForm">
+    <fieldset class="p-4">
+      <div class="form-group">
+        <label>First Name :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('firstName').invalid &&
+            RegisterForm.get('firstName').touched
+          "
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          *ngIf="
+            RegisterForm.get('firstName').invalid &&
+            RegisterForm.get('firstName').touched
+          "
+          class="text-danger"
+          >*First Name is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Last Name :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('lastName').invalid &&
+            RegisterForm.get('lastName').touched
+          "
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            RegisterForm.get('lastName').invalid &&
+            RegisterForm.get('lastName').touched
+          "
+          >*Last Name is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>NIC number :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('nic').invalid && RegisterForm.get('nic').touched
+          "
+          type="text"
+          formControlName="nic"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            RegisterForm.get('nic').invalid && RegisterForm.get('nic').touched
+          "
+          >*NIC is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Email :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('email').invalid &&
+            RegisterForm.get('email').touched
+          "
+          type="email"
+          formControlName="email"
+          class="form-control"
+          required
+        />
+        <div
+          *ngIf="
+            RegisterForm.get('email').invalid &&
+            RegisterForm.get('email').touched
+          "
+        >
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('email').errors.required"
+            >*Email is required !</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('email').errors.email"
+            >*Email is badly formatted !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('password').invalid &&
+            RegisterForm.get('password').touched
+          "
+          type="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            RegisterForm.get('password').invalid &&
+            RegisterForm.get('password').touched
+          "
+        >
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('password').errors.required"
+            >*Enter a password !</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('password').errors.minlength"
+            >*Password must be atleast 6 charactors !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label *ngIf="errorMessage != 'temp'" class="text-danger">{{
+          errorMessage
+        }}</label>
+        <label *ngIf="successMessage != 'temp'" class="success">{{
+          successMessage
+        }}</label>
+      </div>
+
+      <!-- signup button is disabled when validation error exists -->
+      <button
+        [disabled]="RegisterForm.invalid"
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="tryRegister(RegisterForm.value)"
+      >
+        Register Now
+      </button>
+    </fieldset>
+  </form>
+
+  <!-- <form class="input-group">
     <div>
       <p class="font-weight-bold">Sign Up</p>
     </div>
@@ -27,5 +189,5 @@
       required
     />
     <button type="submit" class="signup-btn">Sign Up</button>
-  </form>
+  </form> -->
 </div>

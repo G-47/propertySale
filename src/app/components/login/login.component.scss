@@ -2,30 +2,37 @@
   height: 64px;
 }
 
-form {
-  background-color: #ffffff;
-  display: flex;
-  //  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 100px 50px;
-  height: 100%;
-  // text-align: center;
+.heading {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 36px;
+  font-weight: bold;
 }
 
-input {
-  background-color: #e6f3f8;
-  border: transparent;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
-  border-radius: 8px;
-  outline: transparent;
-}
+// form {
+//   background-color: #ffffff;
+//   display: flex;
+//   //  align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   padding: 100px 50px;
+//   height: 100%;
+//   // text-align: center;
+// }
 
-input:focus {
-  border: 1px solid #263238;
-}
+// input {
+//   background-color: #e6f3f8;
+//   border: transparent;
+//   padding: 12px 15px;
+//   margin: 8px 0;
+//   width: 100%;
+//   border-radius: 8px;
+//   outline: transparent;
+// }
+
+// input:focus {
+//   border: 1px solid #263238;
+// }
 
 .container {
   background-color: #ffffff;
@@ -35,16 +42,17 @@ input:focus {
   overflow: auto;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: calc(100vh - 64px - 450px);
   margin: 100px auto;
+  padding-bottom: 40px;
 }
 
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
-}
+// .form-container {
+//   position: absolute;
+//   top: 0;
+//   height: 100%;
+//   transition: all 0.6s ease-in-out;
+// }
 
 // @keyframes show {
 //     0%,
@@ -60,23 +68,23 @@ input:focus {
 //     }
 // }
 
-.form-filed {
-  // font-family: Poppins;
-  font-style: normal;
-  // font-weight: 500;
-  font-size: 20px;
-  line-height: 21px;
-  text-align: left;
+// .form-filed {
+//   // font-family: Poppins;
+//   font-style: normal;
+//   // font-weight: 500;
+//   font-size: 20px;
+//   line-height: 21px;
+//   text-align: left;
 
-  color: #313131;
-}
+//   color: #313131;
+// }
 
-.form-footer {
-  text-align: center;
-  padding: 10px;
-}
+// .form-footer {
+//   text-align: center;
+//   padding: 10px;
+// }
 
-.font-weight-bold {
-  text-align: center;
-  padding: 15px;
-}
+// .font-weight-bold {
+//   text-align: center;
+//   padding: 15px;
+// }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
     word: [''],
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.createLand(
       'https://www.primelands.lk/resources/857/image%20001.jpg',
       'Land for sale in Matara',
@@ -157,6 +158,16 @@ export class HomeComponent implements OnInit {
       this.selectedArray = this.houses.filter((item) =>
         item.location.toLowerCase().includes(form.word.toLowerCase())
       );
+    }
+  }
+
+  openAd() {
+    const isLogged = localStorage.getItem('token') !== null;
+
+    if (isLogged) {
+      this.router.navigate(['/viewAd']);
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 }
