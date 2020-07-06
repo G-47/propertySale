@@ -43,7 +43,16 @@
 
   <div class="loader-container">
     <div class="result-container" routerLink="viewAd">
-      <app-card *ngFor="let temp of x"></app-card>
+      <app-card
+        *ngFor="let temp of lands"
+        [image]="temp.image"
+        [title]="temp.title"
+        [price]="temp.price"
+        [size]="temp.size"
+        [type]="temp.type"
+        [location]="temp.location"
+        [time]="temp.time"
+      ></app-card>
     </div>
   </div>
 </div>
