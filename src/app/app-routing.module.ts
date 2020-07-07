@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'viewAd', component: DirectComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'octions', component: PageComponent },
+  { path: 'auctions', component: PageComponent },
 ];
 
 @NgModule({
