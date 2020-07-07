@@ -6,6 +6,7 @@ import { HomeComponent } from './components/homePage/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DirectComponent } from './components/viewAd/direct/direct.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PageComponent } from './components/auctions/page/page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'viewAd', component: DirectComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'octions', component: PageComponent },
 ];
 
 @NgModule({
