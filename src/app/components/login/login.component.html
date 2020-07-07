@@ -1,6 +1,94 @@
 <div class="navbar-fix"></div>
 <div class="container" id="container">
-  <form action="#">
+  <div class="heading">
+    Login
+  </div>
+
+  <form [formGroup]="LoginForm">
+    <fieldset class="p-4">
+      <div class="form-group">
+        <label>Email :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LoginForm.get('email').invalid && LoginForm.get('email').touched
+          "
+          type="email"
+          formControlName="email"
+          class="form-control"
+          required
+        />
+        <div
+          *ngIf="
+            LoginForm.get('email').invalid && LoginForm.get('email').touched
+          "
+        >
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="LoginForm.get('email').errors.required"
+            >*Email is required !</small
+          >
+          <small class="text-danger" *ngIf="LoginForm.get('email').errors.email"
+            >*Email is badly formatted !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LoginForm.get('password').invalid &&
+            LoginForm.get('password').touched
+          "
+          type="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            LoginForm.get('password').invalid &&
+            LoginForm.get('password').touched
+          "
+        >
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="LoginForm.get('password').errors.required"
+            >*Enter a password !</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="LoginForm.get('password').errors.minlength"
+            >*Password must be atleast 6 charactors !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label *ngIf="errorMessage != 'temp'" class="text-danger">{{
+          errorMessage
+        }}</label>
+        <label *ngIf="successMessage != 'temp'" class="success">{{
+          successMessage
+        }}</label>
+      </div>
+
+      <!-- signup button is disabled when validation error exists -->
+      <button
+        [disabled]="LoginForm.invalid"
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="tryLogin(LoginForm.value)"
+      >
+        Login
+      </button>
+    </fieldset>
+  </form>
+
+  <!-- <form action="#">
     <h1 class="font-weight-bold">Login</h1>
 
     <div class="form-filed">
@@ -21,5 +109,5 @@
     <div class="form-footer">
       <span>Don't have account? Sign up</span>
     </div>
-  </form>
+  </form> -->
 </div>

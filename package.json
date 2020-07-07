@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/build-webpack": "^0.1000.0",
-    "@angular/animations": "~10.0.0",
+    "@angular/animations": "^10.0.2",
     "@angular/common": "~10.0.0",
     "@angular/compiler": "~10.0.0",
     "@angular/core": "~10.0.0",
@@ -22,6 +22,7 @@
     "@angular/router": "~10.0.0",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "ngx-toastr": "^12.1.0",
     "popper.js": "^1.16.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

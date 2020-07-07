@@ -5,10 +5,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/homePage/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DirectComponent } from './components/viewAd/direct/direct.component';
-import { ProfileComponent } from './components/profile/profile.component'
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'signup', component: SignupComponent },

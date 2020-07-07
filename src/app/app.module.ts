@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +20,7 @@ import { MypropertiesComponent } from './components/profile/myproperties/myprope
 import { PageComponent } from './components/auctions/page/page.component';
 import { OngoingComponent } from './components/auctions/cards/ongoing/ongoing.component';
 import { OtherComponent } from './components/auctions/cards/other/other.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +39,23 @@ import { OtherComponent } from './components/auctions/cards/other/other.componen
     OngoingComponent,
     OtherComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

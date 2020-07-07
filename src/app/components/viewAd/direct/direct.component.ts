@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-direct',
   templateUrl: './direct.component.html',
-  styleUrls: ['./direct.component.scss']
+  styleUrls: ['./direct.component.scss'],
 })
 export class DirectComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
   }
-
 }

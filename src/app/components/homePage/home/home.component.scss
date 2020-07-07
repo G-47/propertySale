@@ -81,6 +81,10 @@
 }
 
 .result-container {
+  app-card {
+    outline: transparent;
+  }
+
   margin-right: auto;
   margin-left: auto;
   padding: 20px 0px 20px 0px;

@@ -113,7 +113,7 @@
 
 <div class="result-container" *ngIf="selectedArray.length > 0">
   <app-card
-    routerLink="viewAd"
+    (click)="openAd()"
     *ngFor="let temp of selectedArray"
     [image]="temp.image"
     [title]="temp.title"
