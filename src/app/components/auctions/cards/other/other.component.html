@@ -1,0 +1,36 @@
+<div class="card-container">
+    <div class="card">
+      <img class="card-img-top image" src="{{ image }}" />
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item"
+          style="font-size: 17px; margin-left: 5px; color: #494fe9;"
+        >
+          <b>{{ title }}</b>
+        </li>
+        <li
+          class="list-group-item"
+          style="font-size: 17px; margin-left: 5px; color: #1ec92f;"
+        >
+          <span style="font-size: 12px; color: black;"> Starting bid&nbsp;</span>
+          Rs: {{ price }}&nbsp;
+        </li>
+        <li
+          class="list-group-item"
+          style="
+            font-size: 12px;
+            text-align: center;
+            padding-top: 10px !important;
+          "
+        >
+          <div class="li-box">
+            <b>Size: </b>{{ size }} perches &nbsp;&nbsp;&nbsp;&nbsp; <b>Type: </b
+            >{{ type }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
+          </div>
+  
+          <p style="text-align: end;">{{ time }}&nbsp;days more</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

@@ -17,6 +17,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MypropertiesComponent } from './components/profile/myproperties/myproperties.component';
+import { PageComponent } from './components/auctions/page/page.component';
+import { OngoingComponent } from './components/auctions/cards/ongoing/ongoing.component';
+import { OtherComponent } from './components/auctions/cards/other/other.component';
 import { AuthService } from './services/auth.service';
 
 @NgModule({
@@ -32,6 +35,9 @@ import { AuthService } from './services/auth.service';
     FooterComponent,
     ProfileComponent,
     MypropertiesComponent,
+    PageComponent,
+    OngoingComponent,
+    OtherComponent,
   ],
   imports: [
     BrowserModule,
