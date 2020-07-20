@@ -27,6 +27,7 @@ import { AdminsComponent } from './components/manager/admins/admins.component';
 import { AuctionComponent } from './components/manager/auction/auction.component';
 import { ActivityLogsComponent } from './components/manager/activity-logs/activity-logs.component';
 import { ReportsComponent } from './components/manager/reports/reports.component';
+import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ReportsComponent } from './components/manager/reports/reports.component
     AuctionComponent,
     ActivityLogsComponent,
     ReportsComponent,
+    NewAdminComponent,
   ],
   imports: [
     BrowserModule,

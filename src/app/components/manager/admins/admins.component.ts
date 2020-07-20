@@ -11,6 +11,10 @@ export class AdminsComponent implements OnInit {
   public errorMsg;
   data: any;
 
+  hello(){
+
+  }
+
   constructor(private _adminService: AdminsService) {}
 
   ngOnInit(): void {
