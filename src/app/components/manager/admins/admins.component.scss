@@ -1,0 +1,91 @@
+.outer-container {
+  position: relative;
+  margin-top: 3%;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5%;
+  margin-right: 10%;
+  background-image: linear-gradient(to right, #3494e6, #ec6ead);
+}
+
+.message-section {
+  padding-right: 10px;
+  position: absolute;
+  right: 0px;
+}
+
+.circle-aavatar {
+  vertical-align: middle;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 20px;
+  margin-left: 40px;
+  color: white;
+  font-weight: bold;
+}
+
+.message-btn {
+  background-color: blue;
+  height: 50px;
+  width: 140px;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.message-btn1 {
+  background-color: blue;
+  height: 50px;
+  width: 140px;
+  color: white;
+  margin-left: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.message-btn:hover {
+  line-height: 3;
+  background-color: transparent;
+  transition: background-color .550s;
+  color: blue;
+  font-weight: bold;
+}
+
+.message-btn1:hover {
+  line-height: 3;
+  background-color: transparent;
+  transition: background-color .550s;
+  color: blue;
+  font-weight: bold;
+}
+
+.fab{
+  position: absolute;
+  align-content: center;
+  width: 120px;
+  right:40px;
+  top: 120px;
+  border-radius: 8px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.fab:hover{
+  line-height: 2.9;
+  transition: line-height .250s;
+
+}
