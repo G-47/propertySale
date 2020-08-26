@@ -21,6 +21,13 @@ import { PageComponent } from './components/auctions/page/page.component';
 import { OngoingComponent } from './components/auctions/cards/ongoing/ongoing.component';
 import { OtherComponent } from './components/auctions/cards/other/other.component';
 import { AuthService } from './services/auth.service';
+import {AdminsService} from './services/admins.service';
+import { ManagerComponent } from './components/manager/manager.component';
+import { AdminsComponent } from './components/manager/admins/admins.component';
+import { AuctionComponent } from './components/manager/auction/auction.component';
+import { ActivityLogsComponent } from './components/manager/activity-logs/activity-logs.component';
+import { ReportsComponent } from './components/manager/reports/reports.component';
+import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +45,12 @@ import { AuthService } from './services/auth.service';
     PageComponent,
     OngoingComponent,
     OtherComponent,
+    ManagerComponent,
+    AdminsComponent,
+    AuctionComponent,
+    ActivityLogsComponent,
+    ReportsComponent,
+    NewAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +68,7 @@ import { AuthService } from './services/auth.service';
       useClass: AuthService,
       multi: true,
     },
+    AdminsService,
   ],
   bootstrap: [AppComponent],
 })

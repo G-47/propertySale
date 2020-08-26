@@ -7,6 +7,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DirectComponent } from './components/viewAd/direct/direct.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PageComponent } from './components/auctions/page/page.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'viewAd', component: DirectComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
+  { path: 'manager',component:ManagerComponent},
+  { path: 'newAdmin',component:NewAdminComponent}
 ];
 
 @NgModule({

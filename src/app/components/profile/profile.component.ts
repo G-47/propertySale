@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   lands = [];
+  loadingcomponent ="kbsjf";
+  is_ad = true;
 
   constructor() {
     this.createLand(
@@ -45,5 +47,20 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  title = 'appComponent';
+
+  isAd = true;
+
+  toggleDisplayDivtotrue() {
+    this.isAd = true;
+  }
+
+  toggleDisplayDivtofalse() {
+    this.isAd = false;
+  }
+
+  ngOnInit(): void {
+    this.isAd = false;
+    console.log(this.loadingcomponent);
+  }
 }
