@@ -4,6 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,13 +25,15 @@ import { PageComponent } from './components/auctions/page/page.component';
 import { OngoingComponent } from './components/auctions/cards/ongoing/ongoing.component';
 import { OtherComponent } from './components/auctions/cards/other/other.component';
 import { AuthService } from './services/auth.service';
-import {AdminsService} from './services/admins.service';
+import { AdminsService } from './services/admins.service';
 import { ManagerComponent } from './components/manager/manager.component';
 import { AdminsComponent } from './components/manager/admins/admins.component';
 import { AuctionComponent } from './components/manager/auction/auction.component';
 import { ActivityLogsComponent } from './components/manager/activity-logs/activity-logs.component';
 import { ReportsComponent } from './components/manager/reports/reports.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
+import { TestComponent } from './components/test/test.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,8 @@ import { NewAdminComponent } from './components/manager/admins/new-admin/new-adm
     ActivityLogsComponent,
     ReportsComponent,
     NewAdminComponent,
+    TestComponent,
+    ImageUploaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +68,9 @@ import { NewAdminComponent } from './components/manager/admins/new-admin/new-adm
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ThreeSixtyModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ],
   providers: [
     AuthService,

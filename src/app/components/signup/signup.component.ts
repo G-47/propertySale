@@ -14,10 +14,14 @@ export class SignupComponent implements OnInit {
   successMessage = 'temp';
 
   RegisterForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
+    profilePicture: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    nic: ['', Validators.required],
+    mobileNumber: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    nicNumber: ['', Validators.required],
+    nicFrontImage: ['', Validators.required],
+    nicBackImage: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
@@ -30,9 +34,23 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  tryRegister(formData) {
+  setProfilePicture(url): void {
+    this.RegisterForm.controls.profilePicture.setValue(url);
+    console.log('profile picture is : ' + url);
+  }
+  setNicFrontImage(url): void {
+    this.RegisterForm.controls.nicFrontImage.setValue(url);
+    console.log('NIC front image is : ' + url);
+    console.log(this.RegisterForm.controls);
+  }
+  setNicBackImage(url): void {
+    this.RegisterForm.controls.nicBackImage.setValue(url);
+    console.log('NIC back image is : ' + url);
+  }
+
+  tryRegister(formData): void {
     this.authService.register(formData).subscribe(
-      (res) => {
+      () => {
         this.toastr.success('Login now', 'Registered Successfully');
         this.router.navigate(['/login']);
         this.RegisterForm.reset();

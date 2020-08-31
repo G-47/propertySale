@@ -1,68 +1,85 @@
 <div class="navbar-fix"></div>
 <div class="container" id="container">
-  <div class="heading">
-    Signup
-  </div>
+  <div class="heading">Signup</div>
 
   <form [formGroup]="RegisterForm">
     <fieldset class="p-4">
       <div class="form-group">
-        <label>First Name :</label>
+        <label>Profile Picture :</label>
         <!-- input field coloured red when given data is failed validation -->
-        <input
-          [class.is-invalid]="
-            RegisterForm.get('firstName').invalid &&
-            RegisterForm.get('firstName').touched
-          "
-          type="text"
-          formControlName="firstName"
-          class="form-control"
-          required
-        />
+        <app-image-uploader
+          [defaultImage]="'/assets/images/image-placeholder-user.png'"
+          [cloudFolder]="'profilePictures'"
+          (upload)="setProfilePicture($event)"
+        ></app-image-uploader>
         <!-- show error message for validation error -->
         <small
-          *ngIf="
-            RegisterForm.get('firstName').invalid &&
-            RegisterForm.get('firstName').touched
-          "
+          *ngIf="RegisterForm.get('profilePicture').invalid"
           class="text-danger"
-          >*First Name is required !</small
+          >*Profile Picture is required !</small
         >
       </div>
 
-      <div class="form-group">
-        <label>Last Name :</label>
-        <!-- input field coloured red when given data is failed validation -->
-        <input
-          [class.is-invalid]="
-            RegisterForm.get('lastName').invalid &&
-            RegisterForm.get('lastName').touched
-          "
-          type="text"
-          formControlName="lastName"
-          class="form-control"
-          required
-        />
-        <!-- show error message for validation error -->
-        <small
-          class="text-danger"
-          *ngIf="
-            RegisterForm.get('lastName').invalid &&
-            RegisterForm.get('lastName').touched
-          "
-          >*Last Name is required !</small
-        >
+      <div class="name row">
+        <div class="form-group w-50 pl-3 pr-2">
+          <label>First Name :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <input
+            [class.is-invalid]="
+              RegisterForm.get('firstName').invalid &&
+              RegisterForm.get('firstName').touched
+            "
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            required
+          />
+          <!-- show error message for validation error -->
+          <small
+            *ngIf="
+              RegisterForm.get('firstName').invalid &&
+              RegisterForm.get('firstName').touched
+            "
+            class="text-danger"
+            >*First Name is required !</small
+          >
+        </div>
+
+        <div class="form-group w-50 pl-2 pr-3">
+          <label>Last Name :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <input
+            [class.is-invalid]="
+              RegisterForm.get('lastName').invalid &&
+              RegisterForm.get('lastName').touched
+            "
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            required
+          />
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="
+              RegisterForm.get('lastName').invalid &&
+              RegisterForm.get('lastName').touched
+            "
+            >*Last Name is required !</small
+          >
+        </div>
       </div>
 
       <div class="form-group">
-        <label>NIC number :</label>
+        <label>Mobile number :</label>
         <!-- input field coloured red when given data is failed validation -->
         <input
           [class.is-invalid]="
-            RegisterForm.get('nic').invalid && RegisterForm.get('nic').touched
+            RegisterForm.get('mobileNumber').invalid &&
+            RegisterForm.get('mobileNumber').touched
           "
           type="text"
-          formControlName="nic"
+          formControlName="mobileNumber"
           class="form-control"
           required
         />
@@ -70,9 +87,10 @@
         <small
           class="text-danger"
           *ngIf="
-            RegisterForm.get('nic').invalid && RegisterForm.get('nic').touched
+            RegisterForm.get('mobileNumber').invalid &&
+            RegisterForm.get('mobileNumber').touched
           "
-          >*NIC is required !</small
+          >*Mobile Number is required !</small
         >
       </div>
 
@@ -105,6 +123,64 @@
             class="text-danger"
             *ngIf="RegisterForm.get('email').errors.email"
             >*Email is badly formatted !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>NIC number :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            RegisterForm.get('nicNumber').invalid &&
+            RegisterForm.get('nicNumber').touched
+          "
+          type="text"
+          formControlName="nicNumber"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            RegisterForm.get('nicNumber').invalid &&
+            RegisterForm.get('nicNumber').touched
+          "
+          >*NIC is required !</small
+        >
+      </div>
+
+      <div class="nic-images row">
+        <div class="form-group pl-3 pr-3">
+          <label>NIC Front-side photo :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'nicImages'"
+            (upload)="setNicFrontImage($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+          <small
+            *ngIf="RegisterForm.get('nicFrontImage').invalid"
+            class="text-danger"
+            >*Nic Picture is required !
+          </small>
+        </div>
+
+        <div class="form-group pl-3">
+          <label>NIC Back-side photo :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'nicImages'"
+            (upload)="setNicBackImage($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+          <small
+            *ngIf="RegisterForm.get('nicBackImage').invalid"
+            class="text-danger"
+            >*Nic Picture is required !</small
           >
         </div>
       </div>

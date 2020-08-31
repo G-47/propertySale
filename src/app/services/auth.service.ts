@@ -6,33 +6,28 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthService implements HttpInterceptor {
+  private registerUrl = 'http://localhost:3000/api/registerUser';
+  private loginUrl = 'http://localhost:3000/api/authenticateUser';
+
   constructor(private http: HttpClient) {}
 
-  intercept(req, next) {
-    const tokanizedReq = req.clone({
+  intercept(req, next): any {
+    const tokenizedReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
-    return next.handle(tokanizedReq);
+    return next.handle(tokenizedReq);
   }
 
-  private registerUrl = 'http://localhost:3000/api/registerUser';
-  private loginUrl = 'http://localhost:3000/api/authenticateUser';
+  register(formData): any {
+    let newUser: User;
+    newUser = formData as User;
 
-  newUser = {} as User;
-
-  register(formData) {
-    this.newUser.firstName = formData.firstName;
-    this.newUser.lastName = formData.lastName;
-    this.newUser.email = formData.email;
-    this.newUser.nic = formData.nic;
-    this.newUser.password = formData.password;
-
-    return this.http.post<any>(this.registerUrl, this.newUser);
+    return this.http.post<any>(this.registerUrl, newUser);
   }
 
-  login(formData) {
+  login(formData): any {
     return this.http.post<any>(this.loginUrl, formData);
   }
 }

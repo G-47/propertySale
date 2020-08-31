@@ -1,3 +1,4 @@
+import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -19,8 +20,9 @@ const routes: Routes = [
   { path: 'viewAd', component: DirectComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
-  { path: 'manager',component:ManagerComponent},
-  { path: 'newAdmin',component:NewAdminComponent}
+  { path: 'manager', component: ManagerComponent },
+  { path: 'newAdmin', component: NewAdminComponent },
+  { path: 'test', component: TestComponent },
 ];
 
 @NgModule({

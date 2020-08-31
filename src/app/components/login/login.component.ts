@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from './../../models/user.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,12 +25,12 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  tryLogin(formData) {
+  tryLogin(formData): void {
     this.authService.login(formData).subscribe(
       async (res) => {
         await localStorage.setItem('token', res.token);
         this.errorMessage = 'temp';
-        this.router.navigate(['/home']);
+        await this.router.navigate(['/home']);
 
         // this.getCurrentUser();
       },
