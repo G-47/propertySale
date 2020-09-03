@@ -8,6 +8,8 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import {CommonModule} from '@angular/common';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { ReportsComponent } from './components/manager/reports/reports.component
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 import { TestComponent } from './components/test/test.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
     NewAdminComponent,
     TestComponent,
     ImageUploaderComponent,
+    ThreeSixtyImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,8 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
     ThreeSixtyModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    CommonModule,
+    GoogleMapsModule,
   ],
   providers: [
     AuthService,

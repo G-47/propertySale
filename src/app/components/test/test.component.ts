@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MapInfoWindow, MapMarker} from '@angular/google-maps';
 
 @Component({
   selector: 'app-test',
@@ -6,13 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
-  public threeSixtyImages: string[] = ['https://picsum.photos/500/500'];
+
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
+  center = {lat: 6, lng: 79};
+  markerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [];
+  zoom = 10;
+  display?: google.maps.LatLngLiteral;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
-  printLink(url): void {
-    console.log('paaya' + url);
+  addMarker(event: google.maps.MouseEvent): void {
+    this.markerPositions.push(event.latLng.toJSON());
+    console.log(event.latLng);
+  }
+
+  move(event: google.maps.MouseEvent): void {
+    this.display = event.latLng.toJSON();
+  }
+
+  openInfoWindow(marker: MapMarker): void {
+    this.infoWindow.open(marker);
+  }
+
+  removeLastMarker(): void {
+    this.markerPositions.pop();
   }
 }
