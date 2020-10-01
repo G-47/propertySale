@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
     console.log(Date());
   }
 
-  createLand(image, title, price, size, type, location, time) {
+  createLand(image, title, price, size, type, location, time): void {
     this.lands.push({
       image,
       title,
@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  createHouse(image, title, price, size, type, location, time) {
+  createHouse(image, title, price, size, type, location, time): void {
     this.houses.push({
       image,
       title,
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeArray(type) {
+  changeArray(type): void {
     this.SearchForm.reset();
 
     if (type === 'lands') {
@@ -152,7 +152,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  search(form) {
+  search(form): void {
     if (this.selectedArrayIndex === 1) {
       this.selectedArray = this.lands.filter((item) =>
         item.location.toLowerCase().includes(form.word.toLowerCase())
@@ -164,7 +164,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openAd() {
+  openAd(): void {
     const isLogged = localStorage.getItem('token') !== null;
 
     if (isLogged) {

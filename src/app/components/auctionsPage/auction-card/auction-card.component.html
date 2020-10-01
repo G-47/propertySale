@@ -29,13 +29,13 @@
           </div>
         </li>
         <li class="list-group-item" class="card-bottom">
-          <div style="margin-top: 8px">Ends in:</div>
           <div *ngIf="eventDone == 'notStarted'">
-            
+            Start Date: {{startDate}}&nbsp;End Date: {{endDate}}
           </div>
-          <div *ngIf="eventDone == 'onGoing'">
+          <div *ngIf="eventDone == 'onGoing'" style="display: flex;">
+            <div style="margin-top: 8px">Ends in:</div>
             <div class="countdown-container" style="display: flex;">
-              {{days}}D&nbsp;:&nbsp;{{hours}}H&nbsp;:&nbsp;{{mins}}M&nbsp;:&nbsp;{{secs}}T
+              {{days}}D&nbsp;:&nbsp;{{hours}}H&nbsp;:&nbsp;{{mins}}M&nbsp;:&nbsp;{{secs}}S
             </div>
           </div>
           <div *ngIf="eventDone == 'ended'">

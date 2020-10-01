@@ -169,7 +169,7 @@ export class PageComponent implements OnInit {
     // const isLogged = localStorage.getItem('token') !== null;
 
     // if (isLogged) {
-      this.router.navigate(['/viewAd']);
+      this.router.navigate(['/viewAuctionAd']);
     // } else {
     //   this.router.navigate(['/login']);
     // }

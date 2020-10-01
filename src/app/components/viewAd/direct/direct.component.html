@@ -16,7 +16,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" style="height: 400px; border-radius: 8px;">
+      <div class="carousel-inner" style="height: 400px; border-radius: 8px">
         <div class="carousel-item active">
           <img
             class="d-block w-100"
@@ -60,9 +60,7 @@
     </div>
   </div>
   <div class="carousel-bottom">
-    <div class="title-container">
-      Land for Sale in Matara
-    </div>
+    <div class="title-container">Land for Sale in Matara</div>
     <div class="image-container">
       <img
         src="../../../../assets/images/360.svg"
@@ -74,17 +72,15 @@
   </div>
 </div>
 
-<div class="price-container">
-  LKR 500,000 per perch
-</div>
+<div class="price-container">LKR 500,000 per perch</div>
 
 <div class="detail-container">
   <div class="top">
-    <div class="land-description-item" style="margin-right: auto;">
+    <div class="land-description-item" style="margin-right: auto">
       <div class="topic">Land Type :</div>
       <div class="text">Bare Land</div>
     </div>
-    <div class="land-description-item" style="margin-left: auto;">
+    <div class="land-description-item" style="margin-left: auto">
       <div class="topic">Land Size :</div>
       <div class="text">20 perches</div>
     </div>
@@ -113,14 +109,17 @@
   </div>
 </div>
 
-<app-three-sixty-image #roundView class="roundView"></app-three-sixty-image>
+<div #roundView>
+  <app-three-sixty-image class="roundView"></app-three-sixty-image>
+</div>
 
 <!--<div #roundView class="roundView">-->
 <!--  <img src="../../../../assets/images/360view.png" />-->
 <!--</div>-->
 
 <div #map class="map" id="map">
-  <img src="../../../../assets/images/googlemap.png" />
+  <app-map [inputPlace]="kirama"></app-map>
+  <!-- <img src="../../../../assets/images/googlemap.png" /> -->
 </div>
 
 <div class="seller">

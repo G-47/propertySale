@@ -36,6 +36,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
 import { PageComponent } from './components/auctionsPage/page/page.component';
 import { AuctionCardComponent } from './components/auctionsPage/auction-card/auction-card.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AuctionCardComponent } from './components/auctionsPage/auction-card/auc
     ImageUploaderComponent,
     ThreeSixtyImageComponent,
     PageComponent,
-    AuctionCardComponent
+    AuctionCardComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

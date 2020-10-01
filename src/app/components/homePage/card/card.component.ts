@@ -13,13 +13,13 @@ export class CardComponent implements OnInit {
   landLocation = 'Matara';
   postedDuration = 20;
 
-  @Input('image') image: string;
-  @Input('title') title: string; //////////////////////////////////////////////
-  @Input('price') price: string; ////////////                    //////////////
-  @Input('size') size: string; ////////////    inputs from     //////////////
-  @Input('type') type: string; ////////////   home component   //////////////
-  @Input('location') location: string; //////////////////////////////////////////////
-  @Input('time') time: string;
+  @Input() image: string;
+  @Input() title: string;    //////////////////////////////////////////////
+  @Input() price: string;    ////////////                    //////////////
+  @Input() size: string;     ////////////    inputs from     //////////////
+  @Input() type: string;     ////////////   home component   //////////////
+  @Input() location: string; //////////////////////////////////////////////
+  @Input() time: string;
 
   constructor() {}
 
