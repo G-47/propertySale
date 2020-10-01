@@ -111,7 +111,10 @@ export class HomeComponent implements OnInit {
     console.log(x);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    console.log(Date());
+  }
 
   createLand(image, title, price, size, type, location, time) {
     this.lands.push({

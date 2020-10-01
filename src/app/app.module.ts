@@ -23,9 +23,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MypropertiesComponent } from './components/profile/myproperties/myproperties.component';
-import { PageComponent } from './components/auctions/page/page.component';
-import { OngoingComponent } from './components/auctions/cards/ongoing/ongoing.component';
-import { OtherComponent } from './components/auctions/cards/other/other.component';
 import { AuthService } from './services/auth.service';
 import { AdminsService } from './services/admins.service';
 import { ManagerComponent } from './components/manager/manager.component';
@@ -37,6 +34,8 @@ import { NewAdminComponent } from './components/manager/admins/new-admin/new-adm
 import { TestComponent } from './components/test/test.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
+import { PageComponent } from './components/auctionsPage/page/page.component';
+import { AuctionCardComponent } from './components/auctionsPage/auction-card/auction-card.component';
 
 @NgModule({
   declarations: [
@@ -51,9 +50,6 @@ import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-s
     FooterComponent,
     ProfileComponent,
     MypropertiesComponent,
-    PageComponent,
-    OngoingComponent,
-    OtherComponent,
     ManagerComponent,
     AdminsComponent,
     AuctionComponent,
@@ -63,6 +59,8 @@ import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-s
     TestComponent,
     ImageUploaderComponent,
     ThreeSixtyImageComponent,
+    PageComponent,
+    AuctionCardComponent
   ],
   imports: [
     BrowserModule,

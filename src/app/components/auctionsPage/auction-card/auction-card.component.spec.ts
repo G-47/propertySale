@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OtherComponent } from './other.component';
+import { AuctionCardComponent } from './auction-card.component';
 
-describe('OtherComponent', () => {
-  let component: OtherComponent;
-  let fixture: ComponentFixture<OtherComponent>;
+describe('AuctionCardComponent', () => {
+  let component: AuctionCardComponent;
+  let fixture: ComponentFixture<AuctionCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OtherComponent ]
+      declarations: [ AuctionCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OtherComponent);
+    fixture = TestBed.createComponent(AuctionCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

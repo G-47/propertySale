@@ -12,8 +12,8 @@
           class="list-group-item"
           style="font-size: 17px; margin-left: 5px; color: #1ec92f;"
         >
-          <span style="font-size: 12px; color: black;"> Starting bid&nbsp;</span>
           Rs: {{ price }}&nbsp;
+          <span style="font-size: 12px; color: black;"> per perch</span>
         </li>
         <li
           class="list-group-item"
@@ -27,8 +27,22 @@
             <b>Size: </b>{{ size }} perches &nbsp;&nbsp;&nbsp;&nbsp; <b>Type: </b
             >{{ type }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
           </div>
-  
-          <p style="text-align: end;">{{ time }}&nbsp;days more</p>
+        </li>
+        <li class="list-group-item" class="card-bottom">
+          <div style="margin-top: 8px">Ends in:</div>
+          <div *ngIf="eventDone == 'notStarted'">
+            
+          </div>
+          <div *ngIf="eventDone == 'onGoing'">
+            <div class="countdown-container" style="display: flex;">
+              {{days}}D&nbsp;:&nbsp;{{hours}}H&nbsp;:&nbsp;{{mins}}M&nbsp;:&nbsp;{{secs}}T
+            </div>
+          </div>
+          <div *ngIf="eventDone == 'ended'">
+            
+          </div>
+
+          <ng-template #elseBlock>Content to render when condition is false.</ng-template>
         </li>
       </ul>
     </div>
