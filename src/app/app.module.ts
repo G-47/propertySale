@@ -37,6 +37,7 @@ import { NewAdminComponent } from './components/manager/admins/new-admin/new-adm
 import { TestComponent } from './components/test/test.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-s
     TestComponent,
     ImageUploaderComponent,
     ThreeSixtyImageComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
