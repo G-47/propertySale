@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class DirectComponent implements OnInit {
   constructor() {}
 
+  kirama = {lat: 6.2074, lng: 80.6672};
+
   ngOnInit(): void {}
 
-  scroll(el: HTMLElement) {
+  scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });
   }
 }
