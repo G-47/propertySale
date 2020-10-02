@@ -1,30 +1,15 @@
 <div class="navbar-fix"></div>
+<nav class="nav nav-pills flex-column flex-sm-row pad">
+  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'admin' ? 'active' : ''"
+    (click)="moveToAdmin()">Administrators</a>
+  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'auction' ? 'active' : ''"
+    (click)="moveToAuction()">Auctions</a>
+  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'activity' ? 'active' : ''"
+    (click)="moveToActivity()">Activity log</a>
+  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'report' ? 'active' : ''"
+    (click)="moveToReport()">Reports</a>
+</nav>
 
-<div class="main-container">
-  <div class="top-bar">
-    <div class="feature">
-      <button class="button" type="button" (click)="moveToAdmin()">Administrators</button>
-    </div>
-  </div>
-
-  <div class="top-bar">
-    <div class="feature">
-      <button class="button" type="button" (click)="moveToAuction()">Auctions</button>
-    </div>
-  </div>
-
-  <div class="top-bar">
-    <div class="feature">
-      <button class="button" type="button" (click)="moveToActivity()">Activity logs</button>
-    </div>
-  </div>
-
-  <div class="top-bar">
-    <div class="feature">
-      <button class="button" type="button" (click)="moveToReport()">Reports</button>
-    </div>
-  </div>
-</div>
 
 <div [hidden]="state !== 'admin'" class="adminsclass">
   <app-admins></app-admins>

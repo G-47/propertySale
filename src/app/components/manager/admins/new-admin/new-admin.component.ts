@@ -37,8 +37,8 @@ export class NewAdminComponent implements OnInit {
         this.errorMessage = err.error[0];
         console.log(err.error[0]);
       }
-    );
-  }
-
+      );
+    }
+    
   ngOnInit(): void {}
 }

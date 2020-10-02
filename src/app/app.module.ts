@@ -8,8 +8,8 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import {CommonModule} from '@angular/common';
-import {GoogleMapsModule} from '@angular/google-maps';
+import { CommonModule } from '@angular/common';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { NewAdminComponent } from './components/manager/admins/new-admin/new-adm
 import { TestComponent } from './components/test/test.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
+import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-s
     TestComponent,
     ImageUploaderComponent,
     ThreeSixtyImageComponent,
+    NewAuctionComponent,
   ],
   imports: [
     BrowserModule,
