@@ -1,6 +1,7 @@
-.footer-top {
-  border: solid 2px red;
-  width: 200px;
-  height: 200px;
-  display: flex;
+.navbar-fix {
+  height: 64px;
+}
+
+.router-outlet {
+  min-height: calc(100vh - 324px);
 }
