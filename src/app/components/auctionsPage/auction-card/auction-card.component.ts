@@ -7,15 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AuctionCardComponent implements OnInit {
 
-  @Input('image') image: string;
-  @Input('title') title: string; //////////////////////////////////////////////
-  @Input('price') price: string; ////////////                    //////////////
+  @Input('_id') _id: string;
+  @Input('name') name: string; //////////////////////////////////////////////
+  @Input('type') type: string; ////////////                    //////////////
   @Input('size') size: string; ////////////    inputs from     //////////////
-  @Input('type') type: string; ////////////   home component   //////////////
-  @Input('location') location: string; //////////////////////////////////////////////
-  @Input('time') time: string;
+  @Input('description') description: string; ////////////   home component   //////////////
+  @Input('threeSixtyImageUrl') threeSixtyImageUrl: string; //////////////////////////////////////////////
+  @Input('extracts') extracts: Array<String>;
+  @Input( 'otherImages' ) otherImages: Array<String> ;
+  @Input( 'location' ) location: String ;
+  @Input( 'mapCordinates' ) mapCordinates: Object ;
   @Input( 'startDate' ) startDate: any ;
   @Input( 'endDate' ) endDate: any ;
+  @Input( 'startBid' ) startBid: String ;
    
   rest: number ;
   remain: number;     //////////////////////////////////////////////
@@ -47,8 +51,6 @@ export class AuctionCardComponent implements OnInit {
       this.eventDone = "onGoing";
 
       this.remain = ( this.endDate - Date.now() ) / 1000 ;
-
-    console.log(this.remain);
       if(this.remain >= 0){
         this.days = Math.floor(this.remain / 86400);
         this.hours = Math.floor(this.remain / 3600) % 24;
@@ -61,7 +63,6 @@ export class AuctionCardComponent implements OnInit {
     }else{
       this.eventDone = "notStarted";
     } 
-    console.log(this.eventDone);
   }
 }
 

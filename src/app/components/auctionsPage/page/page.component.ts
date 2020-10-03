@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuctionAdService } from "src/app/services/auction-ad.service"
 
 @Component({
   selector: 'app-page',
@@ -17,17 +18,21 @@ export class PageComponent implements OnInit {
     word: [''],
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private auctionAdService: AuctionAdService) {
     this.createLand(
-      'https://www.primelands.lk/resources/857/image%20001.jpg',
-      'Land for sale in Matara',
-      '500,000',
-      '20',
-      'Bare Land',
-      'Matara',
-      '2',
-      Date.now()-60000*60*24*2,
-      Date.now()+60000*60*24*2
+      "123142351336",
+      "Land for Sale in Negambo",
+      "Bare Land",
+      "50",
+      "Near to Colombo",
+      "",
+      [],
+      ["https://www.primelands.lk/resources/893/icon.jpg","https://www.primelands.lk/resources/893/WEB-04.jpg"],
+      "Negambo Road, Colombo 11",
+      {"longitude":6.2074,"latitude":80.6672},
+      1288323623006,
+      1288323623006,
+      "300000"
     );
     // this.createLand(
     //   'https://www.primelands.lk/resources/843/WEB-03.jpg',
@@ -115,17 +120,21 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  createLand(image, title, price, size, type, location, time, startDate, endDate) {
+  createLand(_id, name, type, size, description, threeSixtyImageUrl, extracts, otherImages, location, mapCordinates, startDate, endDate, startBid) {
     this.lands.push({
-      image,
-      title,
-      price,
-      size,
+      _id,
+      name,
       type,
+      size,
+      description,
+      threeSixtyImageUrl,
+      extracts,
+      otherImages,
       location,
-      time,
+      mapCordinates,
       startDate,
-      endDate
+      endDate,
+      startBid
     });
   }
 
@@ -165,7 +174,7 @@ export class PageComponent implements OnInit {
     }
   }
 
-  openAd() {
+  openAd(arr) {
     // const isLogged = localStorage.getItem('token') !== null;
 
     // if (isLogged) {
@@ -173,5 +182,6 @@ export class PageComponent implements OnInit {
     // } else {
     //   this.router.navigate(['/login']);
     // }
+    this.auctionAdService.setAd(arr[0]);
   }
 }

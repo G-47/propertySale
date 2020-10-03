@@ -113,16 +113,20 @@
 
 <div class="result-container" *ngIf="selectedArray.length > 0">
   <app-auction-card
-    (click)="openAd()"
+    (click)="openAd(selectedArray)"
     *ngFor="let temp of selectedArray"
-    [image]="temp.image"
-    [title]="temp.title"
-    [price]="temp.price"
-    [size]="temp.size"
+    [_id]="temp._id"
+    [name]="temp.name"
     [type]="temp.type"
+    [size]="temp.size"
+    [description]="temp.description"
+    [threeSixtyImageUrl]="temp.threeSixtyImageUrl"
+    [extracts]="temp.extracts"
+    [otherImages]="temp.otherImages"
     [location]="temp.location"
-    [time]="temp.time"
+    [mapCordinates]="temp.mapCordinates"
     [startDate]="temp.startDate"
     [endDate]="temp.endDate"
+    [startBid]="temp.startBid"
   ></app-auction-card>
 </div>

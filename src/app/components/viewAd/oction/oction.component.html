@@ -20,21 +20,21 @@
         <div class="carousel-item active">
           <img
             class="d-block w-100"
-            src="https://www.primelands.lk/resources/834/01.jpg"
+            src="{{arr.otherImages[0]}}"
             alt="First slide"
           />
         </div>
         <div class="carousel-item">
           <img
             class="d-block w-100"
-            src="https://www.primelands.lk/resources/447/image1.jpg"
+            src="{{arr.otherImages[1]}}"
             alt="Second slide"
           />
         </div>
         <div class="carousel-item">
           <img
             class="d-block w-100"
-            src="https://www.primelands.lk/resources/859/image%20001.jpg"
+            src="{{arr.otherImages[2]}}"
             alt="Third slide"
           />
         </div>
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="carousel-bottom">
-    <div class="title-container">Land for Sale in Matara</div>
+    <div class="title-container">{{arr.name}}</div>
     <div class="image-container">
       <img
         src="../../../../assets/images/360.svg"
@@ -73,7 +73,7 @@
   //
 </div>
 
-<div class="price-container">LKR 500,000 per perch</div>
+<div class="price-container">Starting Bid LKR {{arr.startBid}}</div>
 
 <!-- bidding container -->
 <div class="bidding-container">
@@ -100,32 +100,18 @@
   <div class="top">
     <div class="land-description-item" style="margin-right: auto">
       <div class="topic">Land Type :</div>
-      <div class="text">Bare Land</div>
+      <div class="text">{{arr.type}}</div>
     </div>
     <div class="land-description-item" style="margin-left: auto">
       <div class="topic">Land Size :</div>
-      <div class="text">20 perches</div>
+      <div class="text">{{arr.size}}</div>
     </div>
   </div>
   <div class="bottom">
     <div class="land-description-item">
       <div class="topic">Description :</div>
       <div class="text">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod,
-        obcaecati dolorum in omnis molestias magni. Qui, ratione quisquam
-        necessitatibus molestias nam optio adipisci numquam iste id explicabo,
-        nihil magnam nulla facere culpa deleniti illo, labore laudantium
-        reiciendis vel. Voluptates quisquam blanditiis vero ullam necessitatibus
-        enim deserunt facilis! Qui perspiciatis quae magnam. Ut quibusdam maxime
-        libero praesentium iure odio quidem veniam distinctio repudiandae, ad
-        tenetur officia autem vero alias, sapiente neque exercitationem
-        reprehenderit rem non maiores, similique excepturi! Odit error dolores
-        commodi voluptatibus doloremque repellendus maxime omnis, impedit
-        numquam quidem reprehenderit similique quam provident hic, saepe nulla
-        cum optio consectetur? Aut, labore quia. Ullam rerum reprehenderit,
-        consequuntur soluta laboriosam, veritatis ut eligendi, ipsa deserunt et
-        ex sunt. Libero eaque temporibus praesentium molestiae aut deserunt amet
-        nostrum earum sunt tenetur! Eveniet, obcaecati?
+        {{arr.description}}
       </div>
     </div>
   </div>
