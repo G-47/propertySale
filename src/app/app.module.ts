@@ -39,6 +39,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
 import { MapComponent } from './components/map/map.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PostAdComponent } from './components/post-ad/post-ad.component';
     ThreeSixtyImageComponent,
     MapComponent,
     PostAdComponent,
+    PaymentGatewayComponent,
   ],
   imports: [
     BrowserModule,
