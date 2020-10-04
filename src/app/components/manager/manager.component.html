@@ -1,0 +1,46 @@
+<div class="main-container">
+  <div class="top-bar">
+    <div class="feature">
+      <button class="button" type="button" (click)="moveToAdmin()">
+        Administrators
+      </button>
+    </div>
+  </div>
+
+  <div class="top-bar">
+    <div class="feature">
+      <button class="button" type="button" (click)="moveToAuction()">
+        Auctions
+      </button>
+    </div>
+  </div>
+
+  <div class="top-bar">
+    <div class="feature">
+      <button class="button" type="button" (click)="moveToActivity()">
+        Activity logs
+      </button>
+    </div>
+  </div>
+
+  <div class="top-bar">
+    <div class="feature">
+      <button class="button" type="button" (click)="moveToReport()">
+        Reports
+      </button>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="state !== 'admin'" class="adminsclass">
+  <app-admins></app-admins>
+</div>
+<div [hidden]="state !== 'auction'">
+  <app-auction></app-auction>
+</div>
+<div [hidden]="state !== 'activity'">
+  <app-activity-logs></app-activity-logs>
+</div>
+<div [hidden]="state !== 'report'">
+  <app-reports></app-reports>
+</div>

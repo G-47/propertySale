@@ -1,0 +1,44 @@
+.navbar-fix {
+  height: 64px;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.top-bar {
+  position: relative;
+  align-items: center;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  background-image: linear-gradient(#36d1dc, #5b86e5);
+  cursor: pointer;
+}
+
+.feature {
+  margin-left: 40px;
+  color: white;
+  font-size: 20px;
+}
+
+.feature:hover {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  // line-height: 3.2;
+  cursor: pointer;
+}
+.button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

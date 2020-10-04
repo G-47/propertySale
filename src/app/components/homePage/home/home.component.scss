@@ -15,11 +15,57 @@
     height: 50px;
     margin: 10px 10px 10px 0px;
     flex: 1;
-    background-color: red;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+
+    .filter-button-deselected {
+      border-radius: 5px;
+      margin: 0px 10px;
+      width: 100px;
+      height: 80%;
+      background-color: grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .filter-button-selected {
+      border-radius: 5px;
+      margin: 0px 10px;
+      width: 100px;
+      height: 80%;
+      background-color: green;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    form {
+      display: flex;
+      margin-left: 50px;
+    }
+  }
+
+  .octions-button {
+    border-radius: 5px;
+    font-size: 15px;
+    border: solid 2px rgb(255, 255, 255);
+    font-weight: bold;
+    height: 50px;
+    margin: 10px 50px 10px 10px;
+    width: 150px;
+    background-color: #7779e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .post-ad-button {
     text-align: center;
+    border-radius: 5px;
     font-size: 15px;
     font-weight: bold;
     height: 50px;
@@ -35,15 +81,32 @@
   margin-right: auto;
 }
 
-.result-container {
+.result-container-empty {
   margin-right: auto;
   margin-left: auto;
   padding: 20px 0px 20px 0px;
-  width: 70%;
-  height: 50px;
+  width: 80%;
+  outline: transparent;
+  font-size: 30px;
+
+  app-card {
+    padding: 10px 20px 10px 20px;
+  }
+}
+
+.result-container {
+  app-card {
+    outline: transparent;
+  }
+
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0px 20px 0px;
+  width: 80%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  outline: transparent;
 
   app-card {
     padding: 10px 20px 10px 20px;

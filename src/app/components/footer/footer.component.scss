@@ -1,0 +1,42 @@
+.footer-top {
+  width: 100%;
+  height: 200px;
+  background-color: #10273c;
+  display: flex;
+  align-items: center;
+
+  .footer-left {
+    padding: 30px;
+
+    .heading {
+      font-weight: bolder;
+      font-size: 50px;
+      color: #494fe9;
+    }
+    .text {
+      color: wheat;
+    }
+  }
+  .footer-right {
+    margin-left: auto;
+    margin-right: 10px;
+
+    img {
+      height: 60px;
+    }
+  }
+}
+
+.footer-bottom {
+  width: 100%;
+  height: 60px;
+  background-color: #0d1e2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    color: wheat;
+    margin: 0px 20px;
+  }
+}

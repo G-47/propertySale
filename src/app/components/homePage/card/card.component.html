@@ -1,18 +1,18 @@
 <div class="card-container">
   <div class="card">
-    <img class="card-img-top image" src="https://picsum.photos/150/150" />
+    <img class="card-img-top image" src="{{ image }}" />
     <ul class="list-group list-group-flush">
       <li
         class="list-group-item"
         style="font-size: 17px; margin-left: 5px; color: #494fe9;"
       >
-        <b>{{ landTitle }}</b>
+        <b>{{ title }}</b>
       </li>
       <li
         class="list-group-item"
         style="font-size: 17px; margin-left: 5px; color: #1ec92f;"
       >
-        Rs: {{ landPrice }}&nbsp;
+        Rs: {{ price }}&nbsp;
         <span style="font-size: 12px; color: black;"> per perch</span>
       </li>
       <li
@@ -24,12 +24,11 @@
         "
       >
         <div class="li-box">
-          <b>Size: </b>{{ landSize }} perches &nbsp;&nbsp;&nbsp;&nbsp;
-          <b>Type: </b>{{ landType }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b
-          >{{ landLocation }}
+          <b>Size: </b>{{ size }} perches &nbsp;&nbsp;&nbsp;&nbsp; <b>Type: </b
+          >{{ type }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
         </div>
 
-        <p style="text-align: end;">{{ postedDuration }}&nbsp;hours ago</p>
+        <p style="text-align: end;">{{ time }}&nbsp;hours ago</p>
       </li>
     </ul>
   </div>

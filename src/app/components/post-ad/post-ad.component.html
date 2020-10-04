@@ -1,0 +1,453 @@
+<div class="property-type-container">
+  <form [formGroup]="PropertyTypeForm">
+    <br />
+    <h3 class="property-type-header">Select Property type</h3>
+    <div class="property-type-buttons">
+      <label class="property-type-button">
+        <input
+          type="radio"
+          formControlName="type"
+          value="land"
+          class="input-element"
+        />
+        <div class="card card-input" style="width: 200px">
+          <img
+            class="card-img-top"
+            src="/assets/images/land.svg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h3 class="text-center">Land</h3>
+          </div>
+        </div>
+      </label>
+
+      <label class="property-type-button">
+        <input
+          type="radio"
+          class="input-element"
+          formControlName="type"
+          value="house"
+        />
+        <div class="card card-input" style="width: 200px">
+          <img
+            class="card-img-top"
+            src="/assets/images/house.svg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h3 class="text-center">House</h3>
+          </div>
+        </div>
+      </label>
+    </div>
+  </form>
+</div>
+
+<!-- title: ['', Validators.required],
+    description: ['', Validators.required],
+    type: ['', Validators.required],
+    size: ['', Validators.required],
+    price: ['', Validators.required],
+    locationName: ['', Validators.required],
+    locationMap: [{ lat: '', lang: '' }, Validators.required],
+    images: [[], Validators.required], -->
+
+<div class="container" *ngIf="PropertyTypeForm.get('type').value == 'land'">
+  <form [formGroup]="LandForm">
+    <fieldset class="p-4">
+      <div class="form-group">
+        <label>Title :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('title').invalid && LandForm.get('title').touched
+          "
+          type="text"
+          formControlName="title"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('title').invalid && LandForm.get('title').touched"
+          >*Title is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <textarea
+          [class.is-invalid]="
+            LandForm.get('description').invalid &&
+            LandForm.get('description').touched
+          "
+          class="form-control"
+          formControlName="description"
+          rows="3"
+          required
+        ></textarea>
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('description').invalid &&
+            LandForm.get('description').touched
+          "
+          >*Description is required !</small
+        >
+      </div>
+
+      <label>Type :</label>
+      <div class="row">
+        <div class="checkbox-box">
+          <div class="checkbox">
+            <div class="input-group">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="Bare Land" />
+              </div>
+            </div>
+          </div>
+          <div class="lable">
+            <div>Bare Land</div>
+          </div>
+        </div>
+
+        <div class="checkbox-box">
+          <div class="checkbox">
+            <div class="input-group">
+              <div class="input-group-text">
+                <input
+                  type="radio"
+                  formControlName="type"
+                  value="Cultivated Land"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="lable">
+            <div>Cultivated Land</div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="form-group">
+        <label>Size (percheses) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('size').invalid && LandForm.get('size').touched
+          "
+          type="number"
+          formControlName="size"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('size').invalid && LandForm.get('size').touched"
+          >*Size is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Price (Rupees per perches) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('price').invalid && LandForm.get('price').touched
+          "
+          type="number"
+          formControlName="price"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('price').invalid && LandForm.get('price').touched"
+          >*Price is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Town) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('locationName').invalid &&
+            LandForm.get('locationName').touched
+          "
+          type="text"
+          formControlName="locationName"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('locationName').invalid &&
+            LandForm.get('locationName').touched
+          "
+          >*Location is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Map) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+
+        <app-map (selectLocation)="setLocationMap($event)"></app-map>
+
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('locationMap').invalid ||
+            LandForm.get('locationMap').touched
+          "
+          >*Map Location is required !</small
+        >
+      </div>
+
+      <label>Images :</label>
+      <div class="row">
+        <div class="form-group pl-3 pr-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+          <small *ngIf="landImages.length < 1" class="text-danger"
+            >*Pictures are required !
+          </small>
+        </div>
+
+        <div class="form-group pl-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+        </div>
+      </div>
+      <button
+        [disabled]="LandForm.invalid || landImages.length < 1"
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="tryPostLand(LandForm.value)"
+      >
+        Proceed to payment
+      </button>
+    </fieldset>
+  </form>
+</div>
+
+<div class="container" *ngIf="PropertyTypeForm.get('type').value == 'house'">
+  <form [formGroup]="HouseForm">
+    <fieldset class="p-4">
+      <div class="form-group">
+        <label>Title :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            HouseForm.get('title').invalid && HouseForm.get('title').touched
+          "
+          type="text"
+          formControlName="title"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            HouseForm.get('title').invalid && HouseForm.get('title').touched
+          "
+          >*Title is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <textarea
+          [class.is-invalid]="
+            HouseForm.get('description').invalid &&
+            HouseForm.get('description').touched
+          "
+          class="form-control"
+          formControlName="description"
+          rows="3"
+          required
+        ></textarea>
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            HouseForm.get('description').invalid &&
+            HouseForm.get('description').touched
+          "
+          >*Description is required !</small
+        >
+      </div>
+
+      <div class="row">
+        <div class="form-group pl-3 pr-3 w-50">
+          <label>Number of Bed Rooms :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <input
+            [class.is-invalid]="
+              HouseForm.get('bedRooms').invalid &&
+              HouseForm.get('bedRooms').touched
+            "
+            type="number"
+            formControlName="bedRooms"
+            class="form-control"
+            required
+          />
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="
+              HouseForm.get('bedRooms').invalid &&
+              HouseForm.get('bedRooms').touched
+            "
+            >*Number of Bed rooms is required !</small
+          >
+        </div>
+
+        <div class="form-group pl-3 pr-3 w-50">
+          <label>Number of Bath Rooms :</label>
+          <!-- input field coloured red when given data is failed validation -->
+          <input
+            [class.is-invalid]="
+              HouseForm.get('bathRooms').invalid &&
+              HouseForm.get('bathRooms').touched
+            "
+            type="number"
+            formControlName="bathRooms"
+            class="form-control"
+            required
+          />
+          <!-- show error message for validation error -->
+          <small
+            class="text-danger"
+            *ngIf="
+              HouseForm.get('bathRooms').invalid &&
+              HouseForm.get('bathRooms').touched
+            "
+            >*Number of Bath rooms is required !</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Price :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            HouseForm.get('price').invalid && HouseForm.get('price').touched
+          "
+          type="number"
+          formControlName="price"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            HouseForm.get('price').invalid && HouseForm.get('price').touched
+          "
+          >*Price is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Town) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            HouseForm.get('locationName').invalid &&
+            HouseForm.get('locationName').touched
+          "
+          type="text"
+          formControlName="locationName"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            HouseForm.get('locationName').invalid &&
+            HouseForm.get('locationName').touched
+          "
+          >*Location is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Map) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+
+        <app-map (selectLocation)="setLocationMap($event)"></app-map>
+
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            HouseForm.get('locationMap').invalid ||
+            HouseForm.get('locationMap').touched
+          "
+          >*Map Location is required !</small
+        >
+      </div>
+
+      <label>Images :</label>
+      <div class="row">
+        <div class="form-group pl-3 pr-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+          <small *ngIf="houseImages.length < 1" class="text-danger"
+            >*Pictures are required !
+          </small>
+        </div>
+
+        <div class="form-group pl-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+        </div>
+      </div>
+      <button
+        [disabled]="HouseForm.invalid || houseImages.length < 1"
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="tryPostHouse(HouseForm.value)"
+      >
+        Proceed to payment
+      </button>
+    </fieldset>
+  </form>
+</div>

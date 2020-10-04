@@ -1,10 +1,52 @@
-<app-navbar></app-navbar>
 <div class="top-box"></div>
 
 <div class="filter-box-container">
-  <div class="filter-box"></div>
+  <div class="filter-box">
+    <div
+      (click)="changeArray('lands')"
+      [ngClass]="
+        selectedArrayIndex == 1
+          ? 'filter-button-selected'
+          : 'filter-button-deselected'
+      "
+    >
+      Lands
+    </div>
 
-  <div class="post-ad-button">
+    <div
+      (click)="changeArray('houses')"
+      [ngClass]="
+        selectedArrayIndex == 2
+          ? 'filter-button-selected'
+          : 'filter-button-deselected'
+      "
+    >
+      Houses
+    </div>
+
+    <form [formGroup]="SearchForm">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search by location"
+        aria-label="Search"
+        formControlName="word"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+        (click)="search(SearchForm.value)"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+
+  <div class="octions-button" routerLink="/auctions">
+    Auctions
+  </div>
+
+  <div class="post-ad-button" routerLink="/postAd">
     Post Your <br />
     Ad
   </div>
@@ -29,21 +71,21 @@
       <div class="carousel-item active">
         <img
           class="d-block w-100"
-          src="https://picsum.photos/1000/400"
+          src="https://lankaland.lk/wp-content/uploads/2020/01/Nugegoda.jpg"
           alt="First slide"
         />
       </div>
       <div class="carousel-item">
         <img
           class="d-block w-100"
-          src="https://picsum.photos/1000/400"
+          src="https://lankaland.lk/wp-content/uploads/2019/08/Beragala-Hotel-Land-Cover.jpg"
           alt="Second slide"
         />
       </div>
       <div class="carousel-item">
         <img
           class="d-block w-100"
-          src="https://picsum.photos/1000/400"
+          src="https://lankaland.lk/wp-content/uploads/2020/01/Lake-City.jpg"
           alt="Third slide"
         />
       </div>
@@ -69,6 +111,20 @@
   </div>
 </div>
 
-<div class="result-container">
-  <app-card *ngFor="let temp of x"></app-card>
+<div class="result-container-empty" *ngIf="selectedArray.length == 0">
+  *No results found
+</div>
+
+<div class="result-container" *ngIf="selectedArray.length > 0">
+  <app-card
+    (click)="openAd()"
+    *ngFor="let temp of selectedArray"
+    [image]="temp.image"
+    [title]="temp.title"
+    [price]="temp.price"
+    [size]="temp.size"
+    [type]="temp.type"
+    [location]="temp.location"
+    [time]="temp.time"
+  ></app-card>
 </div>
