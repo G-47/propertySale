@@ -1,0 +1,15 @@
+<google-map
+  height="600px"
+  width="100%"
+  [center]="place"
+  [zoom]="zoom"
+  (mapClick)="setMarker($event)"
+>
+  <map-marker
+    #marker="mapMarker"
+    [position]="markerPosition"
+    [options]="markerOptions"
+    (mapClick)="openInfoWindow(marker)"
+  ></map-marker>
+  <map-info-window>Info Window content</map-info-window>
+</google-map>

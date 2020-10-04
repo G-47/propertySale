@@ -1,3 +1,4 @@
+import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'viewAd', component: DirectComponent },
+  { path: 'postAd', component: PostAdComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
   { path: 'manager', component: ManagerComponent },

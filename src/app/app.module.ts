@@ -38,6 +38,9 @@ import { TestComponent } from './components/test/test.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
 import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
+import { MapComponent } from './components/map/map.component';
+import { PostAdComponent } from './components/post-ad/post-ad.component';
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { NewAuctionComponent } from './components/manager/auction/new-auction/ne
     ImageUploaderComponent,
     ThreeSixtyImageComponent,
     NewAuctionComponent,
+    MapComponent,
+    PostAdComponent,
+    PaymentGatewayComponent,
   ],
   imports: [
     BrowserModule,

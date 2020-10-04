@@ -1,26 +1,37 @@
-<div class="navbar-fix"></div>
-
 <div class="container">
   <header class="header">Make new Admin</header>
   <form [formGroup]="AddAdmin">
     <fieldset class="p-4">
       <div class="form-group">
         <label>Name</label>
-        <input [class.is-invalid]="
-            AddAdmin.get('name').invalid &&
-            AddAdmin.get('name').touched
-          " type="text" formControlName="name" class="form-control" required />
-
+        <input
+          [class.is-invalid]="
+            AddAdmin.get('name').invalid && AddAdmin.get('name').touched
+          "
+          type="text"
+          formControlName="name"
+          class="form-control"
+          required
+        />
       </div>
 
       <div class="form-group">
         <label>Email</label>
-        <input [class.is-invalid]="
-            AddAdmin.get('email').invalid &&
-            AddAdmin.get('email').touched
-          " type="text" formControlName="email" class="form-control" required />
+        <input
+          [class.is-invalid]="
+            AddAdmin.get('email').invalid && AddAdmin.get('email').touched
+          "
+          type="text"
+          formControlName="email"
+          class="form-control"
+          required
+        />
       </div>
-      <button type="submit" class="btn btn-primary float-right" (click)="addData(AddAdmin.value)">
+      <button
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="addData(AddAdmin.value)"
+      >
         Add as Admin
       </button>
     </fieldset>
