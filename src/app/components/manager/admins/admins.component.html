@@ -1,16 +1,148 @@
-<div class="outer-container" *ngFor="let item of data">
-  <div>
-    <img src="{{item.picture}}" alt="Avatar" class="circle-aavatar">
-  </div>
-  <div class="name">
-    {{item.name}} <br />
-    {{item.email}}
-  </div>
+<table class="pad table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Picture</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <th scope="row">
+        <img src="{{ item.picture }}" alt="Avatar" class="circle-aavatar" />
+      </th>
+      <td class="text-primary">{{ item.name }}</td>
+      <td class="text-primary">{{ item.email }}</td>
+      <td>
+        <div>
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            data-whatever="@getbootstrap"
+            (click)="setRemoveItem(item)"
+          >
+            Message
+          </button>
+          <button
+            class="pad btn btn-danger"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            (click)="setRemoveItem(item)"
+          >
+            Remove
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <div class="message-section">
-    <button class="message-btn">Message</button>
-    <button class="message-btn1">Remove admin</button>
-  </div>
+<!-- Alert box -->
 
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Remove admin?</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to remove {{ removeableAdmin.name }} from administration?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="fab" routerLink="/newAdmin"> Add admin +</div>
+
+<!-- for messgaes -->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ComposeMsg">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label"
+              >Recipient:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              formControlName="name"
+              readonly
+              value="{{ removeableAdmin.name }}"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              for="message-text"
+              class="col-form-label"
+              formArrayName="message"
+              >Message:</label
+            >
+            <textarea
+              formControlName="message"
+              class="form-control"
+              id="message-text"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="submit"
+          (click)="composeMsg(ComposeMsg.value)"
+          class="btn btn-primary"
+        >
+          Send message
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fab" routerLink="/newAdmin">Add admin +</div>

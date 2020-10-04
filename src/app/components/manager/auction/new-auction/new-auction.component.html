@@ -1,0 +1,100 @@
+<div class="navbar-fix"></div>
+<form class="auction-form" [formGroup]="NewAuctionForm">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      [class.is-invalid]="
+        NewAuctionForm.get('title').invalid &&
+        NewAuctionForm.get('title').touched
+      "
+      type="text"
+      class="form-control"
+      formControlName="title"
+    />
+
+    <div class="row">
+      <div class="form-group w-50 pl-3 pr-2">
+        <label for="startingBid">Starting Bid</label><br />
+        <input
+          required
+          type="number"
+          min="10000"
+          formArrayName="startBid"
+          class="form-control"
+        />
+        <!-- <div
+          class="alert alert-danger"
+          *ngIf="startBid.touched && !startBid.valid"
+        >
+          Starting bid is required
+        </div> -->
+      </div>
+
+      <div class="form-group w-50 pl-3 pr-2">
+        <label for="bidRange">Bidding interval</label>
+        <input
+          reuired
+          formControlName="interval"
+          type="number"
+          min="5000"
+          class="form-control"
+        />
+        <!-- <div class="alert alert-danger">Interval is required</div> -->
+      </div>
+    </div>
+    <label for="size">Size</label>
+    <input required formControlName="size" type="number" class="form-control" />
+
+    <!-- <div class="alert alert-danger">Size is required</div> -->
+
+    <label for="type">Type</label>
+    <input required formControlName="type" type="text" class="form-control" />
+    <!-- <div class="alert alert-danger" *ngIf="type.touched && !type.valid">
+      Type is required
+    </div> -->
+
+    <label for="location">Location</label>
+    <input type="text" class="form-control" formControlName="location" />
+
+    <div class="row">
+      <div class="form-group w-50 pl-3 pr-2">
+        <label for="startDate">Start Date</label>
+        <input
+          reuired
+          formControlName="startDate"
+          type="date"
+          class="form-control"
+        />
+        <!-- <div class="alert alert-danger">Interval is required</div> -->
+      </div>
+
+      <div class="form-group w-50 pl-3 pr-2">
+        <label for="endDate">End date</label>
+        <input
+          reuired
+          formControlName="endDate"
+          type="date"
+          class="form-control"
+        />
+        <!-- <div class="alert alert-danger">Interval is required</div> -->
+      </div>
+    </div>
+
+    <label for="description">Description</label>
+    <textarea
+      formControlName="description"
+      cols="30"
+      rows="10"
+      class="form-control"
+    ></textarea>
+  </div>
+
+  <app-image-uploader ></app-image-uploader>
+
+  <div class="row action-button spacing">
+    <button class="btn btn-primary" (click)="addProperty(NewAuctionForm.value)">
+      Submit
+    </button>
+    <button class="btn btn-warning">Cancel</button>
+  </div>
+</form>
