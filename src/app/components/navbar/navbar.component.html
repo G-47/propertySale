@@ -1,19 +1,38 @@
+<script>
+  $(document).ready(function () {
+    $(".dropdown").hover(function () {
+      var dropdownMenu = $(this).children(".dropdown-menu");
+      if (dropdownMenu.is(":visible")) {
+        dropdownMenu.parent().toggleClass("open");
+      }
+    });
+  });
+</script>
+
 <nav class="my-nav">
   <img src="../../../assets/images/Logo.svg" class="my-image" routerLink="" />
   <div class="my-button-container" *ngIf="!isLogged">
-    <!-- <button class="btn btn-outline-primary">Login</button> -->
     <button class="btn btn-outline-primary" [routerLink]="['login']">
       Login
     </button>
 
-    <!-- <button class="btn btn-primary">Signup</button> -->
     <button class="btn btn-primary" [routerLink]="['signup']">Signup</button>
   </div>
-  <div class="my-button-container" style="color: white;" *ngIf="isLogged">
-    <!-- <button class="btn btn-outline-primary">Login</button> -->
-    user Logged:
-    <button class="btn btn-outline-primary" (click)="logOut()">
-      LogOut
-    </button>
+  <div class="my-button-container" style="color: white" *ngIf="isLogged">
+    <div class="nav-item dropdown">
+      <div data-toggle="dropdown" class="dropdownn">
+        <div class="avatar">
+          <img [src]="currentUser.profilePicture" class="rounded-circle" />
+        </div>
+        <div class="text">
+          {{ currentUser.firstName }}
+          {{ currentUser.lastName }}
+        </div>
+      </div>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">Dashboard</a>
+        <a class="dropdown-item" (click)="logOut()">Logout</a>
+      </div>
+    </div>
   </div>
 </nav>
