@@ -1,3 +1,4 @@
+import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'newAdmin', component: NewAdminComponent },
   { path: 'test', component: TestComponent },
   { path: 'newAuction', component: NewAuctionComponent },
+  { path: 'adminDashboard', component: AdminDashboardComponent },
 ];
 
 @NgModule({

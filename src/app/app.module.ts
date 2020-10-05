@@ -42,6 +42,7 @@ import { MapComponent } from './components/map/map.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/
     PostAdComponent,
     PaymentGatewayComponent,
     AdminDashboardComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,
