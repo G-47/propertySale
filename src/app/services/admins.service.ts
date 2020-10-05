@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IAdmins } from '../interfaces/admin';
 import { from, Observable } from 'rxjs';
 import { Message } from '../models/message.model';
-import { Admin } from '../models/admin.model'
-
+import { Admin } from '../models/admin.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +26,6 @@ export class AdminsService {
     return next.handle(tokanizedReq);
   }
 
-  newadmin = {} as Admin;
   message = {} as Message;
 
   getAdmins(): Observable<IAdmins[]> {
@@ -42,9 +40,9 @@ export class AdminsService {
 
     return this.http.post<any>(this.addAdmins_url, this.newadmin);
   }
-  
-  composeMsg(formData){
-    this.message.adminId = "djsnj";
+
+  composeMsg(formData) {
+    this.message.adminId = 'djsnj';
     this.message.message = formData.message;
     this.message.name = formData.name;
     return this.http.post<any>(this.composemsg_url, this.message);

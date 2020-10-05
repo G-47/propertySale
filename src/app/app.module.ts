@@ -41,6 +41,7 @@ import { NewAuctionComponent } from './components/manager/auction/new-auction/ne
 import { MapComponent } from './components/map/map.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
+import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { PaymentGatewayComponent } from './components/payment-gateway/payment-ga
     MapComponent,
     PostAdComponent,
     PaymentGatewayComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

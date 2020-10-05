@@ -11,7 +11,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PageComponent } from './components/auctions/page/page.component';
 import { ManagerComponent } from './components/manager/manager.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
-import {NewAuctionComponent} from './components/manager/auction/new-auction/new-auction.component'
+import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'auctions', component: PageComponent },
   { path: 'manager', component: ManagerComponent },
   { path: 'newAdmin', component: NewAdminComponent },
-  { path: 'test', component: TestComponent },
+  { path: 'test', component: PaymentGatewayComponent },
   { path: 'newAuction', component: NewAuctionComponent },
 ];
 

@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
   }
 
   tryRegister(formData): void {
-    this.authService.register(formData).subscribe(
+    this.authService.register({ ...formData, userType: 0 }).subscribe(
       () => {
         this.toastr.success('Login now', 'Registered Successfully');
         this.router.navigate(['/login']);
