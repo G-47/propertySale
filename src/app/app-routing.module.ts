@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'auctions', component: PageComponent },
   { path: 'manager', component: ManagerComponent },
   { path: 'newAdmin', component: NewAdminComponent },
+  { path: 'payment', component: PaymentGatewayComponent },
   { path: 'test', component: TestComponent },
   { path: 'newAuction', component: NewAuctionComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
