@@ -38,7 +38,7 @@
     </form>
   </div>
 
-  <div class="octions-button" routerLink="/auctions">
+  <div class="octions-button" routerLink="/home">
     Direct Sales
   </div>
 
@@ -113,10 +113,10 @@
 
 <div class="result-container" *ngIf="selectedArray.length > 0">
   <app-auction-card
-    (click)="openAd(selectedArray)"
-    *ngFor="let temp of selectedArray"
+    (click)="openAd(selectedArray[i])"
+    *ngFor="let temp of selectedArray; let i = index"
     [_id]="temp._id"
-    [name]="temp.name"
+    [title]="temp.title"
     [type]="temp.type"
     [size]="temp.size"
     [description]="temp.description"

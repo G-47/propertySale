@@ -1,8 +1,7 @@
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
-export class AuctionAd {
+export class AuctionLandAd {
     _id: string;    
-    name: String;
+    title: String;
     type: String;
     size: String;
     description: String;
@@ -13,5 +12,5 @@ export class AuctionAd {
     mapCordinates: Object;
     startDate: Date;
     endDate: Date;
-    startBid: String;
+    startBid: Number;
   }

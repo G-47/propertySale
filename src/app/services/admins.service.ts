@@ -8,12 +8,14 @@ import { Admin } from '../models/admin.model';
   providedIn: 'root',
 })
 export class AdminsService {
+  constructor(private http: HttpClient) {}
+
   private getAdmins_url = 'http://localhost:3000/api/getAdmins';
   private addAdmins_url = 'http://localhost:3000/api/registerAdmin';
 
-  constructor(private http: HttpClient) {}
+  newadmin = {} as Admin;
 
-  intercept(req, next) {
+  intercept(req, next): any {
     const tokanizedReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -22,16 +24,15 @@ export class AdminsService {
     return next.handle(tokanizedReq);
   }
 
-  newadmin = {} as Admin;
-
   getAdmins(): Observable<IAdmins[]> {
     return this.http.get<IAdmins[]>(this.getAdmins_url);
   }
 
-  addAdmin(formData) {
+  addAdmin(formData): any {
     this.newadmin.name = formData.name;
     this.newadmin.email = formData.email;
-    this.newadmin.picture = "https://ikonmania.files.wordpress.com/2014/03/large-1.jpg"
+    this.newadmin.picture =
+      'https://ikonmania.files.wordpress.com/2014/03/large-1.jpg';
 
     return this.http.post<any>(this.addAdmins_url, this.newadmin);
   }

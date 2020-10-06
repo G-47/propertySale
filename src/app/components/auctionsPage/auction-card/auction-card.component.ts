@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AuctionCardComponent implements OnInit {
 
   @Input('_id') _id: string;
-  @Input('name') name: string; //////////////////////////////////////////////
+  @Input('title') title: string; //////////////////////////////////////////////
   @Input('type') type: string; ////////////                    //////////////
   @Input('size') size: string; ////////////    inputs from     //////////////
   @Input('description') description: string; ////////////   home component   //////////////

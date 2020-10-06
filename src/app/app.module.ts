@@ -8,8 +8,8 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import {CommonModule} from '@angular/common';
-import {GoogleMapsModule} from '@angular/google-maps';
+import { CommonModule } from '@angular/common';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,8 @@ import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-s
 import { PageComponent } from './components/auctionsPage/page/page.component';
 import { AuctionCardComponent } from './components/auctionsPage/auction-card/auction-card.component';
 import { MapComponent } from './components/map/map.component';
+import { PostAdComponent } from './components/post-ad/post-ad.component';
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { MapComponent } from './components/map/map.component';
     PageComponent,
     AuctionCardComponent,
     MapComponent,
+    PostAdComponent,
+    PaymentGatewayComponent,
   ],
   imports: [
     BrowserModule,

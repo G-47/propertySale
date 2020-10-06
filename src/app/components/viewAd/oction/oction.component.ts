@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder,Validators } from '@angular/forms';
-import { AuctionAd } from 'src/app/models/auctionAd.model';
+import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
 import { AuctionAdService } from 'src/app/services/auction-ad.service';
 
 @Component({
@@ -14,11 +14,12 @@ export class OctionComponent implements OnInit {
 
   kirama = {lat: 6.2074, lng: 80.6672};
 
-  arr = {} as AuctionAd;
+  arr = {} as AuctionLandAd;
 
   ngOnInit(): void {
-    this.arr = this.auctionAdService.getSelectedAd();
+    this.arr = this.auctionAdService.getSelectedLandAd();
     console.log(this.arr.mapCordinates["latitude"]);
+    console.log(this.arr.title);
   }
 
   scroll(el: HTMLElement): void {
