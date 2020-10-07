@@ -43,6 +43,9 @@ import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
+import { DirectLandCardComponent } from './components/homePage/direct-land-card/direct-land-card.component';
+import { DirectHouseCardComponent } from './components/homePage/direct-house-card/direct-house-card.component';
+import { ReviewLandComponent } from './components/review-land/review-land.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,9 @@ import { UserDashboardComponent } from './components/Dashboard/user-dashboard/us
     PaymentGatewayComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
+    DirectLandCardComponent,
+    DirectHouseCardComponent,
+    ReviewLandComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import * as Moment from 'moment';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-direct-land-card',
+  templateUrl: './direct-land-card.component.html',
+  styleUrls: ['./direct-land-card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class DirectLandCardComponent implements OnInit {
   landTitle = 'Land for sale in Matara';
   landPrice = '500,000/-';
   landSize = '20';

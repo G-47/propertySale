@@ -20,6 +20,9 @@ export class AdvertisementService implements HttpInterceptor {
   private getDirectLandsUrl = 'http://localhost:3000/api/getDirectLands';
   private getDirectHousesUrl = 'http://localhost:3000/api/getDirectHouses';
 
+  private acceptDirectLandsUrl = 'http://localhost:3000/api/acceptDirectLand';
+  private acceptDirectHousesUrl = 'http://localhost:3000/api/acceptDirectHouse';
+
   constructor(private http: HttpClient) {}
 
   intercept(req, next): any {
@@ -31,11 +34,11 @@ export class AdvertisementService implements HttpInterceptor {
     return next.handle(tokenizedReq);
   }
 
-  postDirectLand(landDetails: DirectLand): any {
+  postDirectLand(landDetails: DirectLand): Promise<any> {
     return this.http.post<any>(this.postDirectLandUrl, landDetails).toPromise();
   }
 
-  postDirectHouse(houseDetails: DirectHouse): any {
+  postDirectHouse(houseDetails: DirectHouse): Promise<any> {
     return this.http
       .post<any>(this.postDirectHouseUrl, houseDetails)
       .toPromise();
@@ -50,6 +53,12 @@ export class AdvertisementService implements HttpInterceptor {
   getDirectLands(status: number): Promise<DirectLand[]> {
     return this.http
       .post<any>(this.getDirectLandsUrl, { status })
+      .toPromise();
+  }
+
+  acceptDirectLand(id: string): Promise<DirectLand> {
+    return this.http
+      .put<any>(this.acceptDirectLandsUrl, { id })
       .toPromise();
   }
 }

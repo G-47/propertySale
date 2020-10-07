@@ -1,0 +1,291 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201006.160154.15460.0.001.json",
+    "dumpEventTime": "2020-10-06T16:01:54Z",
+    "dumpEventTimeStamp": "1601980314193",
+    "processId": 15460,
+    "cwd": "G:\\3rd year group project\\propertySale",
+    "commandLine": [
+      "node",
+      "C:\\Users\\PriYAShaN\\AppData\\Roaming\\npm\\\\node_modules\\@angular\\cli\\bin\\ng",
+      "serve",
+      "--o"
+    ],
+    "nodejsVersion": "v12.0.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.0.0",
+      "v8": "7.4.288.21-node.16",
+      "uv": "1.28.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.38.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "34.0",
+      "icu": "63.1",
+      "tz": "2018e",
+      "unicode": "11.0"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.0.0/node-v12.0.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.0.0/node-v12.0.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.0.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.19041",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "host": "DESKTOP-2TUVC91"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6555f4f99",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+9161"
+    },
+    {
+      "pc": "0x00007ff6555f8986",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+23990"
+    },
+    {
+      "pc": "0x00007ff6555f7915",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+19781"
+    },
+    {
+      "pc": "0x00007ff6556df852",
+      "symbol": "uv_loop_fork+47890"
+    },
+    {
+      "pc": "0x00007ff655a0c7ae",
+      "symbol": "v8::internal::Parser::ReportMessageAt+206"
+    },
+    {
+      "pc": "0x00007ff6559e082a",
+      "symbol": "v8::internal::wasm::StreamingDecoder::Fail+666"
+    },
+    {
+      "pc": "0x00007ff655a76c9c",
+      "symbol": "v8::internal::Heap::CreateFillerObjectAt+2972"
+    },
+    {
+      "pc": "0x00007ff655a7ea0f",
+      "symbol": "v8::internal::LocalEmbedderHeapTracer::NotifyV8MarkingWorklistWasEmpty+5375"
+    },
+    {
+      "pc": "0x00007ff655a75083",
+      "symbol": "v8::internal::Heap::CollectGarbage+1235"
+    },
+    {
+      "pc": "0x00007ff655a73784",
+      "symbol": "v8::internal::GCTracer::AddScopeSample+1316"
+    },
+    {
+      "pc": "0x00007ff655ab43b3",
+      "symbol": "v8::internal::Factory::NewFillerObject+67"
+    },
+    {
+      "pc": "0x00007ff655ddad06",
+      "symbol": "v8::internal::OptimizingCompileDispatcher::Unblock+116966"
+    },
+    {
+      "pc": "0x00007ff656273916",
+      "symbol": "v8::internal::NativesCollection<0>::GetScriptsSource+660214"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2169061376,
+    "totalCommittedMemory": 2169061376,
+    "usedMemory": 2087936928,
+    "availableMemory": 54144544,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 524288,
+        "capacity": 523976,
+        "used": 31712,
+        "available": 492264
+      },
+      "new_space": {
+        "memorySize": 25165824,
+        "committedMemory": 25165824,
+        "capacity": 12575424,
+        "used": 1218112,
+        "available": 11357312
+      },
+      "old_space": {
+        "memorySize": 1948377088,
+        "committedMemory": 1948377088,
+        "capacity": 1907330960,
+        "used": 1906365336,
+        "available": 965624
+      },
+      "code_space": {
+        "memorySize": 14319616,
+        "committedMemory": 14319616,
+        "capacity": 11692480,
+        "used": 11692480,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 15208448,
+        "committedMemory": 15208448,
+        "capacity": 3684640,
+        "used": 3684640,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 164843520,
+        "committedMemory": 164843520,
+        "capacity": 164394344,
+        "used": 164394344,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550304,
+        "used": 550304,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 12575424,
+        "used": 0,
+        "available": 12575424
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 583.546,
+    "kernelCpuSeconds": 20.078,
+    "cpuConsumptionPercent": 5.05463,
+    "maxRss": 2248654848,
+    "pageFaults": {
+      "IORequired": 3531175,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 7816,
+      "writes": 74
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\",
+    "=G:": "G:\\3rd year group project\\propertySale",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\PriYAShaN\\AppData\\Roaming",
+    "BROWSERSLIST_IGNORE_OLD_DATA": "1",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_13060_BSCYGSFANUXGZOWK",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-2TUVC91",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\PriYAShaN",
+    "LOCALAPPDATA": "C:\\Users\\PriYAShaN\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-2TUVC91",
+    "NUMBER_OF_PROCESSORS": "4",
+    "OneDrive": "C:\\Users\\PriYAShaN\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\PriYAShaN\\OneDrive",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "Path": "C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Users\\PriYAShaN\\AppData\\Local\\Microsoft\\WindowsApps;C:\\adb;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Users\\PriYAShaN\\AppData\\Local\\Microsoft\\WindowsApps;;C:\\Users\\PriYAShaN\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\PriYAShaN\\AppData\\Roaming\\npm",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 9, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "8e09",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Users\\PriYAShaN\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\PRIYAS~1\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\PRIYAS~1\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-2TUVC91",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-2TUVC91",
+    "USERNAME": "PriYAShaN",
+    "USERPROFILE": "C:\\Users\\PriYAShaN",
+    "WEBPACK_DEV_SERVER": "true",
+    "windir": "C:\\Windows",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.49.3",
+    "LANG": "en_GB.UTF-8",
+    "COLORTERM": "truecolor",
+    "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-666170c4e8-sock",
+    "GIT_ASKPASS": "c:\\Users\\PriYAShaN\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\PriYAShaN\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\PriYAShaN\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\System32\\ADVAPI32.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\bcrypt.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\SYSTEM32\\powrprof.dll",
+    "C:\\Windows\\SYSTEM32\\UMPDC.dll",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\Windows\\System32\\bcryptprimitives.dll",
+    "C:\\Windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\Windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\system32\\pnrpnsp.dll",
+    "C:\\Windows\\system32\\wshbth.dll",
+    "C:\\Windows\\system32\\NLAapi.dll",
+    "C:\\Windows\\System32\\winrnr.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\Windows\\System32\\fwpuclnt.dll"
+  ]
+}

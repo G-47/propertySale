@@ -1,4 +1,5 @@
 export class DirectHouse {
+  _id: string;
   title: string;
   description: string;
   bedRooms: number;
@@ -13,4 +14,5 @@ export class DirectHouse {
   isFromOwner: boolean;
   status: number;
   postedTime: number;
+  ownerId: string;
 }
