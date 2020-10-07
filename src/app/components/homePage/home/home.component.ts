@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.authService.getUser());
+    console.log(this.authService.getCurrentUser());
   }
 
   createLand(image, title, price, size, type, location, time): void {

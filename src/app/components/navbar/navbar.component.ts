@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     setInterval(() => {
       this.isLogged = localStorage.getItem('token') !== null;
       if (this.currentUser == null) {
-        this.currentUser = this.authService.getUser();
+        this.currentUser = this.authService.getCurrentUser();
         console.log(this.currentUser);
       }
     }, 500);

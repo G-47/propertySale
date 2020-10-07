@@ -9,6 +9,7 @@ import { User } from '../models/user.model';
 export class AuthService implements HttpInterceptor {
   private registerUrl = 'http://localhost:3000/api/registerUser';
   private loginUrl = 'http://localhost:3000/api/authenticateUser';
+  private getCurrentUserUrl = 'http://localhost:3000/api/getCurrentUser';
   private getUserUrl = 'http://localhost:3000/api/getUser';
 
   constructor(private http: HttpClient) {}
@@ -40,7 +41,7 @@ export class AuthService implements HttpInterceptor {
         (res) => {
           localStorage.setItem('token', res.token);
           this.http
-            .get(this.getUserUrl)
+            .get(this.getCurrentUserUrl)
             .toPromise()
             .then(
               (resUser: { user: any }) => {
@@ -67,7 +68,13 @@ export class AuthService implements HttpInterceptor {
     });
   }
 
-  getUser(): User {
+  getCurrentUser(): User {
     return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  getUser(id: string): Promise<any> {
+    return this.http
+      .post<any>(this.getUserUrl, { id })
+      .toPromise();
   }
 }
