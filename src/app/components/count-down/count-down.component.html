@@ -1,0 +1,10 @@
+<div *ngIf="eventDone === 'onGoing'" style="display: flex; font-size: 15px;">
+    <div style="margin-top: 8px">Ends in:</div>
+    <div class="countdown-container" style="display: flex;">
+        {{days}}D&nbsp;:&nbsp;{{hours}}H&nbsp;:&nbsp;{{mins}}M&nbsp;:&nbsp;{{secs}}S
+      </div>
+</div>
+
+  <div *ngIf="eventDone === 'notStarted'">
+    Start Date: {{startDate | date}}&nbsp;&nbsp;&nbsp;End Date: {{endDate | date}}
+  </div>

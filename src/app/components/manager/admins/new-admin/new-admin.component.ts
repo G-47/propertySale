@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AdminsService } from 'src/app/services/admins.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-new-admin',
@@ -22,12 +24,28 @@ export class NewAdminComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private adminService: AdminsService,
+    private authService: AuthService,
     private toastr: ToastrService,
     private router: Router
   ) {}
 
   addData(formData) {
-    this.adminService.addAdmin(formData).subscribe(
+    var formDetails = {
+      email: formData.email,
+      firstName: formData.name,
+      profilePicture: '',
+      lastName: '',
+      mobileNumber: '',
+      nicNumber: '',
+      nicFrontImage: '',
+      nicBackImage: '',
+      password: 'admin',
+      status: 'admin',
+    };
+
+    console.log(formDetails);
+
+    this.authService.register(formDetails).subscribe(
       (res) => {
         this.toastr.success('Addign an admin', 'Addes successfully');
         this.router.navigate(['/manager']);

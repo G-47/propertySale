@@ -44,15 +44,6 @@
   </form>
 </div>
 
-<!-- title: ['', Validators.required],
-    description: ['', Validators.required],
-    type: ['', Validators.required],
-    size: ['', Validators.required],
-    price: ['', Validators.required],
-    locationName: ['', Validators.required],
-    locationMap: [{ lat: '', lang: '' }, Validators.required],
-    images: [[], Validators.required], -->
-
 <div class="container" *ngIf="PropertyTypeForm.get('type').value == 'land'">
   <form [formGroup]="LandForm">
     <fieldset class="p-4">

@@ -1,3 +1,6 @@
+import { AdvertisementService } from './../../services/advertisement.service';
+import { DirectLand } from './../../models/direct-land.model';
+import { DirectHouse } from './../../models/direct-house.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -40,7 +43,11 @@ export class PostAdComponent implements OnInit {
   landImages = [];
   houseImages = [];
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private advertisementService: AdvertisementService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -61,12 +68,26 @@ export class PostAdComponent implements OnInit {
   }
 
   tryPostLand(formData): void {
-    const landDetails = { ...formData, images: this.landImages };
+    const landDetails: DirectLand = {
+      ...formData,
+      images: this.landImages,
+      inFromOwner: false,
+      status: 0,
+    };
     console.log(landDetails);
+    this.advertisementService.postDirectLand(landDetails);
+    this.router.navigate(['/payment']);
   }
 
   tryPostHouse(formData): void {
-    const houseDetails = { ...formData, images: this.houseImages };
+    const houseDetails: DirectHouse = {
+      ...formData,
+      images: this.houseImages,
+      inFromOwner: false,
+      status: 0,
+    };
     console.log(houseDetails);
+    this.advertisementService.postDirectHouse(houseDetails);
+    this.router.navigate(['/payment']);
   }
 }

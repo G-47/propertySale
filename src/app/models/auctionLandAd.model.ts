@@ -6,11 +6,14 @@ export class AuctionLandAd {
     size: String;
     description: String;
     threeSixtyImageUrl: String;
-    extracts: Array<String>;
-    otherImages: Array<String>;
-    location: String;
-    mapCordinates: Object;
-    startDate: Date;
-    endDate: Date;
+    images: String[];
+    locationName: String;
+    locationMap: {
+      lat: number;
+      lng: number;
+    };
+    startDate: Number;
+    endDate: Number;
     startBid: Number;
+    postedTime: Number;
   }

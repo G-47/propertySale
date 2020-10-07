@@ -1,3 +1,4 @@
+import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,8 @@ import { PageComponent } from './components/auctionsPage/page/page.component';
 import { ManagerComponent } from './components/manager/manager.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 import { OctionComponent } from './components/viewAd/oction/oction.component';
+import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +29,10 @@ const routes: Routes = [
   { path: 'auctions', component: PageComponent },
   { path: 'manager', component: ManagerComponent },
   { path: 'newAdmin', component: NewAdminComponent },
+  { path: 'payment', component: PaymentGatewayComponent },
   { path: 'test', component: TestComponent },
+  { path: 'newAuction', component: NewAuctionComponent },
+  { path: 'adminDashboard', component: AdminDashboardComponent },
 ];
 
 @NgModule({

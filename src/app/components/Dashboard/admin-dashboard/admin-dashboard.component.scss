@@ -1,0 +1,60 @@
+.myContainer {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  min-height: calc(100vh - 342px);
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #10273c;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: rgb(226, 226, 226);
+}
+
+div.content {
+  padding: 1px 16px;
+  min-height: calc(100vh - 342px);
+}
+
+@media screen and (max-width: 700px) {
+  .myContainer {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: 56px;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+    min-height: calc(100vh - 398px);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}

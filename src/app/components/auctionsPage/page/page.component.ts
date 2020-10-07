@@ -15,6 +15,7 @@ export class PageComponent implements OnInit {
   selectedArray = [];
   selectedArrayIndex = 1;
   public errorMsg;
+  currentDate: any;
 
   SearchForm = this.formBuilder.group({
     word: [''],
@@ -66,7 +67,6 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {    
     this.selectedArrayIndex = 1;
-
     this.auctionAdService.getAuctionLandAd().subscribe(
       (result) => {
         console.log(result);

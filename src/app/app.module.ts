@@ -36,9 +36,13 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
 import { ThreeSixtyImageComponent } from './components/three-sixty-image/three-sixty-image.component';
 import { PageComponent } from './components/auctionsPage/page/page.component';
 import { AuctionCardComponent } from './components/auctionsPage/auction-card/auction-card.component';
+import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
 import { MapComponent } from './components/map/map.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
+import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
+import { CountDownComponent } from './components/count-down/count-down.component';
 
 @NgModule({
   declarations: [
@@ -64,9 +68,13 @@ import { PaymentGatewayComponent } from './components/payment-gateway/payment-ga
     ThreeSixtyImageComponent,
     PageComponent,
     AuctionCardComponent,
+    NewAuctionComponent,
     MapComponent,
     PostAdComponent,
     PaymentGatewayComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent,
+    CountDownComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,11 @@ export class HomeComponent implements OnInit {
     word: [''],
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.createLand(
       'https://www.primelands.lk/resources/857/image%20001.jpg',
       'Land for sale in Matara',
@@ -114,6 +119,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(Date());
+    console.log(this.authService.getUser());
   }
 
   createLand(image, title, price, size, type, location, time): void {

@@ -13,13 +13,14 @@ export class AuctionCardComponent implements OnInit {
   @Input('size') size: string; ////////////    inputs from     //////////////
   @Input('description') description: string; ////////////   home component   //////////////
   @Input('threeSixtyImageUrl') threeSixtyImageUrl: string; //////////////////////////////////////////////
-  @Input('extracts') extracts: Array<String>;
-  @Input( 'otherImages' ) otherImages: Array<String> ;
-  @Input( 'location' ) location: String ;
-  @Input( 'mapCordinates' ) mapCordinates: Object ;
+  @Input( 'images' ) images: String[] ;
+  @Input( 'locationName' ) location: String ;
+  @Input( 'locationMap' ) locationMap: Object ;
   @Input( 'startDate' ) startDate: any ;
   @Input( 'endDate' ) endDate: any ;
-  @Input( 'startBid' ) startBid: String ;
+  @Input( 'startBid' ) startBid: number ;
+  @Input( 'currentBid' ) currentBid: number ;
+  @Input( 'postedTime' ) postedTime: any ;
    
   rest: number ;
   remain: number;     //////////////////////////////////////////////
@@ -30,7 +31,7 @@ export class AuctionCardComponent implements OnInit {
 
 
   timeLoop: any;
-  eventDone = "notStarted" ; 
+  eventDone = "onGoing" ; 
 
   constructor() {
     this.timeLoop = setInterval( () => {
@@ -49,7 +50,6 @@ export class AuctionCardComponent implements OnInit {
   
     if ( this.rest >= 0 ) {      // if time is left
       this.eventDone = "onGoing";
-
       this.remain = ( this.endDate - Date.now() ) / 1000 ;
       if(this.remain >= 0){
         this.days = Math.floor(this.remain / 86400);

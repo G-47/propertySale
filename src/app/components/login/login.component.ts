@@ -26,17 +26,20 @@ export class LoginComponent implements OnInit {
   ) {}
 
   tryLogin(formData): void {
-    this.authService.login(formData).subscribe(
-      async (res) => {
-        await localStorage.setItem('token', res.token);
-        this.errorMessage = 'temp';
-        await this.router.navigate(['/home']);
-
-        // this.getCurrentUser();
+    const x = this.authService.login(formData);
+    console.log(x);
+    x.then(
+      (res) => {
+        console.log(res);
+        if (res.status) {
+          this.errorMessage = 'temp';
+          this.router.navigate(['/home']);
+        } else {
+          this.errorMessage = res.error;
+        }
       },
       (err) => {
-        this.errorMessage = err.error.message;
-        console.log(err.error.message);
+        console.log(err);
       }
     );
   }

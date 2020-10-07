@@ -1,6 +1,6 @@
 <div class="card-container">
     <div class="card">
-      <img class="card-img-top image" src="{{ otherImages[0] }}" />
+      <img class="card-img-top image" src="{{ images[0] }}" />
       <ul class="list-group list-group-flush">
         <li
           class="list-group-item"
@@ -18,7 +18,7 @@
         </li>
         <li
           class="list-group-item"
-          style="
+          style=" 
             font-size: 12px;
             text-align: center;
             padding-top: 10px !important;
@@ -30,20 +30,9 @@
           </div>
         </li>
         <li class="list-group-item" class="card-bottom">
-          <div *ngIf="eventDone == 'notStarted'">
-            Start Date: {{startDate}}&nbsp;End Date: {{endDate}}
-          </div>
-          <div *ngIf="eventDone == 'onGoing'" style="display: flex;">
-            <div style="margin-top: 8px">Ends in:</div>
-            <div class="countdown-container" style="display: flex;">
-              {{days}}D&nbsp;:&nbsp;{{hours}}H&nbsp;:&nbsp;{{mins}}M&nbsp;:&nbsp;{{secs}}S
-            </div>
-          </div>
-          <div *ngIf="eventDone == 'ended'">
-            
-          </div>
-
-          <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+          <app-count-down 
+          [startDate]="startDate"
+          [endDate]="endDate"></app-count-down>
         </li>
       </ul>
     </div>
