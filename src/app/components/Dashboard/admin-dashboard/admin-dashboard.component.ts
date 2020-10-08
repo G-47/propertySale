@@ -25,6 +25,8 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // tslint:disable-next-line: typedef
+
   getPendingLands(): void {
     this.setNav(2);
     this.advertisementService.getDirectLands(0).then(
@@ -55,7 +57,18 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['/reviewLand'], { state: landDetails });
   }
 
-  goToReviewHouse(houseDetails: DirectLand): void {
-    this.router.navigate(['/reviewLand'], { state: houseDetails });
+  goToReviewHouse(houseDetails: DirectHouse): void {
+    this.router.navigate(['/reviewHouse'], { state: houseDetails });
+  }
+
+  goToNewAd(option: number): void {
+    switch (option) {
+      case 1:
+        this.router.navigate(['/directLandPostByAdmin']);
+        break;
+      case 2:
+        this.router.navigate(['/directHousePostByAdmin']);
+        break;
+    }
   }
 }

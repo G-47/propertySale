@@ -46,6 +46,9 @@ import { UserDashboardComponent } from './components/Dashboard/user-dashboard/us
 import { DirectLandCardComponent } from './components/homePage/direct-land-card/direct-land-card.component';
 import { DirectHouseCardComponent } from './components/homePage/direct-house-card/direct-house-card.component';
 import { ReviewLandComponent } from './components/review-land/review-land.component';
+import { ReviewHouseComponent } from './components/review-house/review-house.component';
+import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
+import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +84,9 @@ import { ReviewLandComponent } from './components/review-land/review-land.compon
     DirectLandCardComponent,
     DirectHouseCardComponent,
     ReviewLandComponent,
+    ReviewHouseComponent,
+    DirectLandPostByAdminComponent,
+    DirectHousePostByAdminComponent,
   ],
   imports: [
     BrowserModule,

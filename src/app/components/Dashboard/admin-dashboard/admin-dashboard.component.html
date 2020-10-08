@@ -34,13 +34,49 @@
     </div>
   </div>
   <div *ngIf="nav === 3" class="content">
-    <h2>House Requests</h2>
-    <div *ngFor="let item of pendingHouses">
-      {{ item | json }}
+    <div class="pendingHouses">
+      <div *ngFor="let item of pendingHouses">
+        <app-direct-house-card
+          class="m-3"
+          (click)="goToReviewHouse(item)"
+          [image]="item.images[0]"
+          [title]="item.title"
+          [price]="item.price"
+          [bathRooms]="item.bathRooms"
+          [bedRooms]="item.bedRooms"
+          [location]="item.locationName"
+          [time]="item.postedTime"
+        ></app-direct-house-card>
+      </div>
     </div>
   </div>
   <div *ngIf="nav === 4" class="content">
-    <h2>New Ad</h2>
+    <div class="selector-box">
+      <div class="selector-item card" (click)="goToNewAd(1)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Direct Land</h4>
+        </div>
+        <img src="/assets/images/land-direct.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(2)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Direct House</h4>
+        </div>
+        <img src="/assets/images/house-direct.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(3)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Auction Land</h4>
+        </div>
+        <img src="/assets/images/land-auction.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(4)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Auction House</h4>
+        </div>
+        <img src="/assets/images/house-auction.svg" alt="" />
+      </div>
+    </div>
   </div>
   <div *ngIf="nav === 5" class="content">
     <h2>Activity Log</h2>

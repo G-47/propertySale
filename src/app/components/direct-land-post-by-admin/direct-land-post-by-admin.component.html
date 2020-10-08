@@ -1,0 +1,231 @@
+<div class="container">
+  <h1 class="text-center mt-5 mb-2">Sell a Land</h1>
+  <form [formGroup]="LandForm">
+    <fieldset class="p-4">
+      <div class="form-group">
+        <label>Title :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('title').invalid && LandForm.get('title').touched
+          "
+          type="text"
+          formControlName="title"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('title').invalid && LandForm.get('title').touched"
+          >*Title is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Description :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <textarea
+          [class.is-invalid]="
+            LandForm.get('description').invalid &&
+            LandForm.get('description').touched
+          "
+          class="form-control"
+          formControlName="description"
+          rows="3"
+          required
+        ></textarea>
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('description').invalid &&
+            LandForm.get('description').touched
+          "
+          >*Description is required !</small
+        >
+      </div>
+
+      <label>Type :</label>
+      <div class="row">
+        <div class="checkbox-box">
+          <div class="checkbox">
+            <div class="input-group">
+              <div class="input-group-text">
+                <input type="radio" formControlName="type" value="Bare Land" />
+              </div>
+            </div>
+          </div>
+          <div class="lable">
+            <div>Bare Land</div>
+          </div>
+        </div>
+
+        <div class="checkbox-box">
+          <div class="checkbox">
+            <div class="input-group">
+              <div class="input-group-text">
+                <input
+                  type="radio"
+                  formControlName="type"
+                  value="Cultivated Land"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="lable">
+            <div>Cultivated Land</div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="form-group">
+        <label>Size (percheses) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('size').invalid && LandForm.get('size').touched
+          "
+          type="number"
+          formControlName="size"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('size').invalid && LandForm.get('size').touched"
+          >*Size is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Price (Rupees per perches) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('price').invalid && LandForm.get('price').touched
+          "
+          type="number"
+          formControlName="price"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="LandForm.get('price').invalid && LandForm.get('price').touched"
+          >*Price is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Town) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+        <input
+          [class.is-invalid]="
+            LandForm.get('locationName').invalid &&
+            LandForm.get('locationName').touched
+          "
+          type="text"
+          formControlName="locationName"
+          class="form-control"
+          required
+        />
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('locationName').invalid &&
+            LandForm.get('locationName').touched
+          "
+          >*Location is required !</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Location (Map) :</label>
+        <!-- input field coloured red when given data is failed validation -->
+
+        <app-map (selectLocation)="setLocationMap($event)"></app-map>
+
+        <!-- show error message for validation error -->
+        <small
+          class="text-danger"
+          *ngIf="
+            LandForm.get('locationMap').invalid ||
+            LandForm.get('locationMap').touched
+          "
+          >*Map Location is required !</small
+        >
+      </div>
+
+      <label>Images :</label>
+      <div class="row">
+        <div class="form-group pl-3 pr-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+          <small *ngIf="landImages.length < 1" class="text-danger"
+            >*Pictures are required !
+          </small>
+        </div>
+
+        <div class="form-group pl-3">
+          <!-- input field coloured red when given data is failed validation -->
+          <app-image-uploader
+            [defaultImage]="'/assets/images/image-placeholder-normal.png'"
+            [cloudFolder]="'landImages'"
+            (upload)="addToImages($event)"
+          ></app-image-uploader>
+          <!-- show error message for validation error -->
+        </div>
+      </div>
+
+      <h5 class="text-center">Attach 360 Image:</h5>
+      <div #roundView class="input-group mb-5">
+        <div
+          style="
+            width: 400px;
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          <div class="input-group-prepend" style="cursor: pointer">
+            <span class="input-group-text" id="inputGroupFileAddon01"
+              >Upload</span
+            >
+          </div>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="inputGroupFile01"
+              aria-describedby="inputGroupFileAddon01"
+            />
+            <label class="custom-file-label" for="inputGroupFile01"
+              >Choose file</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <button
+        style="width: 100px"
+        [disabled]="LandForm.invalid || landImages.length < 1"
+        type="submit"
+        class="btn btn-primary float-right"
+        (click)="tryPostLand(LandForm.value)"
+      >
+        Post
+      </button>
+    </fieldset>
+  </form>
+</div>

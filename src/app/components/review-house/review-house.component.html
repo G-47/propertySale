@@ -17,13 +17,17 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" style="height: 400px; border-radius: 8px">
-        <div class="carousel-item active" *ngIf="land.images[0] != undefined">
-          <img class="d-block w-100" [src]="land.images[0]" alt="First slide" />
-        </div>
-        <div class="carousel-item" *ngIf="land.images[1] != undefined">
+        <div class="carousel-item active" *ngIf="house.images[0] != undefined">
           <img
             class="d-block w-100"
-            [src]="land.images[1]"
+            [src]="house.images[0]"
+            alt="First slide"
+          />
+        </div>
+        <div class="carousel-item" *ngIf="house.images[1] != undefined">
+          <img
+            class="d-block w-100"
+            [src]="house.images[1]"
             alt="Second slide"
           />
         </div>
@@ -49,7 +53,7 @@
     </div>
   </div>
   <div class="carousel-bottom">
-    <div class="title-container">{{ land.title }}</div>
+    <div class="title-container">{{ house.title }}</div>
     <div class="image-container">
       <img
         src="../../../../assets/images/360.svg"
@@ -61,24 +65,24 @@
   </div>
 </div>
 
-<div class="price-container">LKR {{ land.price }} per perch</div>
+<div class="price-container">LKR {{ house.price }} /=</div>
 
 <div class="detail-container">
   <div class="top">
     <div class="land-description-item" style="margin-right: auto">
-      <div class="topic">Land Type :</div>
-      <div class="text">{{ land.type }}</div>
+      <div class="topic">Bed Rooms :</div>
+      <div class="text">{{ house.bedRooms }}</div>
     </div>
     <div class="land-description-item" style="margin-left: auto">
-      <div class="topic">Land Size :</div>
-      <div class="text">{{ land.size }} perches</div>
+      <div class="topic">Bath Rooms :</div>
+      <div class="text">{{ house.bathRooms }}</div>
     </div>
   </div>
   <div class="bottom">
     <div class="land-description-item">
       <div class="topic">Description :</div>
       <div class="text">
-        {{ land.description }}
+        {{ house.description }}
       </div>
     </div>
   </div>
@@ -89,7 +93,7 @@
 </div> -->
 
 <div #map class="map" id="map">
-  <app-map style="width: 100%" [inputPlace]="land.locationMap"></app-map>
+  <app-map style="width: 100%" [inputPlace]="house.locationMap"></app-map>
   <!-- <img src="../../../../assets/images/googlemap.png" /> -->
 </div>
 
@@ -129,7 +133,7 @@
   <button
     class="btn btn-success"
     style="width: 100px; margin-left: auto"
-    (click)="accept(land._id)"
+    (click)="accept(house._id)"
   >
     Approve
   </button>
