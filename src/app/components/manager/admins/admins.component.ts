@@ -17,6 +17,7 @@ export class AdminsComponent implements OnInit {
   data: any;
   errorMessage = 'temp';
   successMessage = 'temp';
+  admin: Admin[];
 
   ComposeMsg = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -48,15 +49,26 @@ export class AdminsComponent implements OnInit {
   }
 
   composeMsg(formData) {
-    this.adminService.composeMsg({...this.removeableAdmin, message: formData.message}).subscribe(
-      (res) => {
-        this.toastr.success('Sendding a message', 'Message sent succesfully');
-        this.router.navigate(['/manager']);
-      },
-      (err) => {
-        this.errorMessage = err.error[0];
-        console.log(err.error[0]);
-      }
-    );
+    this.adminService
+      .composeMsg(
+        { ...this.removeableAdmin, message: formData.message },
+        this.removeableAdmin._id
+      )
+      .subscribe(
+        (res) => {
+          this.toastr.success('Sendding a message', 'Message sent succesfully');
+          this.router.navigate(['/manager']);
+        },
+        (err) => {
+          this.errorMessage = err.error[0];
+          console.log(err.error[0]);
+        }
+      );
+  }
+
+  removeAdmin(removeableAdmin): void {
+    this.adminService.removeadmin(removeableAdmin._id).subscribe((res) => {
+      console.log('success');
+    });
   }
 }

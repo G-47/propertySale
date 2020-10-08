@@ -16,21 +16,12 @@
       <td class="text-primary">{{ item.email }}</td>
       <td>
         <div>
-          <button
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            data-whatever="@getbootstrap"
-            (click)="setRemoveItem(item)"
-          >
+          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"
+            (click)="setRemoveItem(item)">
             Message
           </button>
-          <button
-            class="pad btn btn-danger"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
-            (click)="setRemoveItem(item)"
-          >
+          <button class="pad btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
+            (click)="setRemoveItem(item)">
             Remove
           </button>
         </div>
@@ -42,24 +33,13 @@
 <!-- Alert box -->
 
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModalCenter"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Remove admin?</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -70,7 +50,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Cancel
         </button>
-        <button type="button" class="btn btn-danger">Confirm</button>
+        <button type="button" class="btn btn-danger" (click)="removeAdmin(removeableAdmin)">Confirm</button>
       </div>
     </div>
   </div>
@@ -78,54 +58,26 @@
 
 <!-- for messgaes -->
 
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form [formGroup]="ComposeMsg">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"
-              >Recipient:</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="recipient-name"
-              formControlName="name"
-              readonly
-              value="{{ removeableAdmin.name }}"
-            />
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="name" readonly
+              value="{{ removeableAdmin.name }}" />
           </div>
           <div class="form-group">
-            <label
-              for="message-text"
-              class="col-form-label"
-              formArrayName="message"
-              >Message:</label
-            >
-            <textarea
-              formControlName="message"
-              class="form-control"
-              id="message-text"
-            ></textarea>
+            <label for="message-text" class="col-form-label" formArrayName="message">Message:</label>
+            <textarea formControlName="message" class="form-control" id="message-text"></textarea>
           </div>
         </form>
       </div>
@@ -133,11 +85,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button
-          type="submit"
-          (click)="composeMsg(ComposeMsg.value)"
-          class="btn btn-primary"
-        >
+        <button type="submit" (click)="composeMsg(ComposeMsg.value)" class="btn btn-primary">
           Send message
         </button>
       </div>

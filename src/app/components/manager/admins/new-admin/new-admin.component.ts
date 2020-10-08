@@ -29,7 +29,26 @@ export class NewAdminComponent implements OnInit {
     private router: Router
   ) {}
 
+  addDataToAdmin(formData) {
+    var formDetails1 = {
+      email: formData.email,
+      name: formData.name,
+      picture: '',
+    };
+
+    this.adminService.addAdmin(formDetails1).subscribe(
+      (res) => {
+        console.log('success');
+      },
+      (err) => {
+        this.errorMessage = err.error[0];
+        console.log(err.error[0]);
+      }
+    );
+  }
+
   addData(formData) {
+    this.addDataToAdmin(formData);
     var formDetails = {
       email: formData.email,
       firstName: formData.name,
@@ -39,8 +58,8 @@ export class NewAdminComponent implements OnInit {
       nicNumber: '',
       nicFrontImage: '',
       nicBackImage: '',
-      password: 'admin',
-      status: 'admin',
+      password: 'admin123',
+      userType: 1,
     };
 
     console.log(formDetails);
