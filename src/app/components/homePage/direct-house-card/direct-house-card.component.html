@@ -1,1 +1,35 @@
-<p>direct-house-card works!</p>
+<div class="card-container">
+  <div class="card">
+    <img class="card-img-top image" src="{{ image }}" />
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item"
+        style="font-size: 17px; margin-left: 5px; color: #494fe9"
+      >
+        <b>{{ title }}</b>
+      </li>
+      <li
+        class="list-group-item text-center"
+        style="font-size: 17px; margin-left: 5px; color: #1ec92f"
+      >
+        Rs: {{ price }} /=
+      </li>
+      <li
+        class="list-group-item"
+        style="
+          font-size: 12px;
+          text-align: center;
+          padding-top: 10px !important;
+        "
+      >
+        <div class="li-box">
+          <div class="li"><b>Beds: </b>{{ bedRooms }} perches</div>
+          <div class="li"><b>Baths: </b>{{ bathRooms }}</div>
+          <div class="li"><b>Location: </b>{{ location }}</div>
+        </div>
+
+        <p style="text-align: end">{{ moment(time).fromNow() }}</p>
+      </li>
+    </ul>
+  </div>
+</div>

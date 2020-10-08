@@ -1,3 +1,5 @@
+import { User } from 'src/app/models/user.model';
+import { EmailService } from './../../services/email.service';
 import { AdvertisementService } from './../../services/advertisement.service';
 import { DirectLand } from './../../models/direct-land.model';
 import { DirectHouse } from './../../models/direct-house.model';
@@ -43,11 +45,17 @@ export class PostAdComponent implements OnInit {
   landImages = [];
   houseImages = [];
 
+  currentUser: User;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private advertisementService: AdvertisementService
-  ) {}
+    private advertisementService: AdvertisementService,
+    private emailService: EmailService,
+    private authService: AuthService
+  ) {
+    this.currentUser = authService.getCurrentUser();
+  }
 
   ngOnInit(): void {}
 
@@ -71,11 +79,20 @@ export class PostAdComponent implements OnInit {
     const landDetails: DirectLand = {
       ...formData,
       images: this.landImages,
-      inFromOwner: false,
+      isFromOwner: false,
       status: 0,
     };
     console.log(landDetails);
-    this.advertisementService.postDirectLand(landDetails);
+    this.advertisementService.postDirectLand(landDetails).then(
+      (res) => {
+        this.emailService.sendEmail(
+          this.currentUser.email,
+          'Lanka Properties',
+          `Your have successfully submitted your Land advertisement. Our agent will come to you soon. Your advertisement will be live after verified your land by our agent.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
+        );
+      },
+      (err) => {}
+    );
     this.router.navigate(['/payment']);
   }
 
@@ -83,11 +100,20 @@ export class PostAdComponent implements OnInit {
     const houseDetails: DirectHouse = {
       ...formData,
       images: this.houseImages,
-      inFromOwner: false,
+      isFromOwner: false,
       status: 0,
     };
     console.log(houseDetails);
-    this.advertisementService.postDirectHouse(houseDetails);
+    this.advertisementService.postDirectHouse(houseDetails).then(
+      (res) => {
+        this.emailService.sendEmail(
+          this.currentUser.email,
+          'Lanka Properties',
+          `Your have successfully submitted your House advertisement. Our agent will come to you soon. Your advertisement will be live after verified your House by our agent.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
+        );
+      },
+      (err) => {}
+    );
     this.router.navigate(['/payment']);
   }
 }

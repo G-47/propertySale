@@ -61,4 +61,10 @@ export class AdvertisementService implements HttpInterceptor {
       .put<any>(this.acceptDirectLandsUrl, { id })
       .toPromise();
   }
+
+  acceptDirectHouse(id: string): Promise<DirectHouse> {
+    return this.http
+      .put<any>(this.acceptDirectHousesUrl, { id })
+      .toPromise();
+  }
 }

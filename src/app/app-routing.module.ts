@@ -1,3 +1,6 @@
+import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
+import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
+import { ReviewHouseComponent } from './components/review-house/review-house.component';
 import { ReviewLandComponent } from './components/review-land/review-land.component';
 import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
@@ -33,6 +36,15 @@ const routes: Routes = [
   { path: 'newAuction', component: NewAuctionComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
   { path: 'reviewLand', component: ReviewLandComponent },
+  { path: 'reviewHouse', component: ReviewHouseComponent },
+  {
+    path: 'directHousePostByAdmin',
+    component: DirectHousePostByAdminComponent,
+  },
+  {
+    path: 'directLandPostByAdmin',
+    component: DirectLandPostByAdminComponent,
+  },
 ];
 
 @NgModule({
