@@ -23,6 +23,9 @@ export class AdvertisementService implements HttpInterceptor {
   private acceptDirectLandsUrl = 'http://localhost:3000/api/acceptDirectLand';
   private acceptDirectHousesUrl = 'http://localhost:3000/api/acceptDirectHouse';
 
+  private getLandsByUserId = 'http://localhost:3000/api/getLandsByUserId';
+  private getHousesByUserId = 'http://localhost:3000/api/getHousesByUserId';
+
   constructor(private http: HttpClient) {}
 
   intercept(req, next): any {
@@ -66,5 +69,13 @@ export class AdvertisementService implements HttpInterceptor {
     return this.http
       .put<any>(this.acceptDirectHousesUrl, { id })
       .toPromise();
+  }
+
+  getLandstoUserId(): Promise<DirectLand[]> {
+    return this.http.get<DirectLand[]>(this.getLandsByUserId).toPromise();
+  }
+
+  getHousestoUserId(): Promise<DirectHouse[]> {
+    return this.http.get<DirectHouse[]>(this.getHousesByUserId).toPromise();
   }
 }
