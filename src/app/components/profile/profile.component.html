@@ -169,4 +169,22 @@
   </div>
 </div> -->
 
-<div class="update-button">Edit Profile</div>
+<div class="container">
+  <div class="detailContainer">
+    <div class="profileImage">
+      <img class="image" src="{{ profileImage }}" />
+    </div>
+    <div class="details">
+      <div class="content"><label>First Name :</label>{{ firstName }}</div>
+      <div class="content"><label>Last Name :</label>{{ lastName }}</div>
+      <div class="content"><label>Email :</label>{{ email }}</div>
+      <div class="content">
+        <label>Mobile Number :</label>{{ mobileNumber }}
+      </div>
+      <div class="content"><label>NIC Number :</label>{{ nic }}</div>
+    </div>
+  </div>
+  <div class="buttonContainer">
+    <div class="update-button">Edit Profile</div>
+  </div>
+</div>

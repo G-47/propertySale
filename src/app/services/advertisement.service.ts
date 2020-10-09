@@ -72,10 +72,10 @@ export class AdvertisementService implements HttpInterceptor {
   }
 
   getLandstoUserId(): Promise<DirectLand[]> {
-    return this.http.get<DirectLand[]>(this.getLandsByUserId).toPromise();
+    return this.http.get<any>(this.getLandsByUserId).toPromise();
   }
 
   getHousestoUserId(): Promise<DirectHouse[]> {
-    return this.http.get<DirectHouse[]>(this.getHousesByUserId).toPromise();
+    return this.http.get<any>(this.getHousesByUserId).toPromise();
   }
 }

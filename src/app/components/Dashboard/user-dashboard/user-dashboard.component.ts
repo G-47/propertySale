@@ -26,10 +26,10 @@ export class UserDashboardComponent implements OnInit {
     this.advertisementService.getLandstoUserId().then(
       (res) => {
         this.postedLands = res;
-        console.log(res);
+        console.log('lllllll' + res);
       },
       (err) => {
-        console.log(err);
+        console.log('eeeeeeeeeeeeeeee' + err);
       }
     );
   }

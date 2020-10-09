@@ -187,14 +187,35 @@
 //   }
 // }
 
+.container {
+  flex-direction: column;
+}
+.detailContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.profileImage {
+  flex: 50%;
+}
+.image {
+}
+.details {
+  flex: 50%;
+}
+
+.buttonContainer {
+  padding-left: 70%;
+}
+
 .update-button {
+  padding-top: 10px;
   text-align: center;
-  align-items: center;
   border-radius: 5px;
   font-size: 15px;
   font-weight: bold;
-  height: 25px;
-  margin: 10px 0px 10px 10px;
+  height: 40px;
+  margin: 10px 10px 10px 10px;
   width: 150px;
   background-color: #77e08e;
 }
