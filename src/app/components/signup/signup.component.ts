@@ -49,16 +49,18 @@ export class SignupComponent implements OnInit {
   }
 
   tryRegister(formData): void {
-    this.authService.register({ ...formData, userType: 0 }).subscribe(
-      () => {
-        this.toastr.success('Login now', 'Registered Successfully');
-        this.router.navigate(['/login']);
-        this.RegisterForm.reset();
-      },
-      (err) => {
-        this.errorMessage = err.error[0];
-        console.log(err.error[0]);
-      }
-    );
+    this.authService
+      .register({ ...formData, userType: 0, status: 0 })
+      .subscribe(
+        () => {
+          this.toastr.success('Login now', 'Registered Successfully');
+          this.router.navigate(['/login']);
+          this.RegisterForm.reset();
+        },
+        (err) => {
+          this.errorMessage = err.error[0];
+          console.log(err.error[0]);
+        }
+      );
   }
 }
