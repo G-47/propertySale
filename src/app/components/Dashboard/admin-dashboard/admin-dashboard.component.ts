@@ -91,7 +91,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   goToReviewUser(userDetails: User): void {
-    this.router.navigate(['/reviewUser'], { state: userDetails });
+    this.router.navigate(['/reviewUser', userDetails._id]);
   }
 
   goToNewAd(option: number): void {

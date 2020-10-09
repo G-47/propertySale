@@ -1,3 +1,4 @@
+import { CustomValidationService } from './../../services/custom-validation.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +18,13 @@ export class SignupComponent implements OnInit {
     profilePicture: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    mobileNumber: ['', Validators.required],
+    mobileNumber: [
+      '',
+      Validators.compose([
+        Validators.required,
+        this.customValidationService.patternValidator(),
+      ]),
+    ],
     email: ['', [Validators.required, Validators.email]],
     nicNumber: ['', Validators.required],
     nicFrontImage: ['', Validators.required],
@@ -29,7 +36,8 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private customValidationService: CustomValidationService
   ) {}
 
   ngOnInit(): void {}
