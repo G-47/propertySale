@@ -10,9 +10,9 @@
   <tbody>
     <tr *ngFor="let item of data">
       <th scope="row">
-        <img src="{{ item.picture }}" alt="Avatar" class="circle-aavatar" />
+        <img src="{{ item.profilePicture }}" alt="Avatar" class="circle-aavatar" />
       </th>
-      <td class="text-primary">{{ item.name }}</td>
+      <td class="text-primary">{{ item.firstName }}</td>
       <td class="text-primary">{{ item.email }}</td>
       <td>
         <div>
@@ -44,7 +44,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Are you sure to remove {{ removeableAdmin.name }} from administration?
+        Are you sure to remove {{ removeableAdmin.firstName }} from administration?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -73,7 +73,7 @@
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Recipient:</label>
             <input type="text" class="form-control" id="recipient-name" formControlName="name" readonly
-              value="{{ removeableAdmin.name }}" />
+              value="{{ removeableAdmin.firstName }}" />
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label" formArrayName="message">Message:</label>

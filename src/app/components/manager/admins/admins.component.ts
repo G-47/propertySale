@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AdminsService } from 'src/app/services/admins.service';
+import { EmailService } from 'src/app/services/email.service';
 import { Admin } from 'src/app/models/admin.model';
 import { Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-admins',
@@ -17,14 +19,14 @@ export class AdminsComponent implements OnInit {
   data: any;
   errorMessage = 'temp';
   successMessage = 'temp';
-  admin: Admin[];
+  admin: User[];
 
   ComposeMsg = this.formBuilder.group({
     name: ['', [Validators.required]],
     message: ['', Validators.required],
   });
 
-  removeableAdmin: Admin = {} as Admin;
+  removeableAdmin: User = {} as User;
 
   setRemoveItem(item) {
     this.removeableAdmin = item;
@@ -34,6 +36,7 @@ export class AdminsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private adminService: AdminsService,
+    private emailService: EmailService,
     private toastr: ToastrService,
     private router: Router
   ) {}
@@ -71,4 +74,6 @@ export class AdminsComponent implements OnInit {
       console.log('success');
     });
   }
+
+
 }
