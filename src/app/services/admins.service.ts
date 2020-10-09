@@ -30,8 +30,8 @@ export class AdminsService {
 
   message = {} as Message;
 
-  getAdmins(): Observable<IAdmins[]> {
-    return this.http.get<IAdmins[]>(this.getAdmins_url);
+  getAdmins(): Observable<Admin[]> {
+    return this.http.get<Admin[]>(this.getAdmins_url);
   }
 
   addAdmin(formData): any {

@@ -1,3 +1,24 @@
-<div class="outer-container">
-  M Sandun sameera
-</div>
+<table class="pad table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Endpoint</th>
+      <th scope="col">Message</th>
+      <th scope="col">Method</th>
+      <th scope="col">req_ip</th>
+      <th scope="col">Timestamp</th>
+      <th scope="col">User Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+
+      <td class="text-primary">{{ item.endpoint }}</td>
+      <td class="text-primary">{{ item.message }}</td>
+      <td class="text-primary">{{ item.method }}</td>
+      <td class="text-primary">{{ item.req_ip }}</td>
+      <td class="text-primary">{{ item.timestamp }}</td>
+      <td class="text-primary">{{ item.user_id }}</td>
+
+    </tr>
+  </tbody>
+</table>
