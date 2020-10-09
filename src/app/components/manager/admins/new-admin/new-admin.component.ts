@@ -70,7 +70,17 @@ export class NewAdminComponent implements OnInit {
     this.authService.register(formDetails).subscribe(
       (res) => {
         this.toastr.success('Addign an admin', 'Addes successfully');
-        this.sendEmail(formDetails.email,"Welcome " + formDetails.firstName + "as new admin to Lanka Properties"," Hello " + formDetails.firstName + "\n" + " " + " Here we are welcome you as a new admin for lanka properties. You can now log into system by your email")
+        this.sendEmail(
+          formDetails.email,
+          'Welcome ' +
+            formDetails.firstName +
+            'as new admin to Lanka Properties',
+          ' Hello ' +
+            formDetails.firstName +
+            '\n' +
+            ' ' +
+            ' Here we are welcome you as a new admin for lanka properties. You can now log into system by your email'
+        );
         this.router.navigate(['/manager']);
         this.AddAdmin.reset();
       },
@@ -81,6 +91,7 @@ export class NewAdminComponent implements OnInit {
     );
   }
 
+  // Sending email to admin
   sendEmail(tomail, subject, message): void {
     this.emailService.sendEmail(tomail, subject, message);
     console.log('Mail sent');
