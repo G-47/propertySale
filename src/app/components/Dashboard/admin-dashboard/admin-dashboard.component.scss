@@ -34,16 +34,14 @@ div.content {
   flex: 1;
 }
 
-.pendingLands {
+.pendings {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-}
 
-.pendingHouses {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  h1 {
+    margin-top: 50px;
+  }
 }
 
 .selector-box {

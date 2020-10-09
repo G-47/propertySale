@@ -9,5 +9,6 @@ export class User {
   nicFrontImage: string;
   nicBackImage: string;
   userType: number;
+  status: number;
   password: string;
 }
