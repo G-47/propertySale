@@ -31,7 +31,7 @@ export class ReviewHouseComponent implements OnInit {
   setOwner(id: string): void {
     this.authService.getUser(id).then(
       (res) => {
-        this.owner = res.user as User;
+        this.owner = res;
       },
       (err) => {
         console.log(err);

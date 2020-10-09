@@ -83,14 +83,23 @@
           required
         />
         <!-- show error message for validation error -->
-        <small
-          class="text-danger"
+        <div
           *ngIf="
             RegisterForm.get('mobileNumber').invalid &&
             RegisterForm.get('mobileNumber').touched
           "
-          >*Mobile Number is required !</small
         >
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('mobileNumber').errors.required"
+            >*Mobile Number is required !</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="RegisterForm.get('mobileNumber').errors.invalidMobileNumber"
+            >*Enter valid mobile number !</small
+          >
+        </div>
       </div>
 
       <div class="form-group">

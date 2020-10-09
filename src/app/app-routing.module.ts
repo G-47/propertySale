@@ -18,6 +18,7 @@ import { ManagerComponent } from './components/manager/manager.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
+import { ReviewUserComponent } from './components/review-user/review-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'adminDashboard', component: AdminDashboardComponent },
   { path: 'reviewLand', component: ReviewLandComponent },
   { path: 'reviewHouse', component: ReviewHouseComponent },
+  { path: 'reviewUser/:id', component: ReviewUserComponent },
   {
     path: 'directHousePostByAdmin',
     component: DirectHousePostByAdminComponent,
