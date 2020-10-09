@@ -1,1 +1,24 @@
-<p>user-dashboard works!</p>
+<div class="myContainer">
+  <div class="sidebar">
+    <a [ngClass]="nav === 1 ? 'active' : ''" (click)="setNav(1)">Profile</a>
+    <a [ngClass]="nav === 2 ? 'active' : ''" (click)="setNav(2)"
+      >Posted Lands</a
+    >
+    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="setNav(3)"
+      >Posted Houses</a
+    >
+    <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">Joined bids</a>
+  </div>
+  <div *ngIf="nav === 1" class="content">
+    <app-profile></app-profile>
+  </div>
+  <div *ngIf="nav === 2" class="content">
+    <h2>Lands</h2>
+  </div>
+  <div *ngIf="nav === 3" class="content">
+    <h2>Houses</h2>
+  </div>
+  <div *ngIf="nav === 4" class="content">
+    <h2>Bids</h2>
+  </div>
+</div>

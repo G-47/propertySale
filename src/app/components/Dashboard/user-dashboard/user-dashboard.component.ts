@@ -3,13 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  styleUrls: ['./user-dashboard.component.scss'],
 })
 export class UserDashboardComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  nav = 1;
 
-  ngOnInit(): void {
+  setNav(n): void {
+    this.nav = n;
   }
 
+  ngOnInit(): void {}
 }

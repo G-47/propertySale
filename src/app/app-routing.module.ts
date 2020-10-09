@@ -18,6 +18,7 @@ import { ManagerComponent } from './components/manager/manager.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
+import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
     path: 'directLandPostByAdmin',
     component: DirectLandPostByAdminComponent,
   },
+  { path: 'userDashboard', component: UserDashboardComponent },
 ];
 
 @NgModule({

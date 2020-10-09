@@ -34,10 +34,11 @@ export class NavbarComponent implements OnInit {
   gotoDashboard(): void {
     switch (this.currentUser.userType) {
       case 0:
-        this.router.navigate(['/adminDashboard']);
+        this.router.navigate(['/userDashboard']);
         break;
 
       case 1:
+        this.router.navigate(['/adminDashboard']);
         break;
 
       case 2:
