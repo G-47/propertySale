@@ -4,7 +4,7 @@ import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { DirectLand } from './../../models/direct-land.model';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-review-land',
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class ReviewLandComponent implements OnInit {
   kirama = { lat: 6.2074, lng: 80.6672 };
+
+  landId: string;
   land: DirectLand;
   owner: User = {} as User;
 
@@ -20,18 +22,32 @@ export class ReviewLandComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private advertisementService: AdvertisementService,
-    private emailService: EmailService
-  ) {
-    this.land = this.router.getCurrentNavigation().extras.state as DirectLand;
-    console.log(this.land);
+    private emailService: EmailService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-    this.setOwner(this.land.ownerId);
+  ngOnInit(): void {
+    this.landId = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.setLand(this.landId);
+  }
+
+  setLand(id: string): void {
+    this.advertisementService.getLandById(id).then(
+      (res) => {
+        this.land = res;
+        this.setOwner(this.land.ownerId);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   setOwner(id: string): void {
     this.authService.getUser(id).then(
       (res) => {
-        this.owner = res.user as User;
+        this.owner = res;
       },
       (err) => {
         console.log(err);
@@ -55,8 +71,6 @@ export class ReviewLandComponent implements OnInit {
       }
     );
   }
-
-  ngOnInit(): void {}
 
   scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });

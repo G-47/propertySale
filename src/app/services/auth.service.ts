@@ -11,6 +11,8 @@ export class AuthService implements HttpInterceptor {
   private loginUrl = 'http://localhost:3000/api/authenticateUser';
   private getCurrentUserUrl = 'http://localhost:3000/api/getCurrentUser';
   private getUserUrl = 'http://localhost:3000/api/getUser';
+  private getUsersUrl = 'http://localhost:3000/api/getUsers';
+  private approveUserUrl = 'http://localhost:3000/api/approveUser';
 
   constructor(private http: HttpClient) {}
 
@@ -58,7 +60,7 @@ export class AuthService implements HttpInterceptor {
           return { status: true };
         },
         (err) => {
-          console.log(err.error.message);
+          console.log(err);
           return { error: err.error.message, status: false };
         }
       );
@@ -72,9 +74,21 @@ export class AuthService implements HttpInterceptor {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  getUser(id: string): Promise<any> {
+  getUser(id: string): Promise<User> {
     return this.http
       .post<any>(this.getUserUrl, { id })
+      .toPromise();
+  }
+
+  getUsers(status: number): Promise<User[]> {
+    return this.http
+      .post<any>(this.getUsersUrl, { status })
+      .toPromise();
+  }
+
+  approveUser(id: string): Promise<User> {
+    return this.http
+      .post<any>(this.approveUserUrl, { id })
       .toPromise();
   }
 }

@@ -1,6 +1,6 @@
 import { DirectHouse } from './../../models/direct-house.model';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmailService } from 'src/app/services/email.service';
@@ -13,6 +13,8 @@ import { User } from 'src/app/models/user.model';
 })
 export class ReviewHouseComponent implements OnInit {
   kirama = { lat: 6.2074, lng: 80.6672 };
+
+  houseId: string;
   house: DirectHouse;
   owner: User = {} as User;
 
@@ -20,18 +22,32 @@ export class ReviewHouseComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private advertisementService: AdvertisementService,
-    private emailService: EmailService
-  ) {
-    this.house = this.router.getCurrentNavigation().extras.state as DirectHouse;
-    console.log(this.house);
+    private emailService: EmailService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-    this.setOwner(this.house.ownerId);
+  ngOnInit(): void {
+    this.houseId = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.setHouse(this.houseId);
+  }
+
+  setHouse(id: string): void {
+    this.advertisementService.getHouseById(id).then(
+      (res) => {
+        this.house = res;
+        this.setOwner(this.house.ownerId);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   setOwner(id: string): void {
     this.authService.getUser(id).then(
       (res) => {
-        this.owner = res.user as User;
+        this.owner = res;
       },
       (err) => {
         console.log(err);
@@ -55,8 +71,6 @@ export class ReviewHouseComponent implements OnInit {
       }
     );
   }
-
-  ngOnInit(): void {}
 
   scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });

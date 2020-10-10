@@ -1,3 +1,5 @@
+import { EmailService } from './../../services/email.service';
+import { CustomValidationService } from './../../services/custom-validation.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +19,13 @@ export class SignupComponent implements OnInit {
     profilePicture: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    mobileNumber: ['', Validators.required],
+    mobileNumber: [
+      '',
+      Validators.compose([
+        Validators.required,
+        this.customValidationService.patternValidator(),
+      ]),
+    ],
     email: ['', [Validators.required, Validators.email]],
     nicNumber: ['', Validators.required],
     nicFrontImage: ['', Validators.required],
@@ -29,7 +37,9 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private customValidationService: CustomValidationService,
+    private emailService: EmailService
   ) {}
 
   ngOnInit(): void {}
@@ -49,16 +59,29 @@ export class SignupComponent implements OnInit {
   }
 
   tryRegister(formData): void {
-    this.authService.register({ ...formData, userType: 0 }).subscribe(
-      () => {
-        this.toastr.success('Login now', 'Registered Successfully');
-        this.router.navigate(['/login']);
-        this.RegisterForm.reset();
-      },
-      (err) => {
-        this.errorMessage = err.error[0];
-        console.log(err.error[0]);
-      }
-    );
+    this.authService
+      .register({ ...formData, userType: 0, status: 0 })
+      .subscribe(
+        (res) => {
+          this.toastr.success('Login now', 'Registered Successfully');
+          this.emailService.sendEmail(
+            formData.email,
+            'Lanka Properties',
+            `Hi ${formData.firstName},\nYour user account is under review.Once it is accepted by us you can login to the system.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
+          );
+          this.emailService.sendEmail(
+            'priyashanshell@gmail.com',
+            'Lanka Properties',
+            `New user request received ${formData.firstName} ${formData.lastName}`
+          );
+
+          this.router.navigate(['/login']);
+          this.RegisterForm.reset();
+        },
+        (err) => {
+          this.errorMessage = err.error[0];
+          console.log(err.error[0]);
+        }
+      );
   }
 }

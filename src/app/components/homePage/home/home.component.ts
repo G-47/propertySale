@@ -1,3 +1,6 @@
+import { AdvertisementService } from 'src/app/services/advertisement.service';
+import { DirectHouse } from './../../../models/direct-house.model';
+import { DirectLand } from './../../../models/direct-land.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,10 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  lands = [];
-  houses = [];
+  lands: DirectLand[] = [];
+  houses: DirectHouse[] = [];
   selectedArray = [];
-  selectedArrayIndex = 1;
+  selectedArrayName = 'lands';
 
   SearchForm = this.formBuilder.group({
     word: [''],
@@ -21,127 +24,18 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private advertisementService: AdvertisementService,
     private authService: AuthService
-  ) {
-    this.createLand(
-      'https://www.primelands.lk/resources/857/image%20001.jpg',
-      'Land for sale in Matara',
-      '500,000',
-      '20',
-      'Bare Land',
-      'Matara',
-      '2'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/843/WEB-03.jpg',
-      'Heaven Land in Galle',
-      '700,000',
-      '15',
-      'Bare Land',
-      'Galle',
-      '10'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/834/01.jpg',
-      'Land for sale in Weligama',
-      '350,000',
-      '40',
-      'Bare Lands',
-      'Weligama',
-      '15'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/447/image1.jpg',
-      'Green Heaven Galle',
-      '1,000,000',
-      '35',
-      'Bare Land',
-      'Galle',
-      '18'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/859/image%20001.jpg',
-      'Prime capital - Hambantota',
-      '850,000',
-      '80',
-      'Coconut Land',
-      'Hambantota',
-      '15'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/855/image%20001.png',
-      'Super Land in Walasmulla',
-      '680,000',
-      '40',
-      'Cultivated Land',
-      'Walasmulla',
-      '12'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/778/image%20001.jpg',
-      'Beautiful Land in Dickwella',
-      '360,000',
-      '30',
-      'Bare Lands',
-      'Dickwella',
-      '20'
-    );
-
-    this.createHouse(
-      'https://www.lankaad.lk/uploads/files/lk/7674/thumb-816x460-0e36fbd8797e87dea066127a93c8807f.JPG',
-      'Luxury House in matara',
-      '500,000',
-      '20',
-      'Luxury House',
-      'Matara',
-      '2'
-    );
-    this.createHouse(
-      'https://www.lankapropertyweb.com/pics/335040/xthumb_424_335040_1582642645_6476.JPG.pagespeed.ic.83iRcIO4uD.jpg',
-      'House for sale in Galle',
-      '700,000',
-      '15',
-      'Luxury House',
-      'Galle',
-      '10'
-    );
-
-    this.selectedArray = this.lands;
-    this.selectedArrayIndex = 1;
-
-    const x = this.selectedArray.filter((item) =>
-      item.location.includes('Gal')
-    );
-
-    console.log(x);
-  }
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.authService.getCurrentUser());
-  }
+    this.setHouses();
+    this.setLands();
 
-  createLand(image, title, price, size, type, location, time): void {
-    this.lands.push({
-      image,
-      title,
-      price,
-      size,
-      type,
-      location,
-      time,
-    });
-  }
-
-  createHouse(image, title, price, size, type, location, time): void {
-    this.houses.push({
-      image,
-      title,
-      price,
-      size,
-      type,
-      location,
-      time,
-    });
+    setTimeout(() => {
+      this.selectedArray = this.lands;
+    }, 500);
+    this.selectedArrayName = 'lands';
   }
 
   changeArray(type): void {
@@ -149,32 +43,53 @@ export class HomeComponent implements OnInit {
 
     if (type === 'lands') {
       this.selectedArray = this.lands;
-      this.selectedArrayIndex = 1;
+      this.selectedArrayName = 'lands';
     } else {
       this.selectedArray = this.houses;
-      this.selectedArrayIndex = 2;
+      this.selectedArrayName = 'houses';
     }
   }
 
   search(form): void {
-    if (this.selectedArrayIndex === 1) {
+    if (this.selectedArrayName === 'lands') {
       this.selectedArray = this.lands.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
-    } else {
+    } else if (this.selectedArrayName === 'houses') {
       this.selectedArray = this.houses.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
     }
   }
 
-  openAd(): void {
-    const isLogged = localStorage.getItem('token') !== null;
-
-    if (isLogged) {
-      this.router.navigate(['/viewAd']);
-    } else {
-      this.router.navigate(['/login']);
+  openAd(property: any): void {
+    if (this.selectedArrayName === 'lands') {
+      this.router.navigate(['/viewLand', property._id]);
+    } else if (this.selectedArrayName === 'houses') {
+      this.router.navigate(['/viewHouse', property._id]);
     }
+  }
+
+  setLands(): void {
+    this.advertisementService.getDirectLands(1).then(
+      (res) => {
+        this.lands = res;
+        console.log(this.lands);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  setHouses(): void {
+    this.advertisementService.getDirectHouses(1).then(
+      (res) => {
+        this.houses = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

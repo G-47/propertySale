@@ -95,8 +95,13 @@
 }
 
 .result-container {
-  app-card {
+  app-direct-house-card {
     outline: transparent;
+    margin: 20px 30px;
+  }
+  app-direct-land-card {
+    outline: transparent;
+    margin: 20px 30px;
   }
 
   margin-right: auto;

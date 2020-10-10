@@ -5,7 +5,7 @@
     <div
       (click)="changeArray('lands')"
       [ngClass]="
-        selectedArrayIndex == 1
+        selectedArrayName == 'lands'
           ? 'filter-button-selected'
           : 'filter-button-deselected'
       "
@@ -16,7 +16,7 @@
     <div
       (click)="changeArray('houses')"
       [ngClass]="
-        selectedArrayIndex == 2
+        selectedArrayName == 'houses'
           ? 'filter-button-selected'
           : 'filter-button-deselected'
       "
@@ -42,9 +42,7 @@
     </form>
   </div>
 
-  <div class="octions-button" routerLink="/auctions">
-    Auctions
-  </div>
+  <div class="octions-button" routerLink="/auctions">Auctions</div>
 
   <div class="post-ad-button" routerLink="/postAd">
     Post Your <br />
@@ -67,7 +65,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner" style="height: 400px;">
+    <div class="carousel-inner" style="height: 400px">
       <div class="carousel-item active">
         <img
           class="d-block w-100"
@@ -115,16 +113,36 @@
   *No results found
 </div>
 
-<div class="result-container" *ngIf="selectedArray.length > 0">
-  <app-card
-    (click)="openAd()"
+<div
+  *ngIf="selectedArrayName == 'lands' && selectedArray.length > 0"
+  class="result-container"
+>
+  <app-direct-land-card
+    (click)="openAd(temp)"
     *ngFor="let temp of selectedArray"
-    [image]="temp.image"
+    [image]="temp.images[0]"
     [title]="temp.title"
     [price]="temp.price"
     [size]="temp.size"
     [type]="temp.type"
-    [location]="temp.location"
-    [time]="temp.time"
-  ></app-card>
+    [location]="temp.locationName"
+    [time]="temp.postedTime"
+  ></app-direct-land-card>
+</div>
+
+<div
+  *ngIf="selectedArrayName == 'houses' && selectedArray.length > 0"
+  class="result-container"
+>
+  <app-direct-house-card
+    (click)="openAd(temp)"
+    *ngFor="let temp of selectedArray"
+    [image]="temp.images[0]"
+    [title]="temp.title"
+    [price]="temp.price"
+    [bathRooms]="temp.bathRooms"
+    [bedRooms]="temp.bedRooms"
+    [location]="temp.locationName"
+    [time]="temp.postedTime"
+  ></app-direct-house-card>
 </div>
