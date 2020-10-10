@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,61 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  lands = [];
-  loadingcomponent ="kbsjf";
-  is_ad = true;
-
-  constructor() {
-    this.createLand(
-      'https://www.primelands.lk/resources/834/01.jpg',
-      'Land for sale in Weligama',
-      '350,000',
-      '40',
-      'Bare Lands',
-      'Weligama',
-      '15'
-    );
-    this.createLand(
-      'https://www.primelands.lk/resources/447/image1.jpg',
-      'Green Heaven Galle',
-      '1,000,000',
-      '35',
-      'Bare Land',
-      'Galle',
-      '18'
-    );
-
-    const x = this.lands.filter((item) => item.location.includes('Gal'));
-
-    console.log(x);
+  constructor(private AuthService: AuthService) {
+    var user = new User();
+    user = AuthService.getCurrentUser();
+    this.profileImage = user.profilePicture;
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
+    this.email = user.email;
+    this.mobileNumber = user.mobileNumber;
+    this.nic = user.nicNumber;
   }
 
-  createLand(image, title, price, size, type, location, time) {
-    this.lands.push({
-      image,
-      title,
-      price,
-      size,
-      type,
-      location,
-      time,
-    });
-  }
+  profileImage;
+  firstName;
+  lastName;
+  email;
+  mobileNumber;
+  nic;
 
-  title = 'appComponent';
-
-  isAd = true;
-
-  toggleDisplayDivtotrue() {
-    this.isAd = true;
-  }
-
-  toggleDisplayDivtofalse() {
-    this.isAd = false;
-  }
-
-  ngOnInit(): void {
-    this.isAd = false;
-    console.log(this.loadingcomponent);
-  }
+  ngOnInit() {}
 }
