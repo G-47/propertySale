@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DirectHouse } from 'src/app/models/direct-house.model';
 import { DirectLand } from 'src/app/models/direct-land.model';
@@ -9,7 +10,10 @@ import { AdvertisementService } from 'src/app/services/advertisement.service';
   styleUrls: ['./user-dashboard.component.scss'],
 })
 export class UserDashboardComponent implements OnInit {
-  constructor(private advertisementService: AdvertisementService) {}
+  constructor(
+    private advertisementService: AdvertisementService,
+    private router: Router
+  ) {}
 
   nav = 1;
   postedLands = [] as DirectLand[];
@@ -45,5 +49,13 @@ export class UserDashboardComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  openAd(type: string, property: any): void {
+    if (type === 'land') {
+      this.router.navigate(['/viewLand', property._id]);
+    } else if (type === 'house') {
+      this.router.navigate(['/viewHouse', property._id]);
+    }
   }
 }
