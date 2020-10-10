@@ -50,6 +50,8 @@ import { DirectLandPostByAdminComponent } from './components/direct-land-post-by
 import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
 import { UserCardComponent } from './components/cards/user-card/user-card.component';
 import { ReviewUserComponent } from './components/review-user/review-user.component';
+import { ViewHouseComponent } from './components/view-house/view-house.component';
+import { ViewLandComponent } from './components/view-land/view-land.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { ReviewUserComponent } from './components/review-user/review-user.compon
     DirectHousePostByAdminComponent,
     UserCardComponent,
     ReviewUserComponent,
+    ViewHouseComponent,
+    ViewLandComponent,
   ],
   imports: [
     BrowserModule,

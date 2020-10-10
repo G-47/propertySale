@@ -83,11 +83,11 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   goToReviewLand(landDetails: DirectLand): void {
-    this.router.navigate(['/reviewLand'], { state: landDetails });
+    this.router.navigate(['/reviewLand', landDetails._id]);
   }
 
   goToReviewHouse(houseDetails: DirectHouse): void {
-    this.router.navigate(['/reviewHouse'], { state: houseDetails });
+    this.router.navigate(['/reviewHouse', houseDetails._id]);
   }
 
   goToReviewUser(userDetails: User): void {
