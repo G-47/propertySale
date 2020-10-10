@@ -1,190 +1,39 @@
-<!-- <div class="main-screen">
-  <div class="side-container">
-    <div class="profile-avatar">
-      <img
-        class="profile-avatar"
-        src="https://www.menshairstylestoday.com/wp-content/uploads/2016/09/Gentlemens-Cut-Side-Part.jpg"
-      />
-    </div>
-    <div class="profile-name">Priyashan Jayasankha</div>
-    <div class="profile-details">
-      +94785482303 <br />
-      priyashan@gmail.com
-    </div>
-    <div class="option-container">
-      <div class="inner-container">
-        <button
-          class="btn btn-outline-primary inner-container"
-          (click)="toggleDisplayDivtofalse()"
-        >
-          Posted Ads
-        </button>
-      </div>
-      <div class="inner-container">
-        <button
-          class="btn btn-outline-primary inner-container"
-          (click)="toggleDisplayDivtotrue()"
-        >
-          Auctions
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="loader-container">
-    <div [hidden]="isAd" class="result-container">
-      <app-card
-        *ngFor="let temp of lands"
-        [image]="temp.image"
-        [title]="temp.title"
-        [price]="temp.price"
-        [size]="temp.size"
-        [type]="temp.type"
-        [location]="temp.location"
-        [time]="temp.time"
-      ></app-card>
-    </div>
-    <div [hidden]="isAd === false" class="result-container" routerLink="viewAd">
-      <div class="carousel-container">
-        <div
-          id="carouselExampleIndicators"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <div class="carousel-inner" style="height: 400px; border-radius: 8px">
-            <div class="carousel-item active">
-              <div class="ad-container">
-                <img
-                  class="ad-image"
-                  src="https://www.primelands.lk/resources/16/colombo%2002.jpg"
-                  alt="First slide"
-                />
-                <div class="title">
-                  Thalawathugoda City
-                  <button type="button" class="btn btn-primary bid-button">
-                    Change bid
-                  </button>
-                </div>
-                <div class="details">
-                  Current bid: &nbsp;
-                  <div class="content">Rs:&nbsp;7,000,000/-</div>
-                  <div class="nxt">
-                    Next bid: &nbsp;
-                    <div class="content">Rs:&nbsp;7,050,000/-</div>
-                  </div>
-                </div>
-                <div class="details2">
-                  <div class="titles">Size:</div>
-                  <div class="contents">50 perches</div>
-                  <div class="titles">Type:</div>
-                  <div class="contents">Apartment</div>
-                  <div class="titles">Location:</div>
-                  <div class="contents">Thalawathugoda</div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="ad-container">
-                <img
-                  class="ad-image"
-                  src="https://www.primelands.lk/resources/855/image%20001.png"
-                  alt="First slide"
-                />
-                <div class="title">
-                  Land in Athurugiriya
-                  <button type="button" class="btn btn-primary bid-button">
-                    Change Bid
-                  </button>
-                </div>
-                <div class="details">
-                  Current bid: &nbsp;
-                  <div class="content">Rs:&nbsp;800,000/-</div>
-                  <div class="nxt">
-                    Next bid: &nbsp;
-                    <div class="content">Rs:&nbsp; 850,000/-</div>
-                  </div>
-                </div>
-                <div class="details2">
-                  <div class="titles">Size:</div>
-                  <div class="contents">100 perches</div>
-                  <div class="titles">Type:</div>
-                  <div class="contents">Land</div>
-                  <div class="titles">Location:</div>
-                  <div class="contents">Athurugiriya</div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="ad-container">
-                <img
-                  class="ad-image"
-                  src="https://www.primelands.lk/resources/298/image2.jpg"
-                  alt="First slide"
-                />
-                <div class="title">
-                  Land in Batawala
-                  <button type="button" class="btn btn-primary bid-button">
-                    Chage bid
-                  </button>
-                </div>
-                <div class="details">
-                  Current bid: &nbsp;
-                  <div class="content">Rs:&nbsp;500,000/-</div>
-                  <div class="nxt">
-                    Next bid: &nbsp;
-                    <div class="content">Rs:&nbsp;550,000/-</div>
-                  </div>
-                </div>
-                <div class="details2">
-                  <div class="titles">Size:</div>
-                  <div class="contents">150 perches</div>
-                  <div class="titles">Type:</div>
-                  <div class="contents">Land</div>
-                  <div class="titles">Location:</div>
-                  <div class="contents">Meegoda</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
-  <div class="detailContainer">
-    <div class="profileImage">
-      <img class="image" src="{{ profileImage }}" />
+  <h1 class="text-center mt-5 mb-2">Profile</h1>
+  <div class="user-details">
+    <div class="profile-picture">
+      <img [src]="user.profilePicture" alt="" />
     </div>
-    <div class="details">
-      <div class="content"><label>First Name :</label>{{ firstName }}</div>
-      <div class="content"><label>Last Name :</label>{{ lastName }}</div>
-      <div class="content"><label>Email :</label>{{ email }}</div>
-      <div class="content">
-        <label>Mobile Number :</label>{{ mobileNumber }}
+    <div class="item">
+      <div class="title">First Name:</div>
+      <div class="value">
+        {{ user.firstName }}
       </div>
-      <div class="content"><label>NIC Number :</label>{{ nic }}</div>
+    </div>
+    <div class="item">
+      <div class="title">Last Name:</div>
+      <div class="value">
+        {{ user.lastName }}
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">Mobile Number:</div>
+      <div class="value">
+        {{ user.mobileNumber }}
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">Email:</div>
+      <div class="value">
+        {{ user.email }}
+      </div>
+    </div>
+    <div class="item">
+      <div class="title">NIC Number:</div>
+      <div class="value">
+        {{ user.nicNumber }}
+      </div>
     </div>
   </div>
-  <div class="buttonContainer">
-    <div class="update-button">Edit Profile</div>
-  </div>
+  <button class="btn btn-primary float-right m-5">Edit Profile</button>
 </div>

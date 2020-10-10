@@ -8,23 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(private AuthService: AuthService) {
-    var user = new User();
-    user = AuthService.getCurrentUser();
-    this.profileImage = user.profilePicture;
-    this.firstName = user.firstName;
-    this.lastName = user.lastName;
-    this.email = user.email;
-    this.mobileNumber = user.mobileNumber;
-    this.nic = user.nicNumber;
+  constructor(private AuthService: AuthService) {}
+
+  user: User;
+
+  ngOnInit() {
+    this.user = this.AuthService.getCurrentUser();
   }
-
-  profileImage;
-  firstName;
-  lastName;
-  email;
-  mobileNumber;
-  nic;
-
-  ngOnInit() {}
 }
