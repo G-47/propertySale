@@ -10,13 +10,16 @@ export class BiddingService {
 
   private getAllBids_url = 'http://localhost:3000/api/getAllBids';
   private insertBid_url = 'http://localhost:3000/api/insertBid';
+  private getUser_bid_url = 'http://localhost:3000/api/getData';
+  private insertUser_bid_url = 'http://localhost:3000/api/insertData';
 
   newBid = {} as Bidding;
 
   constructor(private http:HttpClient) { }
 
-  getBids(): Observable<Bidding[]> {
-    return this.http.get<Bidding[]>(this.getAllBids_url);
+  getBids(adID): Observable<Bidding[]> {
+    this.newBid.adID = adID
+    return this.http.post<Bidding[]>(this.getAllBids_url,this.newBid);
   }
 
   addBid(formData): any {
@@ -27,4 +30,18 @@ export class BiddingService {
 
     return this.http.post<any>(this.insertBid_url, this.newBid);
   }
+
+  getUser_bids(adID,userID): Observable<Bidding[]> {
+    this.newBid.adID = adID
+    this.newBid.userID = userID
+    return this.http.post<Bidding[]>(this.getUser_bid_url,this.newBid);
+  }
+
+  addUser_bids(adID,userID): any {
+    this.newBid.adID = adID;
+    this.newBid.userID = userID;
+
+    return this.http.post<any>(this.insertUser_bid_url, this.newBid);
+  }
+
 }

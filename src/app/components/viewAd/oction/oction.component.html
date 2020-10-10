@@ -77,11 +77,11 @@
 
 <div class="price-container">Starting Bid LKR {{arr.startBid}}</div>
 
-<div *ngIf="currentDate > arr.startDate">
+<div *ngIf="(currentDate > arr.startDate) && isSubscribed; else elseBlock">
   <!-- bidding container -->
 <div class="bidding-container">
   <div class="f-line">
-    Curent bid:<div class="inner">LKR&nbsp;<div class="bolding">1,000,000</div> &nbsp; [1bid]</div>
+    Curent bid:<div class="inner">LKR&nbsp;<div class="bolding">{{bids[0].biddingAmount}}</div> &nbsp; [{{bids.length}} bids]</div>
   </div>  
   <div class="bidding-form-container">
     <form [formGroup]="BiddingForm">
@@ -96,9 +96,14 @@
     </form>&nbsp;
     <button type="button" class="btn btn-primary" (click)="addBid(BiddingForm.value)">Place Bid</button>
   </div>
-  <div class="bidding-bottom">Enter LKR 1,010,000 or more</div>
+  <div class="bidding-bottom">Enter LKR {{bids[0].biddingAmount}} or more</div>
 </div>
 </div>
+<ng-template #elseBlock>
+  <div class="else-container">
+    <button type="button" class="btn btn-primary" (click)="enterBid()">Enter Bid</button>
+  </div>
+</ng-template>
 
 
 <div class="detail-container">

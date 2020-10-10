@@ -4,6 +4,9 @@ import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
 import { Bidding } from 'src/app/models/bidding.model';
 import { AuctionAdService } from 'src/app/services/auction-ad.service';
 import { BiddingService } from 'src/app/services/bidding.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-oction',
@@ -11,26 +14,41 @@ import { BiddingService } from 'src/app/services/bidding.service';
   styleUrls: ['./oction.component.scss']
 })
 export class OctionComponent implements OnInit {
-
-  constructor(private formBuilder: FormBuilder, private auctionAdService: AuctionAdService, private biddingService: BiddingService) {}
+  errorMessage = 'temp';
+  constructor(private formBuilder: FormBuilder, 
+    private auctionAdService: AuctionAdService,
+    private biddingService: BiddingService,
+    private toastr: ToastrService,
+    private router: Router,
+    private authService: AuthService
+    ) {}
 
   kirama = {lat: 6.2074, lng: 80.6672};
   currentDate = Date.now();
   arr = {} as AuctionLandAd;
   bids = [];
+  currentBid: number;
   public errorMsg;
+  isSubscribed = false;
 
   ngOnInit(): void {
     this.arr = this.auctionAdService.getSelectedLandAd();
-    console.log(this.arr.locationMap["latitude"]);
-    console.log(this.arr.title);
 
-    this.biddingService.getBids().subscribe(
+    this.biddingService.getUser_bids(this.arr._id,this.authService.currentUser).subscribe(
       (result) => {
-        console.log(result);
-        this.bids = result;
+        this.isSubscribed = true;
+        this.biddingService.getBids(this.arr._id).subscribe(
+          (results) => {
+            // console.log(results);
+            this.bids = results;
+            this.currentBid = this.bids[0].biddingAmount;
+          },
+          (error) => (this.errorMsg = error)
+        );
       },
-      (error) => (this.errorMsg = error)
+      (errors) => {
+        this.isSubscribed = true;
+      }
     );
   }
 
@@ -43,8 +61,7 @@ export class OctionComponent implements OnInit {
   });
 
   bidValueValidator(control: AbstractControl):{[key: string]: boolean} | null {
-
-    if( control.value !==null && (isNaN(control.value) || control.value < 20)){
+    if( control.value !==null && (isNaN(control.value) || control.value < this.currentBid)){
       return {'bidValueValidator': true}
     }
     return null;
@@ -57,7 +74,20 @@ export class OctionComponent implements OnInit {
       adID: this.arr._id,
       userID: '',
     }
+    this.biddingService.addBid(formDetails).subscribe(
+      (res) => {
+        this.toastr.success('Addign a Bid', 'Bid added successfully');
+        // this.router.navigate(['/']);
+        this.BiddingForm.reset();
+      },
+      (err) => {
+        this.errorMessage = err.error[0];
+        console.log(err.error[0]);
+      }
+    );
+  }
 
-    this.biddingService.addBid(formDetails);
+  enterBid(){
+    this.router.navigateByUrl("/payment");
   }
 }

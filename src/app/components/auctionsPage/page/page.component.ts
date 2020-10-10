@@ -103,18 +103,18 @@ export class PageComponent implements OnInit {
   }
 
   openAd(arr) {
-    // const isLogged = localStorage.getItem('token') !== null;
+    const isLogged = localStorage.getItem('token') !== null;
 
-    // if (isLogged) {
-      // this.router.navigate(['/viewAuctionAd']);
-    // } else {
-    //   this.router.navigate(['/login']);
-    // }
-    if(this.selectedArrayIndex === 1){
-      this.auctionAdService.setSelectedLandAd(arr);
-      this.router.navigate(['/viewAuctionAd']);
-    }else{
-      this.auctionAdService.setSelectedHouseAd(arr[0]);
+    if (isLogged) {
+      if(this.selectedArrayIndex === 1){
+        this.auctionAdService.setSelectedLandAd(arr);
+        this.router.navigate(['/viewAuctionAd']);
+      }else{
+        this.auctionAdService.setSelectedHouseAd(arr);
+      }
+    } else {
+      this.router.navigate(['/login']);
     }
+    
   }
 }
