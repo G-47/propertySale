@@ -1,6 +1,9 @@
 <div class="myContainer">
   <div class="sidebar">
     <a [ngClass]="nav === 1 ? 'active' : ''" (click)="setNav(1)">Profile</a>
+    <a [ngClass]="nav === 6 ? 'active' : ''" (click)="getPendingUsers()"
+      >User Requests</a
+    >
     <a [ngClass]="nav === 2 ? 'active' : ''" (click)="getPendingLands()"
       >Land Requests</a
     >
@@ -8,8 +11,9 @@
       >House Requests</a
     >
     <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">New Ad</a>
-    <a [ngClass]="nav === 5 ? 'active' : ''" (click)="setNav(5)"
-      >Activity Log</a
+    <a [ngClass]="nav === 5 ? 'active' : ''" (click)="setNav(5)">Activity Log</a
+    ><a [ngClass]="nav === 7 ? 'active' : ''" (click)="getActiveUsers()"
+      >Active Users</a
     >
   </div>
 
@@ -17,7 +21,8 @@
     <app-profile></app-profile>
   </div>
   <div *ngIf="nav === 2" class="content">
-    <div class="pendingLands">
+    <div class="pendings">
+      <h1 *ngIf="pendingLands.length == 0">*No new Land advertisements</h1>
       <div *ngFor="let item of pendingLands">
         <app-direct-land-card
           class="m-3"
@@ -34,7 +39,8 @@
     </div>
   </div>
   <div *ngIf="nav === 3" class="content">
-    <div class="pendingHouses">
+    <div class="pendings">
+      <h1 *ngIf="pendingHouses.length == 0">*No new House advertisements</h1>
       <div *ngFor="let item of pendingHouses">
         <app-direct-house-card
           class="m-3"
@@ -80,5 +86,35 @@
   </div>
   <div *ngIf="nav === 5" class="content">
     <h2>Activity Log</h2>
+  </div>
+  <div *ngIf="nav === 6" class="content">
+    <div class="pendings">
+      <h1 *ngIf="pendingUsers.length == 0">*No new user requests</h1>
+      <div *ngFor="let item of pendingUsers">
+        <app-user-card
+          class="m-3"
+          (click)="goToReviewUser(item)"
+          [profilePicture]="item.profilePicture"
+          [firstName]="item.firstName"
+          [lastName]="item.lastName"
+          [email]="item.email"
+        ></app-user-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 7" class="content">
+    <div class="pendings">
+      <h1 *ngIf="activeUsers.length == 0">*No active users</h1>
+      <div *ngFor="let item of activeUsers">
+        <app-user-card
+          class="m-3"
+          (click)="goToReviewUser(item)"
+          [profilePicture]="item.profilePicture"
+          [firstName]="item.firstName"
+          [lastName]="item.lastName"
+          [email]="item.email"
+        ></app-user-card>
+      </div>
+    </div>
   </div>
 </div>

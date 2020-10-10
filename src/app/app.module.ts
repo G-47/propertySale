@@ -14,7 +14,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/homePage/home/home.component';
-import { CardComponent } from './components/homePage/card/card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DirectComponent } from './components/viewAd/direct/direct.component';
 import { OctionComponent } from './components/viewAd/oction/oction.component';
@@ -43,18 +42,19 @@ import { PostAdComponent } from './components/post-ad/post-ad.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
-import { DirectLandCardComponent } from './components/homePage/direct-land-card/direct-land-card.component';
-import { DirectHouseCardComponent } from './components/homePage/direct-house-card/direct-house-card.component';
+import { DirectLandCardComponent } from './components/cards/direct-land-card/direct-land-card.component';
+import { DirectHouseCardComponent } from './components/cards/direct-house-card/direct-house-card.component';
 import { ReviewLandComponent } from './components/review-land/review-land.component';
 import { ReviewHouseComponent } from './components/review-house/review-house.component';
 import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
 import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
+import { UserCardComponent } from './components/cards/user-card/user-card.component';
+import { ReviewUserComponent } from './components/review-user/review-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CardComponent,
     NavbarComponent,
     DirectComponent,
     OctionComponent,
@@ -87,6 +87,8 @@ import { DirectHousePostByAdminComponent } from './components/direct-house-post-
     ReviewHouseComponent,
     DirectLandPostByAdminComponent,
     DirectHousePostByAdminComponent,
+    UserCardComponent,
+    ReviewUserComponent,
   ],
   imports: [
     BrowserModule,
