@@ -62,13 +62,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openAd(): void {
-    const isLogged = localStorage.getItem('token') !== null;
-
-    if (isLogged) {
-      this.router.navigate(['/viewAd']);
-    } else {
-      this.router.navigate(['/login']);
+  openAd(property: any): void {
+    if (this.selectedArrayName === 'lands') {
+      this.router.navigate(['/viewLand', property._id]);
+    } else if (this.selectedArrayName === 'houses') {
+      this.router.navigate(['/viewHouse', property._id]);
     }
   }
 

@@ -1,3 +1,4 @@
+import { EmailService } from './../../services/email.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -13,7 +14,8 @@ export class ReviewUserComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private emailService: EmailService
   ) {}
 
   userId: string;
@@ -34,6 +36,11 @@ export class ReviewUserComponent implements OnInit {
   approveUser(): void {
     this.authService.approveUser(this.user._id).then(
       (res) => {
+        this.emailService.sendEmail(
+          this.user.email,
+          'Lanka Properties',
+          `Hi ${this.user.firstName},\nYour user account has been accepted by lanka properties.Now you can login to the system.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
+        );
         this.router.navigate(['/adminDashboard']);
       },
       (err) => {
