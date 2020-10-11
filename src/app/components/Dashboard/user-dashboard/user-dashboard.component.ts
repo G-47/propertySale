@@ -1,8 +1,11 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BidedProperty } from 'src/app/models/bided-property.model';
 import { DirectHouse } from 'src/app/models/direct-house.model';
 import { DirectLand } from 'src/app/models/direct-land.model';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
+import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
+import { AuctionHouseAd } from 'src/app/models/auctionHouseAd.model';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,13 +13,18 @@ import { AdvertisementService } from 'src/app/services/advertisement.service';
   styleUrls: ['./user-dashboard.component.scss'],
 })
 export class UserDashboardComponent implements OnInit {
-  constructor(private advertisementService: AdvertisementService) {}
+  constructor(
+    private advertisementService: AdvertisementService,
+    private router: Router
+  ) {}
 
   nav = 1;
   postedLands = [] as DirectLand[];
   postedHouses = [] as DirectHouse[];
-  bidedLands = [] as BidedProperty[];
-  bidedHouses = [] as BidedProperty[];
+  bidedLandIds = [] as string[];
+  bidedHouseIds = [] as string[];
+  bidedLands = [] as AuctionLandAd[];
+  bidedHouses = [] as AuctionHouseAd[];
 
   setNav(n): void {
     this.nav = n;
@@ -54,6 +62,15 @@ export class UserDashboardComponent implements OnInit {
     this.setNav(4);
     this.advertisementService.getBidedPropertyIds('Land').then(
       (res) => {
+        this.bidedLandIds = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.advertisementService.getBidedLands(this.bidedLandIds).then(
+      (res) => {
         this.bidedLands = res;
         console.log(res);
       },
@@ -67,6 +84,15 @@ export class UserDashboardComponent implements OnInit {
     this.setNav(5);
     this.advertisementService.getBidedPropertyIds('House').then(
       (res) => {
+        this.bidedHouseIds = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.advertisementService.getBidedHouses(this.bidedHouseIds).then(
+      (res) => {
         this.bidedHouses = res;
         console.log(res);
       },
@@ -74,5 +100,13 @@ export class UserDashboardComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  openAd(type: string, property: any): void {
+    if (type === 'land') {
+      this.router.navigate(['/viewLand', property._id]);
+    } else if (type === 'house') {
+      this.router.navigate(['/viewHouse', property._id]);
+    }
   }
 }

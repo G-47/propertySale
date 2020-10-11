@@ -44,6 +44,26 @@ div.content {
   }
 }
 
+.message-box {
+  padding: 10px;
+  width: 70%;
+  margin: 20px;
+  border: 2px solid darkGrey;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .message {
+  }
+
+  .time {
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: auto;
+    color: grey;
+  }
+}
+
 .selector-box {
   display: flex;
   flex-wrap: wrap;
