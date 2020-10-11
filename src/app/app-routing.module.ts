@@ -1,3 +1,5 @@
+import { ViewHouseComponent } from './components/view-house/view-house.component';
+import { ViewLandComponent } from './components/view-land/view-land.component';
 import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
 import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
 import { ReviewHouseComponent } from './components/review-house/review-house.component';
@@ -43,9 +45,11 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'newAuction', component: NewAuctionComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
-  { path: 'reviewLand', component: ReviewLandComponent },
-  { path: 'reviewHouse', component: ReviewHouseComponent },
+  { path: 'reviewLand/:id', component: ReviewLandComponent },
+  { path: 'reviewHouse/:id', component: ReviewHouseComponent },
   { path: 'reviewUser/:id', component: ReviewUserComponent },
+  { path: 'viewLand/:id', component: ViewLandComponent },
+  { path: 'viewHouse/:id', component: ViewHouseComponent },
   {
     path: 'directHousePostByAdmin',
     component: DirectHousePostByAdminComponent,

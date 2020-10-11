@@ -1,3 +1,4 @@
+import { Message } from './../../../models/message.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DirectHouse } from './../../../models/direct-house.model';
@@ -5,6 +6,8 @@ import { DirectLand } from './../../../models/direct-land.model';
 import { AdvertisementService } from './../../../services/advertisement.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { AdminsService } from 'src/app/services/admins.service';
+import * as Moment from 'moment';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,7 +18,8 @@ export class AdminDashboardComponent implements OnInit {
   constructor(
     private advertisementService: AdvertisementService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private adminService: AdminsService
   ) {}
 
   nav = 1;
@@ -23,6 +27,9 @@ export class AdminDashboardComponent implements OnInit {
   pendingHouses = [] as DirectHouse[];
   pendingUsers = [] as User[];
   activeUsers = [] as User[];
+  messages = [] as Message[];
+
+  moment = (num: number) => Moment(num);
 
   setNav(n): void {
     this.nav = n;
@@ -82,12 +89,25 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
+  getMessages(): void {
+    this.setNav(8);
+    this.adminService.getMessages().then(
+      (res) => {
+        console.log(res);
+        this.messages = res.sort((a, b) => b.timestamp - a.timestamp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   goToReviewLand(landDetails: DirectLand): void {
-    this.router.navigate(['/reviewLand'], { state: landDetails });
+    this.router.navigate(['/reviewLand', landDetails._id]);
   }
 
   goToReviewHouse(houseDetails: DirectHouse): void {
-    this.router.navigate(['/reviewHouse'], { state: houseDetails });
+    this.router.navigate(['/reviewHouse', houseDetails._id]);
   }
 
   goToReviewUser(userDetails: User): void {

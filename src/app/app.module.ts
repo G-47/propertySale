@@ -52,6 +52,8 @@ import { UserCardComponent } from './components/cards/user-card/user-card.compon
 import { ReviewUserComponent } from './components/review-user/review-user.component';
 import { PostAuctionAdComponent } from './components/post-auction-ad/post-auction-ad.component';
 import { AuctionLandComponent } from './components/viewAd/auction-land/auction-land.component';
+import { ViewHouseComponent } from './components/view-house/view-house.component';
+import { ViewLandComponent } from './components/view-land/view-land.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,8 @@ import { AuctionLandComponent } from './components/viewAd/auction-land/auction-l
     ReviewUserComponent,
     PostAuctionAdComponent,
     AuctionLandComponent,
+    ViewHouseComponent,
+    ViewLandComponent,
   ],
   imports: [
     BrowserModule,

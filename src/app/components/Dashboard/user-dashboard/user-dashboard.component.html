@@ -4,7 +4,7 @@
     <a [ngClass]="nav === 2 ? 'active' : ''" (click)="getPostedLands()"
       >Posted Lands</a
     >
-    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="setNav(3)"
+    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="getPostedHouses()"
       >Posted Houses</a
     >
     <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">Joined bids</a>
@@ -18,7 +18,7 @@
       <div *ngFor="let item of postedLands">
         <app-direct-land-card
           class="m-3"
-          (click)="goToReviewLand(item)"
+          (click)="openAd('land', item)"
           [image]="item.images[0]"
           [title]="item.title"
           [price]="item.price"
@@ -35,7 +35,7 @@
       <div *ngFor="let item of postedHouses">
         <app-direct-house-card
           class="m-3"
-          (click)="goToReviewHouse(item)"
+          (click)="openAd('house', item)"
           [image]="item.images[0]"
           [title]="item.title"
           [price]="item.price"

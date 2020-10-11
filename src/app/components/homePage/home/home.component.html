@@ -118,7 +118,7 @@
   class="result-container"
 >
   <app-direct-land-card
-    (click)="openAd()"
+    (click)="openAd(temp)"
     *ngFor="let temp of selectedArray"
     [image]="temp.images[0]"
     [title]="temp.title"
@@ -135,7 +135,7 @@
   class="result-container"
 >
   <app-direct-house-card
-    (click)="openAd()"
+    (click)="openAd(temp)"
     *ngFor="let temp of selectedArray"
     [image]="temp.images[0]"
     [title]="temp.title"

@@ -15,6 +15,7 @@ export class AdminsService {
   private getAdmins_url = 'http://localhost:3000/api/getAdmins';
   private addAdmins_url = 'http://localhost:3000/api/registerAdmin';
   private composemsg_url = 'http://localhost:3000/api/postMessage';
+  private getmsg_url = 'http://localhost:3000/api/getMessages';
   private removeadmin_url = 'http://localhost:8080/sms/api/removeAdmin';
 
   newadmin = {} as Admin;
@@ -47,10 +48,14 @@ export class AdminsService {
     return this.http.delete<IAdmins>(this.removeadmin_url + '/' + id);
   }
 
-  composeMsg(formData,id:string) {
+  composeMsg(formData, id: string) {
     this.message.adminId = id;
     this.message.message = formData.message;
     this.message.name = formData.name;
     return this.http.post<any>(this.composemsg_url, this.message);
+  }
+
+  getMessages(): Promise<Message[]> {
+    return this.http.get<any>(this.getmsg_url).toPromise();
   }
 }
