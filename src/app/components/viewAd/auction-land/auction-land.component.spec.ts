@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OngoingComponent } from './ongoing.component';
+import { AuctionLandComponent } from './auction-land.component';
 
-describe('OngoingComponent', () => {
-  let component: OngoingComponent;
-  let fixture: ComponentFixture<OngoingComponent>;
+describe('AuctionLandComponent', () => {
+  let component: AuctionLandComponent;
+  let fixture: ComponentFixture<AuctionLandComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OngoingComponent ]
+      declarations: [ AuctionLandComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OngoingComponent);
+    fixture = TestBed.createComponent(AuctionLandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

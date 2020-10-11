@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder,Validators } from '@angular/forms';
-import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
-import { Bidding } from 'src/app/models/bidding.model';
-import { AuctionAdService } from 'src/app/services/auction-ad.service';
-import { BiddingService } from 'src/app/services/bidding.service';
+import { FormBuilder, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
+import { AuctionAdService } from 'src/app/services/auction-ad.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuctionHouseAd } from 'src/app/models/auctionHouseAd.model';
+import { BiddingService } from 'src/app/services/bidding.service';
 
 @Component({
-  selector: 'app-oction',
-  templateUrl: './oction.component.html',
-  styleUrls: ['./oction.component.scss']
+  selector: 'app-auction-land',
+  templateUrl: './auction-land.component.html',
+  styleUrls: ['./auction-land.component.scss']
 })
-export class OctionComponent implements OnInit {
+export class AuctionLandComponent implements OnInit {
   errorMessage = 'temp';
   constructor(private formBuilder: FormBuilder, 
     private auctionAdService: AuctionAdService,
@@ -26,7 +24,7 @@ export class OctionComponent implements OnInit {
 
   kirama = {lat: 6.2074, lng: 80.6672};
   currentDate = Date.now();
-  arr = {} as AuctionHouseAd;
+  arr = {} as AuctionLandAd;
   bids = [];
   currentBid: number;
   public errorMsg;
@@ -35,7 +33,7 @@ export class OctionComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
-    this.arr = this.auctionAdService.getSelectedHouseAd();
+    this.arr = this.auctionAdService.getSelectedLandAd();
   
     this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
       (result) => {
@@ -95,7 +93,7 @@ export class OctionComponent implements OnInit {
   enterBid(){
     // this.router.navigateByUrl("/payment");
 
-    this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"House").subscribe(
+    this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"Land").subscribe(
       (result) => {
         console.log(result);
       },
