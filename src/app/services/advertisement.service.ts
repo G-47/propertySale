@@ -9,6 +9,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DirectLand } from '../models/direct-land.model';
+import { BidedProperty } from '../models/bided-property.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,9 @@ export class AdvertisementService implements HttpInterceptor {
 
   private getLandByIdUrl = 'http://localhost:3000/api/getLandById';
   private getHouseByIdUrl = 'http://localhost:3000/api/getHouseById';
+
+  private getBidedPropertyIdsByUserId =
+    'http://localhost:3000/api/getBidedPropertyIds';
 
   constructor(private http: HttpClient) {}
 
@@ -91,6 +95,12 @@ export class AdvertisementService implements HttpInterceptor {
   getHouseById(id: string): Promise<DirectHouse> {
     return this.http
       .post<any>(this.getHouseByIdUrl, { id })
+      .toPromise();
+  }
+
+  getBidedPropertyIds(type: string): Promise<BidedProperty[]> {
+    return this.http
+      .post<any>(this.getBidedPropertyIdsByUserId, { type })
       .toPromise();
   }
 }

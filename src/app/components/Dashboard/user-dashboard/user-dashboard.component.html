@@ -7,7 +7,12 @@
     <a [ngClass]="nav === 3 ? 'active' : ''" (click)="getPostedHouses()"
       >Posted Houses</a
     >
-    <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">Joined bids</a>
+    <a [ngClass]="nav === 4 ? 'active' : ''" (click)="getJoinLandAuctions()"
+      >Joined Land Auctions</a
+    >
+    <a [ngClass]="nav === 5 ? 'active' : ''" (click)="getJoinHouseAuctions()"
+      >Joined House Auctions</a
+    >
   </div>
 
   <div *ngIf="nav === 1" class="content">
@@ -48,6 +53,9 @@
     </div>
   </div>
   <div *ngIf="nav === 4" class="content">
+    <h2>Bids</h2>
+  </div>
+  <div *ngIf="nav === 5" class="content">
     <h2>Bids</h2>
   </div>
 </div>
