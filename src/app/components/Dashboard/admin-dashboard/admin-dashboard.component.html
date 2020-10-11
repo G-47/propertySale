@@ -14,6 +14,8 @@
     <a [ngClass]="nav === 5 ? 'active' : ''" (click)="setNav(5)">Activity Log</a
     ><a [ngClass]="nav === 7 ? 'active' : ''" (click)="getActiveUsers()"
       >Active Users</a
+    ><a [ngClass]="nav === 8 ? 'active' : ''" (click)="getMessages()"
+      >Active Users</a
     >
   </div>
 
@@ -114,6 +116,21 @@
           [lastName]="item.lastName"
           [email]="item.email"
         ></app-user-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 8" class="content">
+    <div class="pendings">
+      <h1 *ngIf="messages.length == 0">*No messges</h1>
+    </div>
+    <div *ngFor="let item of messages">
+      <div class="message-box">
+        <div class="message">
+          {{ item.message }}
+        </div>
+        <div class="time">
+          {{ moment(item.timestamp).fromNow() }}
+        </div>
       </div>
     </div>
   </div>
