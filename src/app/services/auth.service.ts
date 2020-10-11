@@ -9,7 +9,10 @@ import { User } from '../models/user.model';
 export class AuthService implements HttpInterceptor {
   private registerUrl = 'http://localhost:3000/api/registerUser';
   private loginUrl = 'http://localhost:3000/api/authenticateUser';
+  private getCurrentUserUrl = 'http://localhost:3000/api/getCurrentUser';
   private getUserUrl = 'http://localhost:3000/api/getUser';
+  private getUsersUrl = 'http://localhost:3000/api/getUsers';
+  private approveUserUrl = 'http://localhost:3000/api/approveUser';
 
   constructor(private http: HttpClient) {}
 
@@ -40,7 +43,7 @@ export class AuthService implements HttpInterceptor {
         (res) => {
           localStorage.setItem('token', res.token);
           this.http
-            .get(this.getUserUrl)
+            .get(this.getCurrentUserUrl)
             .toPromise()
             .then(
               (resUser: { user: any }) => {
@@ -57,7 +60,7 @@ export class AuthService implements HttpInterceptor {
           return { status: true };
         },
         (err) => {
-          console.log(err.error.message);
+          console.log(err);
           return { error: err.error.message, status: false };
         }
       );
@@ -67,7 +70,25 @@ export class AuthService implements HttpInterceptor {
     });
   }
 
-  getUser(): User {
+  getCurrentUser(): User {
     return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  getUser(id: string): Promise<User> {
+    return this.http
+      .post<any>(this.getUserUrl, { id })
+      .toPromise();
+  }
+
+  getUsers(status: number): Promise<User[]> {
+    return this.http
+      .post<any>(this.getUsersUrl, { status })
+      .toPromise();
+  }
+
+  approveUser(id: string): Promise<User> {
+    return this.http
+      .post<any>(this.approveUserUrl, { id })
+      .toPromise();
   }
 }

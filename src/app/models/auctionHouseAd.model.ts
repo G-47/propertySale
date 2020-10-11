@@ -1,17 +1,17 @@
 export class AuctionHouseAd {
     _id: string;    
-    title: String;
-    type: String;
-    size: String;
-    description: String;
-    threeSixtyImageUrl: String;
-    extracts: Array<String>;
-    otherImages: Array<String>;
-    location: String;
-    mapCordinates: Object;
-    startDate: Date;
-    endDate: Date;
-    startBid: String;
-    bedrRooms: number;
+    title: string;
+    description: string;
+    images: string[];
+    locationName: string;
+    locationMap: {
+      lat: number;
+      lng: number;
+    };
+    startDate: number;
+    endDate: number;
+    startBid: number;
+    bedRooms: number;
     bathRooms: number;
+    postedTime: number;    
   }

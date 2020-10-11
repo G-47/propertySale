@@ -1,4 +1,6 @@
 export interface IAdmins{
   id:number,
-  name:String,
+  firstName:String,
+  profilePicture:String,
+  email:String,
 }

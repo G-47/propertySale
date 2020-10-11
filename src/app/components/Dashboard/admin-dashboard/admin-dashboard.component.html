@@ -1,31 +1,120 @@
 <div class="myContainer">
   <div class="sidebar">
     <a [ngClass]="nav === 1 ? 'active' : ''" (click)="setNav(1)">Profile</a>
-    <a [ngClass]="nav === 2 ? 'active' : ''" (click)="setNav(2)"
+    <a [ngClass]="nav === 6 ? 'active' : ''" (click)="getPendingUsers()"
+      >User Requests</a
+    >
+    <a [ngClass]="nav === 2 ? 'active' : ''" (click)="getPendingLands()"
       >Land Requests</a
     >
-    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="setNav(3)"
+    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="getPendingHouses()"
       >House Requests</a
     >
     <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">New Ad</a>
-    <a [ngClass]="nav === 5 ? 'active' : ''" (click)="setNav(5)"
-      >Activity Log</a
+    <a [ngClass]="nav === 5 ? 'active' : ''" (click)="setNav(5)">Activity Log</a
+    ><a [ngClass]="nav === 7 ? 'active' : ''" (click)="getActiveUsers()"
+      >Active Users</a
     >
   </div>
 
   <div *ngIf="nav === 1" class="content">
-    <h2>Responsive Sidebar profile</h2>
+    <app-profile></app-profile>
   </div>
   <div *ngIf="nav === 2" class="content">
-    <h2>Responsive Sidebar Home</h2>
+    <div class="pendings">
+      <h1 *ngIf="pendingLands.length == 0">*No new Land advertisements</h1>
+      <div *ngFor="let item of pendingLands">
+        <app-direct-land-card
+          class="m-3"
+          (click)="goToReviewLand(item)"
+          [image]="item.images[0]"
+          [title]="item.title"
+          [price]="item.price"
+          [size]="item.size"
+          [type]="item.type"
+          [location]="item.locationName"
+          [time]="item.postedTime"
+        ></app-direct-land-card>
+      </div>
+    </div>
   </div>
   <div *ngIf="nav === 3" class="content">
-    <h2>Responsive Sidebar News</h2>
+    <div class="pendings">
+      <h1 *ngIf="pendingHouses.length == 0">*No new House advertisements</h1>
+      <div *ngFor="let item of pendingHouses">
+        <app-direct-house-card
+          class="m-3"
+          (click)="goToReviewHouse(item)"
+          [image]="item.images[0]"
+          [title]="item.title"
+          [price]="item.price"
+          [bathRooms]="item.bathRooms"
+          [bedRooms]="item.bedRooms"
+          [location]="item.locationName"
+          [time]="item.postedTime"
+        ></app-direct-house-card>
+      </div>
+    </div>
   </div>
   <div *ngIf="nav === 4" class="content">
-    <h2>Responsive Sidebar Contact</h2>
+    <div class="selector-box">
+      <div class="selector-item card" (click)="goToNewAd(1)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Direct Land</h4>
+        </div>
+        <img src="/assets/images/land-direct.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(2)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Direct House</h4>
+        </div>
+        <img src="/assets/images/house-direct.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(3)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Auction Land</h4>
+        </div>
+        <img src="/assets/images/land-auction.svg" alt="" />
+      </div>
+      <div class="selector-item card" (click)="goToNewAd(4)">
+        <div class="selector-item-header">
+          <h4 class="text-center">Auction House</h4>
+        </div>
+        <img src="/assets/images/house-auction.svg" alt="" />
+      </div>
+    </div>
   </div>
   <div *ngIf="nav === 5" class="content">
-    <h2>Responsive Sidebar About</h2>
+    <h2>Activity Log</h2>
+  </div>
+  <div *ngIf="nav === 6" class="content">
+    <div class="pendings">
+      <h1 *ngIf="pendingUsers.length == 0">*No new user requests</h1>
+      <div *ngFor="let item of pendingUsers">
+        <app-user-card
+          class="m-3"
+          (click)="goToReviewUser(item)"
+          [profilePicture]="item.profilePicture"
+          [firstName]="item.firstName"
+          [lastName]="item.lastName"
+          [email]="item.email"
+        ></app-user-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 7" class="content">
+    <div class="pendings">
+      <h1 *ngIf="activeUsers.length == 0">*No active users</h1>
+      <div *ngFor="let item of activeUsers">
+        <app-user-card
+          class="m-3"
+          (click)="goToReviewUser(item)"
+          [profilePicture]="item.profilePicture"
+          [firstName]="item.firstName"
+          [lastName]="item.lastName"
+          [email]="item.email"
+        ></app-user-card>
+      </div>
+    </div>
   </div>
 </div>

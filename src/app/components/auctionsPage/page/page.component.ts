@@ -22,42 +22,7 @@ export class PageComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder, private router: Router, private auctionAdService: AuctionAdService) {
-    // this.createLand(
-    //   "123142351336",
-    //   "Land for Sale in Negambo",
-    //   "Bare Land",
-    //   "50",
-    //   "Near to Colombo",
-    //   "",
-    //   [],
-    //   ["https://www.primelands.lk/resources/893/icon.jpg","https://www.primelands.lk/resources/893/WEB-04.jpg"],
-    //   "Negambo",
-    //   {"longitude":6.2074,"latitude":80.6672},
-    //   1288323623006,
-    //   1288323623006,
-    //   300000.50
-    // );
-    // this.createHouse(
-    //   "123142351336",
-    //   "House for Sale in Monaragala",
-    //   "Luxury House",
-    //   "40",
-    //   "Near to Monaragala Town. Electricity and water. Beautifull sorrounding",
-    //   "",
-    //   [],
-    //   ["https://www.primelands.lk/resources/893/icon.jpg","https://www.primelands.lk/resources/893/WEB-04.jpg"],
-    //   "Negambo",
-    //   {"longitude":6.2074,"latitude":80.6672},
-    //   1288323623006,
-    //   1288323623006,
-    //   300000,
-    //   5,
-    //   2
-    // );
     
-    // this.selectedArray = this.lands;
-    // this.selectedArrayIndex = 1;
-
     const x = this.selectedArray.filter((item) =>
       item.location.includes('Gal')
     );
@@ -66,12 +31,20 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {    
-    this.selectedArrayIndex = 1;
     this.auctionAdService.getAuctionLandAd().subscribe(
       (result) => {
         console.log(result);
         this.lands = result;
-        this.selectedArray = this.lands;
+        this.selectedArray=this.lands;
+        this.selectedArrayIndex = 1;
+      },
+      (error) => (this.errorMsg = error)
+    );
+
+    this.auctionAdService.getAuctionHouseAd().subscribe(
+      (result) => {
+        console.log(result);
+        this.houses = result;
       },
       (error) => (this.errorMsg = error)
     );
@@ -108,9 +81,10 @@ export class PageComponent implements OnInit {
     if (isLogged) {
       if(this.selectedArrayIndex === 1){
         this.auctionAdService.setSelectedLandAd(arr);
-        this.router.navigate(['/viewAuctionAd']);
+        this.router.navigate(['/viewAuctionLandAd']);
       }else{
         this.auctionAdService.setSelectedHouseAd(arr);
+        this.router.navigate(['/viewAuctionHouseAd']);
       }
     } else {
       this.router.navigate(['/login']);

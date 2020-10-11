@@ -37,9 +37,10 @@ export class BiddingService {
     return this.http.post<Bidding[]>(this.getUser_bid_url,this.newBid);
   }
 
-  addUser_bids(adID,userID): any {
+  addUser_bids(adID,userID,type): any {
     this.newBid.adID = adID;
     this.newBid.userID = userID;
+    this.newBid.type = type;
 
     return this.http.post<any>(this.insertUser_bid_url, this.newBid);
   }

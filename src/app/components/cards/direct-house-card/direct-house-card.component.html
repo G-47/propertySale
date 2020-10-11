@@ -4,16 +4,15 @@
     <ul class="list-group list-group-flush">
       <li
         class="list-group-item"
-        style="font-size: 17px; margin-left: 5px; color: #494fe9;"
+        style="font-size: 17px; margin-left: 5px; color: #494fe9"
       >
         <b>{{ title }}</b>
       </li>
       <li
-        class="list-group-item"
-        style="font-size: 17px; margin-left: 5px; color: #1ec92f;"
+        class="list-group-item text-center"
+        style="font-size: 17px; margin-left: 5px; color: #1ec92f"
       >
-        Rs: {{ price }}&nbsp;
-        <span style="font-size: 12px; color: black;"> per perch</span>
+        Rs: {{ price }} /=
       </li>
       <li
         class="list-group-item"
@@ -24,11 +23,12 @@
         "
       >
         <div class="li-box">
-          <b>Size: </b>{{ size }} perches &nbsp;&nbsp;&nbsp;&nbsp; <b>Type: </b
-          >{{ type }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
+          <div class="li"><b>Bed Rooms: </b>{{ bedRooms }}</div>
+          <div class="li"><b>Bath Rooms: </b>{{ bathRooms }}</div>
+          <div class="li"><b>Location: </b>{{ location }}</div>
         </div>
 
-        <p style="text-align: end;">{{ time }}&nbsp;hours ago</p>
+        <p style="text-align: end">{{ moment(time).fromNow() }}</p>
       </li>
     </ul>
   </div>

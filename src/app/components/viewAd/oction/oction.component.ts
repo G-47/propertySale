@@ -7,6 +7,7 @@ import { BiddingService } from 'src/app/services/bidding.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { AuctionHouseAd } from 'src/app/models/auctionHouseAd.model';
 
 @Component({
   selector: 'app-oction',
@@ -25,29 +26,33 @@ export class OctionComponent implements OnInit {
 
   kirama = {lat: 6.2074, lng: 80.6672};
   currentDate = Date.now();
-  arr = {} as AuctionLandAd;
+  arr = {} as AuctionHouseAd;
   bids = [];
   currentBid: number;
   public errorMsg;
   isSubscribed = false;
+  currentUser: any;
 
   ngOnInit(): void {
-    this.arr = this.auctionAdService.getSelectedLandAd();
-
-    this.biddingService.getUser_bids(this.arr._id,this.authService.currentUser).subscribe(
+    this.currentUser = this.authService.getCurrentUser();
+    this.arr = this.auctionAdService.getSelectedHouseAd();
+  
+    this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
       (result) => {
-        this.isSubscribed = true;
-        this.biddingService.getBids(this.arr._id).subscribe(
-          (results) => {
-            // console.log(results);
-            this.bids = results;
-            this.currentBid = this.bids[0].biddingAmount;
-          },
-          (error) => (this.errorMsg = error)
-        );
+        if(result.length>0){
+          this.isSubscribed = true;
+          this.biddingService.getBids(this.arr._id).subscribe(
+            (results) => {
+              this.bids = results;
+              this.currentBid = this.bids[0].biddingAmount;
+            },
+            (error) => (this.errorMsg = error)
+          );
+        }
+        
       },
       (errors) => {
-        this.isSubscribed = true;
+        // this.isSubscribed = true;
       }
     );
   }
@@ -88,6 +93,15 @@ export class OctionComponent implements OnInit {
   }
 
   enterBid(){
-    this.router.navigateByUrl("/payment");
+    // this.router.navigateByUrl("/payment");
+
+    this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"House").subscribe(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.log(error);
+      } 
+    );
   }
 }

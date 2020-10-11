@@ -21,14 +21,10 @@ export class AuctionCardComponent implements OnInit {
   @Input( 'startBid' ) startBid: number ;
   @Input( 'currentBid' ) currentBid: number ;
   @Input( 'postedTime' ) postedTime: any ;
-   
-  rest: number ;
-  remain: number;     //////////////////////////////////////////////
-  days: number ;     ///////                                ///////
-  hours: number ;    ///////    variables for countdown     ///////
-  mins: number ;     ///////                                ///////
-  secs: number ;     //////////////////////////////////////////////
 
+  @Input( 'bedRooms' ) bedRooms: number;
+  @Input( 'bathRooms' ) bathRooms: number;
+   
 
 
   constructor() {

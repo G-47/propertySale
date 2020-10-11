@@ -2,15 +2,13 @@
   margin: 0;
   font-family: "Lato", sans-serif;
   display: flex;
-  height: 100%;
 }
 
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 300px;
   background-color: #f1f1f1;
-  min-height: calc(100vh - 342px);
 }
 
 .sidebar a {
@@ -18,6 +16,8 @@
   color: black;
   padding: 16px;
   text-decoration: none;
+  cursor: pointer;
+  width: 300px;
 }
 
 .sidebar a.active {
@@ -30,8 +30,42 @@
 }
 
 div.content {
-  padding: 1px 16px;
-  min-height: calc(100vh - 342px);
+  min-height: calc(100vh - 324px);
+  flex: 1;
+}
+
+.pendings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  h1 {
+    margin-top: 50px;
+  }
+}
+
+.selector-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .selector-item {
+    margin: 30px;
+    cursor: pointer;
+    padding: 20px;
+
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  .selector-item:hover {
+    box-shadow: 0 0 5px 2px #343557;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -41,14 +75,14 @@ div.content {
 
   .sidebar {
     width: 100%;
-    min-height: 56px;
+    height: 56px !important;
   }
   .sidebar a {
     float: left;
   }
   div.content {
     margin-left: 0;
-    min-height: calc(100vh - 398px);
+    min-height: calc(100vh - 380px);
   }
 }
 

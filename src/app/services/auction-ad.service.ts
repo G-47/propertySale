@@ -13,6 +13,11 @@ export class AuctionAdService {
   adHouse = {} as AuctionHouseAd;
 
   private getAuctionLandAd_url = 'http://localhost:3000/api/getAllLandAds';
+  private getAuctionHouseAd_url = 'http://localhost:3000/api/getAllHouseAds';
+  private postAuctionLandAd_url = 'http://localhost:3000/api/addAuctionLandAd';
+  private postAuctionHouseAd_url = 'http://localhost:3000/api/addAuctionHouseAd';
+
+  
 
   constructor(private http:HttpClient) {}
 
@@ -34,5 +39,18 @@ export class AuctionAdService {
 
   getAuctionLandAd(): Observable<AuctionLandAd[]> {
     return this.http.get<AuctionLandAd[]>(this.getAuctionLandAd_url);
+  }
+
+  getAuctionHouseAd(): Observable<AuctionHouseAd[]> {
+    return this.http.get<AuctionHouseAd[]>(this.getAuctionHouseAd_url);
+  }
+
+  postAuctionLand(landDetails: AuctionLandAd): Promise<any> {
+    return this.http.post<any>(this.postAuctionLandAd_url, landDetails).toPromise();
+  }
+
+  postAuctionHouse(houseDetails: AuctionHouseAd): Promise<any> {
+    return this.http
+      .post<any>(this.postAuctionHouseAd_url, houseDetails).toPromise();
   }
 }

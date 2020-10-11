@@ -111,16 +111,36 @@
   *No results found
 </div>
 
-<div class="result-container" *ngIf="selectedArray.length > 0">
+<div class="result-container" *ngIf="selectedArray.length > 0 && selectedArrayIndex == 1">
+    <app-auction-card
+      (click)="openAd(selectedArray[i])"
+      *ngFor="let temp of selectedArray; let i = index"
+      [_id]="temp._id"
+      [title]="temp.title"
+      [type]="temp.type"
+      [size]="temp.size"
+      [description]="temp.description"
+      [threeSixtyImageUrl]="temp.threeSixtyImageUrl"
+      [images]="temp.images"
+      [locationName]="temp.locationName"
+      [locationMap]="temp.locationMap"
+      [startDate]="temp.startDate"
+      [endDate]="temp.endDate"
+      [startBid]="temp.startBid"
+      [currentBid]="temp.currentBid"
+      [postedTime]="temp.postedTime"
+    ></app-auction-card>
+</div>
+
+<div class="result-container" *ngIf="selectedArray.length > 0 && selectedArrayIndex == 2">
   <app-auction-card
     (click)="openAd(selectedArray[i])"
     *ngFor="let temp of selectedArray; let i = index"
     [_id]="temp._id"
     [title]="temp.title"
-    [type]="temp.type"
-    [size]="temp.size"
+    [bedRooms]="temp.bedRooms"
+    [bathRooms]="temp.bathRooms"
     [description]="temp.description"
-    [threeSixtyImageUrl]="temp.threeSixtyImageUrl"
     [images]="temp.images"
     [locationName]="temp.locationName"
     [locationMap]="temp.locationMap"
@@ -131,3 +151,4 @@
     [postedTime]="temp.postedTime"
   ></app-auction-card>
 </div>
+

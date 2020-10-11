@@ -1,1 +1,53 @@
-<p>user-dashboard works!</p>
+<div class="myContainer">
+  <div class="sidebar">
+    <a [ngClass]="nav === 1 ? 'active' : ''" (click)="setNav(1)">Profile</a>
+    <a [ngClass]="nav === 2 ? 'active' : ''" (click)="getPostedLands()"
+      >Posted Lands</a
+    >
+    <a [ngClass]="nav === 3 ? 'active' : ''" (click)="setNav(3)"
+      >Posted Houses</a
+    >
+    <a [ngClass]="nav === 4 ? 'active' : ''" (click)="setNav(4)">Joined bids</a>
+  </div>
+
+  <div *ngIf="nav === 1" class="content">
+    <app-profile></app-profile>
+  </div>
+  <div *ngIf="nav === 2" class="content">
+    <div class="pendingLands">
+      <div *ngFor="let item of postedLands">
+        <app-direct-land-card
+          class="m-3"
+          (click)="goToReviewLand(item)"
+          [image]="item.images[0]"
+          [title]="item.title"
+          [price]="item.price"
+          [size]="item.size"
+          [type]="item.type"
+          [location]="item.locationName"
+          [time]="item.postedTime"
+        ></app-direct-land-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 3" class="content">
+    <div class="pendingHouses">
+      <div *ngFor="let item of postedHouses">
+        <app-direct-house-card
+          class="m-3"
+          (click)="goToReviewHouse(item)"
+          [image]="item.images[0]"
+          [title]="item.title"
+          [price]="item.price"
+          [bathRooms]="item.bathRooms"
+          [bedRooms]="item.bedRooms"
+          [location]="item.locationName"
+          [time]="item.postedTime"
+        ></app-direct-house-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 4" class="content">
+    <h2>Bids</h2>
+  </div>
+</div>

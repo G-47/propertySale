@@ -1,13 +1,13 @@
 
 export class AuctionLandAd {
     _id: string;    
-    title: String;
-    type: String;
-    size: String;
-    description: String;
-    threeSixtyImageUrl: String;
-    images: String[];
-    locationName: String;
+    title: string;
+    type: string;
+    size: string;
+    description: string;
+    threeSixtyImageUrl: string;
+    images: string[];
+    locationName: string;
     locationMap: {
       lat: number;
       lng: number;

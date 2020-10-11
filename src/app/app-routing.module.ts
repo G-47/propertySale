@@ -1,5 +1,10 @@
+import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
+import { DirectHousePostByAdminComponent } from './components/direct-house-post-by-admin/direct-house-post-by-admin.component';
+import { ReviewHouseComponent } from './components/review-house/review-house.component';
+import { ReviewLandComponent } from './components/review-land/review-land.component';
 import { AdminDashboardComponent } from './components/Dashboard/admin-dashboard/admin-dashboard.component';
 import { PostAdComponent } from './components/post-ad/post-ad.component';
+import { PostAuctionAdComponent } from './components/post-auction-ad/post-auction-ad.component';
 import { TestComponent } from './components/test/test.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,8 +18,11 @@ import { PageComponent } from './components/auctionsPage/page/page.component';
 import { ManagerComponent } from './components/manager/manager.component';
 import { NewAdminComponent } from './components/manager/admins/new-admin/new-admin.component';
 import { OctionComponent } from './components/viewAd/oction/oction.component';
+import { AuctionLandComponent } from './components/viewAd/auction-land/auction-land.component';
 import { NewAuctionComponent } from './components/manager/auction/new-auction/new-auction.component';
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
+import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
+import { ReviewUserComponent } from './components/review-user/review-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,8 +31,10 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'viewAd', component: DirectComponent },
-  { path: 'viewAuctionAd', component: OctionComponent },
+  { path: 'viewAuctionHouseAd', component: OctionComponent },
+  { path: 'viewAuctionLandAd', component: AuctionLandComponent },
   { path: 'postAd', component: PostAdComponent },
+  { path: 'postAuctionAd', component: PostAuctionAdComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
   { path: 'manager', component: ManagerComponent },
@@ -33,6 +43,18 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'newAuction', component: NewAuctionComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
+  { path: 'reviewLand', component: ReviewLandComponent },
+  { path: 'reviewHouse', component: ReviewHouseComponent },
+  { path: 'reviewUser/:id', component: ReviewUserComponent },
+  {
+    path: 'directHousePostByAdmin',
+    component: DirectHousePostByAdminComponent,
+  },
+  {
+    path: 'directLandPostByAdmin',
+    component: DirectLandPostByAdminComponent,
+  },
+  { path: 'userDashboard', component: UserDashboardComponent },
 ];
 
 @NgModule({

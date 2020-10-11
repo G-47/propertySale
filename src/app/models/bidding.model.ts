@@ -1,8 +1,8 @@
 export class Bidding{
-    _id:String;
-    adID: String;
-    userID: String;
+    _id:string;
+    adID: string;
+    userID: string;
     biddingAmount: Number;
-    type: String;
+    type: string;
     postedTime: Number;
 }

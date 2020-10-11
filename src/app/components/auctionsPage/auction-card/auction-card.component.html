@@ -24,15 +24,21 @@
             padding-top: 10px !important;
           "
         >
-          <div class="li-box">
+          <div class="li-box" *ngIf="bedRooms == null">
             <b>Size: </b>{{ size }} perches &nbsp;&nbsp;&nbsp;&nbsp; <b>Type: </b
             >{{ type }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
+          </div>
+
+          <div class="li-box" *ngIf="bedRooms != null">
+            <b>bedRooms: </b>{{ bedRooms }} &nbsp;&nbsp;&nbsp;&nbsp; <b>bathRooms: </b
+            >{{ bathRooms }} &nbsp;&nbsp;&nbsp;&nbsp; <b>Location: </b>{{ location }}
           </div>
         </li>
         <li class="list-group-item" class="card-bottom">
           <app-count-down 
           [startDate]="startDate"
-          [endDate]="endDate"></app-count-down>
+          [endDate]="endDate"
+          [_id] = "_id"></app-count-down>
         </li>
       </ul>
     </div>
