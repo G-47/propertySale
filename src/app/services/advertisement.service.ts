@@ -103,7 +103,7 @@ export class AdvertisementService implements HttpInterceptor {
       .toPromise();
   }
 
-  getBidedPropertyIds(type: string): Promise<string[]> {
+  getBidedPropertyIds(type: string): Promise<any> {
     return this.http
       .post<any>(this.getBidedPropertyIdsByUserId, { type })
       .toPromise();

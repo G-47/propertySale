@@ -62,7 +62,9 @@ export class UserDashboardComponent implements OnInit {
     this.setNav(4);
     this.advertisementService.getBidedPropertyIds('Land').then(
       (res) => {
-        this.bidedLandIds = res;
+        res.forEach((item) => {
+          this.bidedLandIds.push(item.adID);
+        });
         console.log(res);
       },
       (err) => {
@@ -84,7 +86,9 @@ export class UserDashboardComponent implements OnInit {
     this.setNav(5);
     this.advertisementService.getBidedPropertyIds('House').then(
       (res) => {
-        this.bidedHouseIds = res;
+        res.forEach((item) => {
+          this.bidedHouseIds.push(item.adID);
+        });
         console.log(res);
       },
       (err) => {

@@ -20,14 +20,14 @@
         <div class="carousel-item active">
           <img
             class="d-block w-100"
-            src="{{arr.images[0]}}"
+            src="{{ arr.images[0] }}"
             alt="First slide"
           />
         </div>
         <div class="carousel-item">
           <img
             class="d-block w-100"
-            src="{{arr.images[1]}}"
+            src="{{ arr.images[1] }}"
             alt="Second slide"
           />
         </div>
@@ -53,7 +53,7 @@
     </div>
   </div>
   <div class="carousel-bottom">
-    <div class="title-container">{{arr.title}}</div>
+    <div class="title-container">{{ arr.title }}</div>
     <div class="image-container">
       <img
         src="../../../../assets/images/360.svg"
@@ -63,62 +63,136 @@
     </div>
   </div>
   <div class="countDown-container">
-    <app-count-down [startDate]="arr.startDate"
-    [endDate]="arr.endDate"></app-count-down></div>
+    <app-count-down
+      [startDate]="arr.startDate"
+      [endDate]="arr.endDate"
+    ></app-count-down>
+  </div>
 </div>
 
-<div class="price-container">Starting Bid {{arr.startBid | currency:'LKR ':'code'}}</div>
-<div *ngIf="currentUser !== null">
-  <div *ngIf="(currentDate > arr.startDate) && (currentUser.userType === 0)">
+<div class="price-container">
+  Starting Bid {{ arr.startBid | currency: "LKR ":"code" }}
+</div>
+<div *ngIf="currentUser != null">
+  <div *ngIf="currentDate > arr.startDate && currentUser.userType === 0">
     <div *ngIf="isSubscribed; else elseBlock">
       <!-- bidding container -->
-    <div class="bidding-container">
-      <div class="f-line">
-        Curent bid:<div class="inner">&nbsp;<div class="bolding">{{currentBid | currency:'LKR ':'code'}}</div> &nbsp; [{{bids.length}} bids]</div>
-      </div>  
-      <div class="bidding-form-container">
-        <form [formGroup]="BiddingForm">
-          <input
-          type="text"
-          [class.is-invalid]="
-              BiddingForm.get('biddingAmount').invalid && BiddingForm.get('biddingAmount').touched
-              " 
-          formControlName="biddingAmount"
-          class="form-control"
-          required> 
-        </form>&nbsp;
-        <button type="button" class="btn btn-primary" (click)="addBid(BiddingForm.value)">Place Bid</button>
+      <div class="bidding-container">
+        <div class="f-line">
+          Curent bid:
+          <div class="inner">
+            &nbsp;
+            <div class="bolding">
+              {{ currentBid | currency: "LKR ":"code" }}
+            </div>
+            &nbsp; [{{ bids.length }} bids]
+          </div>
+        </div>
+        <div class="bidding-form-container">
+          <form [formGroup]="BiddingForm">
+            <input
+              type="text"
+              [class.is-invalid]="
+                BiddingForm.get('biddingAmount').invalid &&
+                BiddingForm.get('biddingAmount').touched
+              "
+              formControlName="biddingAmount"
+              class="form-control"
+              required
+            />
+          </form>
+          &nbsp;
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="addBid(BiddingForm.value)"
+          >
+            Place Bid
+          </button>
+        </div>
+        <div class="bidding-bottom">
+          Enter {{ nextBid | currency: "LKR ":"code" }} or more
+        </div>
       </div>
-      <div class="bidding-bottom">Enter {{nextBid | currency:'LKR ':'code'}} or more</div>
-    </div>
     </div>
     <ng-template #elseBlock>
       <div class="else-container">
-        <button type="button" class="btn btn-primary" (click)="enterBid()">Enter Bid</button>
+        <button type="button" class="btn btn-primary" (click)="enterBid()">
+          Enter Bid
+        </button>
       </div>
     </ng-template>
   </div>
 </div>
 
-
-
+<div *ngIf="currentUser == null">
+  <div *ngIf="currentDate > arr.startDate">
+    <div *ngIf="isSubscribed; else elseBlock">
+      <!-- bidding container -->
+      <div class="bidding-container">
+        <div class="f-line">
+          Curent bid:
+          <div class="inner">
+            &nbsp;
+            <div class="bolding">
+              {{ currentBid | currency: "LKR ":"code" }}
+            </div>
+            &nbsp; [{{ bids.length }} bids]
+          </div>
+        </div>
+        <div class="bidding-form-container">
+          <form [formGroup]="BiddingForm">
+            <input
+              type="text"
+              [class.is-invalid]="
+                BiddingForm.get('biddingAmount').invalid &&
+                BiddingForm.get('biddingAmount').touched
+              "
+              formControlName="biddingAmount"
+              class="form-control"
+              required
+            />
+          </form>
+          &nbsp;
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="addBid(BiddingForm.value)"
+          >
+            Place Bid
+          </button>
+        </div>
+        <div class="bidding-bottom">
+          Enter {{ nextBid | currency: "LKR ":"code" }} or more
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="else-container">
+        <button type="button" class="btn btn-primary" (click)="enterBid()">
+          Enter Bid
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>
 
 <div class="detail-container">
   <div class="top">
     <div class="land-description-item" style="margin-right: auto">
       <div class="topic">Land Type :</div>
-      <div class="text">{{arr.type}}</div>
+      <div class="text">{{ arr.type }}</div>
     </div>
     <div class="land-description-item" style="margin-left: auto">
       <div class="topic">Land Size :</div>
-      <div class="text">{{arr.size}} perches</div>
+      <div class="text">{{ arr.size }} perches</div>
     </div>
   </div>
   <div class="bottom">
     <div class="land-description-item">
       <div class="topic">Description :</div>
       <div class="text">
-        {{arr.description}}
+        {{ arr.description }}
       </div>
     </div>
   </div>
@@ -135,8 +209,11 @@
   <app-map style="width: 100%" [inputPlace]="arr.locationMap"></app-map>
 </div>
 
-<div class="table-container" *ngIf="bidHistory.length > 0 && currentUser.userType !== 0">
-  <h1 style="text-align: center;">Bidding History</h1>
+<div
+  class="table-container"
+  *ngIf="bidHistory.length > 0 && currentUser.userType !== 0"
+>
+  <h1 style="text-align: center">Bidding History</h1>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
@@ -148,12 +225,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let detail of bidHistory">
-        <td>{{detail.userName}}</td>
-        <td>{{detail.bidAmount| currency:'LKR ':'code'}}</td>
-        <td>{{detail.email}}</td>
-        <td>{{detail.phoneNumber}}</td>
+        <td>{{ detail.userName }}</td>
+        <td>{{ detail.bidAmount | currency: "LKR ":"code" }}</td>
+        <td>{{ detail.email }}</td>
+        <td>{{ detail.phoneNumber }}</td>
       </tr>
     </tbody>
   </table>
 </div>
-
