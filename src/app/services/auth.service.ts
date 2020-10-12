@@ -97,9 +97,7 @@ export class AuthService implements HttpInterceptor {
     profilePicture: string,
     firstName: string,
     lastName: string,
-    mobileNumber: string,
-    email: string,
-    nic: string
+    mobileNumber: string
   ): Promise<User> {
     return this.http
       .put<any>(this.updateUserUrl, {
@@ -107,8 +105,6 @@ export class AuthService implements HttpInterceptor {
         firstName,
         lastName,
         mobileNumber,
-        email,
-        nic,
       })
       .toPromise();
   }

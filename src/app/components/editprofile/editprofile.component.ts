@@ -6,18 +6,18 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-editprofile',
   templateUrl: './editprofile.component.html',
-  styleUrls: ['./editprofile.component.scss']
+  styleUrls: ['./editprofile.component.scss'],
 })
 export class EditprofileComponent implements OnInit {
-
   errorMessage = 'temp';
   successMessage = 'temp';
 
-  RegisterForm = this.formBuilder.group({
+  UpdateForm = this.formBuilder.group({
     profilePicture: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -30,9 +30,6 @@ export class EditprofileComponent implements OnInit {
     ],
     email: ['', [Validators.required, Validators.email]],
     nicNumber: ['', Validators.required],
-    nicFrontImage: ['', Validators.required],
-    nicBackImage: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   constructor(
@@ -42,15 +39,25 @@ export class EditprofileComponent implements OnInit {
     private toastr: ToastrService,
     private customValidationService: CustomValidationService,
     private emailService: EmailService
-  ) { }
+  ) {}
+
+  user: User;
 
   ngOnInit(): void {
+    this.user = this.authService.getCurrentUser();
+    this.UpdateForm.controls.profilePicture.setValue(this.user.profilePicture);
+    this.UpdateForm.controls.firstName.setValue(this.user.firstName);
+    this.UpdateForm.controls.lastName.setValue(this.user.lastName);
+    this.UpdateForm.controls.mobileNumber.setValue(this.user.mobileNumber);
   }
 
   setProfilePicture(url): void {
-    this.RegisterForm.controls.profilePicture.setValue(url);
+    this.UpdateForm.controls.profilePicture.setValue(url);
     console.log('profile picture is : ' + url);
   }
-  
-}
 
+  updateUser(profilePicture, firstName, lastName, email): void {
+    this.authService.updateUser(profilePicture, firstName, lastName, email);
+    this.router.navigate(['/profile']);
+  }
+}
