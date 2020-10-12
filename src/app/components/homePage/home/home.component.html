@@ -44,9 +44,21 @@
 
   <div class="octions-button" routerLink="/auctions">Auctions</div>
 
-  <div class="post-ad-button" routerLink="/postAd">
-    Post Your <br />
-    Ad
+  <div *ngIf="currentUser != null">
+    <div
+      *ngIf="currentUser.status != 1 && currentUser.status != 2"
+      class="post-ad-button"
+      routerLink="/postAd"
+    >
+      Post Your <br />
+      Ad
+    </div>
+  </div>
+  <div *ngIf="currentUser == null">
+    <div class="post-ad-button" routerLink="/postAd">
+      Post Your <br />
+      Ad
+    </div>
   </div>
 </div>
 

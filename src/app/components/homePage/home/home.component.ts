@@ -1,3 +1,4 @@
+import { User } from './../../../models/user.model';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { DirectHouse } from './../../../models/direct-house.model';
 import { DirectLand } from './../../../models/direct-land.model';
@@ -21,6 +22,8 @@ export class HomeComponent implements OnInit {
     word: [''],
   });
 
+  currentUser: User = {} as User;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -29,6 +32,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.authService.getCurrentUser();
     this.setHouses();
     this.setLands();
 

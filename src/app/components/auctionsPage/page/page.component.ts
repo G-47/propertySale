@@ -34,7 +34,7 @@ export class PageComponent implements OnInit {
     this.auctionAdService.getAuctionLandAd().subscribe(
       (result) => {
         console.log(result);
-        this.lands = result;
+        this.lands = result.sort((a, b) => a.startDate - b.startDate);
         this.selectedArray=this.lands;
         this.selectedArrayIndex = 1;
       },
@@ -44,7 +44,7 @@ export class PageComponent implements OnInit {
     this.auctionAdService.getAuctionHouseAd().subscribe(
       (result) => {
         console.log(result);
-        this.houses = result;
+        this.houses = result.sort((a, b) => b.startDate - a.startDate);
       },
       (error) => (this.errorMsg = error)
     );
@@ -66,11 +66,11 @@ export class PageComponent implements OnInit {
   search(form) {
     if (this.selectedArrayIndex === 1) {
       this.selectedArray = this.lands.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
     } else {
       this.selectedArray = this.houses.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
     }
   }

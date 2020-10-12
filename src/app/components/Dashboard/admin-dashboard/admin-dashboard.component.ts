@@ -122,6 +122,12 @@ export class AdminDashboardComponent implements OnInit {
       case 2:
         this.router.navigate(['/directHousePostByAdmin']);
         break;
+      case 3:
+        this.router.navigate(['/postAuctionLandAd']);
+        break;
+      case 4:
+        this.router.navigate(['/postAuctionHouseAd']);
+        break;
     }
   }
 }
