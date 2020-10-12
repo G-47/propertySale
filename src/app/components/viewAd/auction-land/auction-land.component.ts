@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, AbstractControl } from '@angular/forms';
+import { FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
@@ -28,8 +28,8 @@ export class AuctionLandComponent implements OnInit {
   currentDate = Date.now();
   arr = {} as AuctionLandAd;
   bids = [];
-  currentBid: number;
-  nextBid: number;
+  currentBid = 0;
+  nextBid = 0;
   enteredBid: number;
   public errorMsg;
   isSubscribed = false;
@@ -52,12 +52,16 @@ export class AuctionLandComponent implements OnInit {
         // this.isSubscribed = true;
       }
     );
-    console.log(this.arr._id);
-    this.biddingService.getBids(this.arr._id).subscribe(
-      (results) => {
+    this.biddingService.getBids(this.arr._id).then(
+      (results) => {        
         this.bids = results;
-        this.currentBid = this.bids[0].biddingAmount;
-        this.nextBid = (this.currentBid * 1.1);
+        if(results.length > 0){
+          this.currentBid = this.bids[0].biddingAmount;
+          this.nextBid = (this.currentBid * 1.1);
+        }else{
+          this.currentBid = 0;
+          this.nextBid = this.arr.startBid;
+        }
         results.forEach(element => {
           this.authService.getUser(element.userID).then(
             (res) => {
@@ -85,11 +89,11 @@ export class AuctionLandComponent implements OnInit {
   }
 
   BiddingForm = this.formBuilder.group({
-    biddingAmount: [''],
+    biddingAmount: ['', Validators.min(this.nextBid)],
   });
 
-  bidValueValidator(control: AbstractControl):{[key: string]: boolean} | null {
-    if( control.value !==null && (isNaN(control.value) || control.value < this.currentBid)){
+  bidValueValidator(control: AbstractControl, value: any):{[key: string]: boolean} | null {
+    if( control.value !==null && (isNaN(control.value) || control.value < value)){
       return {'bidValueValidator': true}
     }
     return null;
@@ -106,6 +110,7 @@ export class AuctionLandComponent implements OnInit {
       (res) => {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
         this.BiddingForm.reset();
+        this.router.navigate(['/auctions']);
         this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'Bid worth: '+formData.biddingAmount+' was successfully added !');
       },
       (err) => {

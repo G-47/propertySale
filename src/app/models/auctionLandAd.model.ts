@@ -12,8 +12,8 @@ export class AuctionLandAd {
       lat: number;
       lng: number;
     };
-    startDate: Number;
-    endDate: Number;
-    startBid: Number;
-    postedTime: Number;
+    startDate: number;
+    endDate: number;
+    startBid: number;
+    postedTime: number;
   }
