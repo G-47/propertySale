@@ -16,6 +16,12 @@ export class AuctionAdService implements HttpInterceptor {
   private postAuctionLandAd_url = 'http://localhost:3000/api/addAuctionLandAd';
   private postAuctionHouseAd_url =
     'http://localhost:3000/api/addAuctionHouseAd';
+  private postAuctionHouseAd_url =
+    'http://localhost:3000/api/addAuctionHouseAd';
+  private getAuctionLandAdById_url =
+    'http://localhost:3000/api/getAuctionLandAdById';
+  private getAuctionHouseAdById_url =
+    'http://localhost:3000/api/getAuctionHouseAdById';
 
   private getEndedLandBids_url = 'http://localhost:3000/api/getEndedLandBids';
   private getEndedHouseBids_url = 'http://localhost:3000/api/getEndedHouseBids';
@@ -45,6 +51,18 @@ export class AuctionAdService implements HttpInterceptor {
 
   getSelectedHouseAd() {
     return this.adHouse;
+  }
+
+  getAuctionLandById(id: string): Promise<AuctionLandAd> {
+    return this.http
+      .post<any>(this.getAuctionLandAdById_url, { id })
+      .toPromise();
+  }
+
+  getAuctionHouseById(id: string): Promise<AuctionHouseAd> {
+    return this.http
+      .post<any>(this.getAuctionHouseAdById_url, { id })
+      .toPromise();
   }
 
   getAuctionLandAd(): Observable<AuctionLandAd[]> {
