@@ -78,7 +78,6 @@
           type="text"
           formControlName="mobileNumber"
           class="form-control"
-          autocomplete="mobileNumber"
           required
         />
         <!-- show error message for validation error -->
@@ -163,7 +162,13 @@
         </button>
       </div>
       <div class="btn float-right">
-        <button type="button" class="btn btn-secondary btn-lg">Cancel</button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-lg"
+          routerLink="/userDashboard"
+        >
+          Cancel
+        </button>
       </div>
     </fieldset>
   </form>
