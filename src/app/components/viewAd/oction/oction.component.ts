@@ -4,7 +4,7 @@ import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
 import { Bidding } from 'src/app/models/bidding.model';
 import { AuctionAdService } from 'src/app/services/auction-ad.service';
 import { BiddingService } from 'src/app/services/bidding.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuctionHouseAd } from 'src/app/models/auctionHouseAd.model';
@@ -23,7 +23,8 @@ export class OctionComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private authService: AuthService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private activatedRoute: ActivatedRoute
     ) {}
 
   currentDate = Date.now();
@@ -35,52 +36,63 @@ export class OctionComponent implements OnInit {
   isSubscribed = false;
   currentUser: any;
   bidHistory= [];
+  id: string;
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
-    this.arr = this.auctionAdService.getSelectedHouseAd();
     console.log(this.arr.locationMap);
-  
-    this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
-      (result) => {
-        if(result.length>0){
-          this.isSubscribed = true;          
-        }
-        
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.auctionAdService.getAuctionHouseById(this.id).then(
+      (res) => {
+        this.arr = res;
+        this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
+          (result) => {
+            if(result.length>0){
+              this.isSubscribed = true;          
+            }
+            
+          },
+          (errors) => {
+            // this.isSubscribed = true;
+          }
+        );
+        this.biddingService.getBids(this.arr._id).then(
+          (results) => {
+            this.bids = results;
+            if(results.length > 0){
+              this.currentBid = this.bids[0].biddingAmount;
+              this.nextBid = this.currentBid + (this.arr.startBid * 0.1);
+            }else{
+              this.currentBid = 0;
+              this.nextBid = this.arr.startBid;
+            }
+            results.forEach(element => {
+              this.authService.getUser(element.userID).then(
+                (res) => {
+                  var temp = {
+                    "userName": res.firstName,
+                    "bidAmount": element.biddingAmount,
+                    "email": res.email,
+                    "phoneNumber": res.mobileNumber
+                  }
+                  this.bidHistory.push(temp);
+                },
+                (err) => {
+                  console.log(err);
+                }
+              )
+            });
+          },
+          (error) => (this.errorMsg = error)
+        );
       },
-      (errors) => {
-        // this.isSubscribed = true;
+      (err) => {
+        console.log(err);
       }
     );
-    this.biddingService.getBids(this.arr._id).then(
-      (results) => {
-        this.bids = results;
-        if(results.length > 0){
-          this.currentBid = this.bids[0].biddingAmount;
-          this.nextBid = this.currentBid + (this.arr.startBid * 0.1);
-        }else{
-          this.currentBid = 0;
-          this.nextBid = this.arr.startBid;
-        }
-        results.forEach(element => {
-          this.authService.getUser(element.userID).then(
-            (res) => {
-              var temp = {
-                "userName": res.firstName,
-                "bidAmount": element.biddingAmount,
-                "email": res.email,
-                "phoneNumber": res.mobileNumber
-              }
-              this.bidHistory.push(temp);
-            },
-            (err) => {
-              console.log(err);
-            }
-          )
-        });
-      },
-      (error) => (this.errorMsg = error)
-    );
+  
+    
 
       
   }

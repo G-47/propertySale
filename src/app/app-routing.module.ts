@@ -35,8 +35,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'viewAuctionHouseAd', component: OctionComponent },
-  { path: 'viewAuctionLandAd', component: AuctionLandComponent },
+  { path: 'viewAuctionHouseAd/:id', component: OctionComponent },
+  { path: 'viewAuctionLandAd/:id', component: AuctionLandComponent },
   {
     path: 'postAd',
     component: PostAdComponent,

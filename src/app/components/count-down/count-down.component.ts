@@ -51,7 +51,7 @@ export class CountDownComponent implements OnInit {
         this.secs = Math.round( this.remain % 60 );
       }else {                    // if time is end
         this.eventDone = "ended" ;   
-        this.notifyUser(this._id)     
+        this.notifyUser(this._id);     
         clearInterval( this.timeLoop );
       }      
     }else{
@@ -65,12 +65,12 @@ export class CountDownComponent implements OnInit {
         this.authService.getUser(result[0].userID).then(
           (res) => {
             this.user = res;
+            this.emailService.sendEmail(this.user.email,"Lanka Properties: Bid number: "+ result[0].title,"Congradulations!!! You are the winner. For further details contact manager 0552277448");
           },
           err => {
 
           }
         );
-        this.emailService.sendEmail(this.user.email,"Lanka Properties: Bid number: "+ result[0].adID,"Congradulations!!! You are the winner. For further details contact manager 0552277448");
 
       }
     )

@@ -78,10 +78,10 @@ export class PageComponent implements OnInit {
   openAd(arr) {
       if(this.selectedArrayIndex === 1){
         this.auctionAdService.setSelectedLandAd(arr);
-        this.router.navigate(['/viewAuctionLandAd']);
+        this.router.navigate(['/viewAuctionLandAd', arr._id]);
       }else{
         this.auctionAdService.setSelectedHouseAd(arr);
-        this.router.navigate(['/viewAuctionHouseAd']);
+        this.router.navigate(['/viewAuctionHouseAd', arr._id]);
       }    
   }
 }
