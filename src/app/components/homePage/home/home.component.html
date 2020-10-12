@@ -46,7 +46,7 @@
 
   <div *ngIf="currentUser != null">
     <div
-      *ngIf="currentUser.status != 1 && currentUser.status != 2"
+      *ngIf="currentUser.userType != 1 && currentUser.userType != 2"
       class="post-ad-button"
       routerLink="/postAd"
     >
