@@ -38,6 +38,9 @@ export class AdvertisementService implements HttpInterceptor {
   private getBidedLandAds = 'http://localhost:3000/api/getBidedLands';
   private getBidedHousesAds = 'http://localhost:3000/api/getBidedHouses';
 
+  private deleteLandUrl = 'http://localhost:3000/api/deleteLand';
+  private deleteHouseUrl = 'http://localhost:3000/api/deleteHouse';
+
   constructor(private http: HttpClient) {}
 
   intercept(req, next): any {
@@ -119,5 +122,11 @@ export class AdvertisementService implements HttpInterceptor {
     return this.http
       .post<any>(this.getBidedHousesAds, { ids })
       .toPromise();
+  }
+  deleteLand(id: string): Promise<any> {
+    return this.http.delete<any>(this.deleteLandUrl + '/' + id).toPromise();
+  }
+  deleteHouse(id: string): Promise<any> {
+    return this.http.delete<any>(this.deleteHouseUrl + '/' + id).toPromise();
   }
 }

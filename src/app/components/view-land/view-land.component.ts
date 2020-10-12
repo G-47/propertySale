@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DirectLand } from 'src/app/models/direct-land.model';
 import { User } from 'src/app/models/user.model';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
@@ -20,11 +20,15 @@ export class ViewLandComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private advertisementService: AdvertisementService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
+
+  currentUser: User;
 
   ngOnInit(): void {
     this.landId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.currentUser = this.authService.getCurrentUser();
 
     this.setLand(this.landId);
   }
@@ -54,5 +58,16 @@ export class ViewLandComponent implements OnInit {
 
   scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  deleteAd(): void {
+    this.advertisementService.deleteLand(this.landId).then(
+      (res) => {
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
