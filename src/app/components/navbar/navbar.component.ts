@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   logOut(): void {
     localStorage.clear();
     this.currentUser = null;
+    location.reload();
   }
 
   gotoDashboard(): void {
@@ -42,6 +43,7 @@ export class NavbarComponent implements OnInit {
         break;
 
       case 2:
+        this.router.navigate(['/managerDashboard']);
         break;
     }
   }

@@ -1,3 +1,4 @@
+import { RouteGuardService } from './../route-guard.service';
 import { ViewHouseComponent } from './components/view-house/view-house.component';
 import { ViewLandComponent } from './components/view-land/view-land.component';
 import { DirectLandPostByAdminComponent } from './components/direct-land-post-by-admin/direct-land-post-by-admin.component';
@@ -25,44 +26,97 @@ import { NewAuctionComponent } from './components/manager/auction/new-auction/ne
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
 import { ReviewUserComponent } from './components/review-user/review-user.component';
+import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { PostAuctionLandAdComponent } from './components/post-auction-land-ad/post-auction-land-ad.component';
 import { PostAuctionHouseAdComponent } from './components/post-auction-house-ad/post-auction-house-ad.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'navbar', component: NavbarComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'viewAd', component: DirectComponent },
   { path: 'viewAuctionHouseAd', component: OctionComponent },
   { path: 'viewAuctionLandAd', component: AuctionLandComponent },
-  { path: 'postAd', component: PostAdComponent },
-  { path: 'postAuctionAd', component: PostAuctionAdComponent },
-  { path: 'postAuctionLandAd', component: PostAuctionLandAdComponent },
+  {
+    path: 'postAd',
+    component: PostAdComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [0] },
+  },
+  {
+    path: 'postAuctionLandAd',
+    component: PostAuctionLandAdComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1, 2] },
+  },
   { path: 'postAuctionHouseAd', component: PostAuctionHouseAdComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
-  { path: 'manager', component: ManagerComponent },
-  { path: 'newAdmin', component: NewAdminComponent },
-  { path: 'payment', component: PaymentGatewayComponent },
+  {
+    path: 'managerDashboard',
+    component: ManagerComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [2] },
+  },
+  {
+    path: 'newAdmin',
+    component: NewAdminComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [2] },
+  },
+  {
+    path: 'payment',
+    component: PaymentGatewayComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [0, 1, 2] },
+  },
   { path: 'test', component: TestComponent },
-  { path: 'newAuction', component: NewAuctionComponent },
-  { path: 'adminDashboard', component: AdminDashboardComponent },
-  { path: 'reviewLand/:id', component: ReviewLandComponent },
-  { path: 'reviewHouse/:id', component: ReviewHouseComponent },
-  { path: 'reviewUser/:id', component: ReviewUserComponent },
+  {
+    path: 'adminDashboard',
+    component: AdminDashboardComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
+  },
+  {
+    path: 'reviewLand/:id',
+    component: ReviewLandComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
+  },
+  {
+    path: 'reviewHouse/:id',
+    component: ReviewHouseComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
+  },
+  {
+    path: 'reviewUser/:id',
+    component: ReviewUserComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
+  },
   { path: 'viewLand/:id', component: ViewLandComponent },
   { path: 'viewHouse/:id', component: ViewHouseComponent },
+  { path: 'editprofile', component: EditprofileComponent },
+  
   {
     path: 'directHousePostByAdmin',
     component: DirectHousePostByAdminComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
   },
   {
     path: 'directLandPostByAdmin',
     component: DirectLandPostByAdminComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1] },
   },
-  { path: 'userDashboard', component: UserDashboardComponent },
+  {
+    path: 'userDashboard',
+    component: UserDashboardComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [0] },
+  },
 ];
 
 @NgModule({
