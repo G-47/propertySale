@@ -16,6 +16,10 @@
       >Active Users</a
     ><a [ngClass]="nav === 8 ? 'active' : ''" (click)="getMessages()"
       >Admin messages</a
+    ><a [ngClass]="nav === 9 ? 'active' : ''" (click)="getEndedLandBids()"
+      >Ended Land Auctions</a
+    ><a [ngClass]="nav === 10 ? 'active' : ''" (click)="getEndedHouseBids()"
+      >Ended House Auctions</a
     >
   </div>
 
@@ -131,6 +135,53 @@
         <div class="time">
           {{ moment(item.timestamp).fromNow() }}
         </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 9" class="content">
+    <div class="pendings">
+      <h1 *ngIf="endedLands.length == 0">*No Ended Auctions</h1>
+      <div *ngFor="let temp of endedLands">
+        <app-auction-card
+          class="m-3"
+          (click)="goToReviewUser(temp)"
+          [_id]="temp._id"
+          [title]="temp.title"
+          [type]="temp.type"
+          [size]="temp.size"
+          [description]="temp.description"
+          [threeSixtyImageUrl]="temp.threeSixtyImageUrl"
+          [images]="temp.images"
+          [locationName]="temp.locationName"
+          [locationMap]="temp.locationMap"
+          [startDate]="temp.startDate"
+          [endDate]="temp.endDate"
+          [startBid]="temp.startBid"
+          [postedTime]="temp.postedTime"
+        ></app-auction-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nav === 10" class="content">
+    <div class="pendings">
+      <h1 *ngIf="endedHouses.length == 0">*No Ended Auctions</h1>
+      <div *ngFor="let temp of endedHouses">
+        <app-auction-card
+          class="m-3"
+          (click)="goToReviewUser(temp)"
+          [_id]="temp._id"
+          [title]="temp.title"
+          [bedRooms]="temp.bedRooms"
+          [bathRooms]="temp.bathRooms"
+          [description]="temp.description"
+          [images]="temp.images"
+          [locationName]="temp.locationName"
+          [locationMap]="temp.locationMap"
+          [startDate]="temp.startDate"
+          [endDate]="temp.endDate"
+          [startBid]="temp.startBid"
+          [postedTime]="temp.postedTime"
+        ></app-auction-card>
       </div>
     </div>
   </div>

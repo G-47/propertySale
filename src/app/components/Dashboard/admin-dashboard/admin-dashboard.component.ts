@@ -1,3 +1,6 @@
+import { AuctionHouseAd } from './../../../models/auctionHouseAd.model';
+import { AuctionLandAd } from 'src/app/models/auctionLandAd.model';
+import { AuctionAdService } from 'src/app/services/auction-ad.service';
 import { Message } from './../../../models/message.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -19,7 +22,8 @@ export class AdminDashboardComponent implements OnInit {
     private advertisementService: AdvertisementService,
     private router: Router,
     private authService: AuthService,
-    private adminService: AdminsService
+    private adminService: AdminsService,
+    private auctionAdService: AuctionAdService
   ) {}
 
   nav = 1;
@@ -28,6 +32,9 @@ export class AdminDashboardComponent implements OnInit {
   pendingUsers = [] as User[];
   activeUsers = [] as User[];
   messages = [] as Message[];
+
+  endedLands = [] as AuctionLandAd[];
+  endedHouses = [] as AuctionHouseAd[];
 
   moment = (num: number) => Moment(num);
 
@@ -95,6 +102,32 @@ export class AdminDashboardComponent implements OnInit {
       (res) => {
         console.log(res);
         this.messages = res.sort((a, b) => b.timestamp - a.timestamp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getEndedLandBids(): void {
+    this.setNav(9);
+    this.auctionAdService.getEndedLandBids().then(
+      (res) => {
+        console.log(res);
+        this.endedLands = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getEndedHouseBids(): void {
+    this.setNav(10);
+    this.auctionAdService.getEndedHouseBids().then(
+      (res) => {
+        console.log(res);
+        this.endedHouses = res;
       },
       (err) => {
         console.log(err);

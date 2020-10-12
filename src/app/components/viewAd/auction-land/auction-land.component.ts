@@ -59,6 +59,7 @@ export class AuctionLandComponent implements OnInit {
 
     this.biddingService.getBids(this.arr._id).then(
       (results) => {
+        console.log(results);
         this.bids = results;
         if (results.length > 0) {
           this.currentBid = this.bids[0].biddingAmount;

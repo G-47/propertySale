@@ -5,21 +5,22 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpInterceptor } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuctionAdService implements HttpInterceptor{
-
+export class AuctionAdService implements HttpInterceptor {
   adLand = {} as AuctionLandAd;
   adHouse = {} as AuctionHouseAd;
 
   private getAuctionLandAd_url = 'http://localhost:3000/api/getAllLandAds';
   private getAuctionHouseAd_url = 'http://localhost:3000/api/getAllHouseAds';
   private postAuctionLandAd_url = 'http://localhost:3000/api/addAuctionLandAd';
-  private postAuctionHouseAd_url = 'http://localhost:3000/api/addAuctionHouseAd';
+  private postAuctionHouseAd_url =
+    'http://localhost:3000/api/addAuctionHouseAd';
 
-  
+  private getEndedLandBids_url = 'http://localhost:3000/api/getEndedLandBids';
+  private getEndedHouseBids_url = 'http://localhost:3000/api/getEndedHouseBids';
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   intercept(req, next): any {
     const tokenizedReq = req.clone({
@@ -29,20 +30,20 @@ export class AuctionAdService implements HttpInterceptor{
     });
     return next.handle(tokenizedReq);
   }
-  
-  setSelectedLandAd(arr){
+
+  setSelectedLandAd(arr) {
     this.adLand = arr;
   }
 
-  getSelectedLandAd (){
+  getSelectedLandAd() {
     return this.adLand;
   }
 
-  setSelectedHouseAd(arr){
+  setSelectedHouseAd(arr) {
     this.adHouse = arr;
   }
 
-  getSelectedHouseAd (){
+  getSelectedHouseAd() {
     return this.adHouse;
   }
 
@@ -54,12 +55,27 @@ export class AuctionAdService implements HttpInterceptor{
     return this.http.get<AuctionHouseAd[]>(this.getAuctionHouseAd_url);
   }
 
+  getEndedLandBids(): Promise<AuctionLandAd[]> {
+    return this.http
+      .get<AuctionLandAd[]>(this.getEndedLandBids_url)
+      .toPromise();
+  }
+
+  getEndedHouseBids(): Promise<AuctionHouseAd[]> {
+    return this.http
+      .get<AuctionHouseAd[]>(this.getEndedHouseBids_url)
+      .toPromise();
+  }
+
   postAuctionLand(landDetails: AuctionLandAd): Promise<any> {
-    return this.http.post<any>(this.postAuctionLandAd_url, landDetails).toPromise();
+    return this.http
+      .post<any>(this.postAuctionLandAd_url, landDetails)
+      .toPromise();
   }
 
   postAuctionHouse(houseDetails: AuctionHouseAd): Promise<any> {
     return this.http
-      .post<any>(this.postAuctionHouseAd_url, houseDetails).toPromise();
+      .post<any>(this.postAuctionHouseAd_url, houseDetails)
+      .toPromise();
   }
 }
