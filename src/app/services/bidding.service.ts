@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { promise } from 'protractor';
 import { Observable } from 'rxjs';
 import { Bidding } from 'src/app/models/bidding.model'
 
 @Injectable({
   providedIn: 'root'
 })
-export class BiddingService {
+export class BiddingService implements HttpInterceptor{
 
   private getAllBids_url = 'http://localhost:3000/api/getAllBids';
   private insertBid_url = 'http://localhost:3000/api/insertBid';
@@ -17,9 +18,18 @@ export class BiddingService {
 
   constructor(private http:HttpClient) { }
 
-  getBids(adID): Observable<Bidding[]> {
+  intercept(req, next): any {
+    const tokenizedReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return next.handle(tokenizedReq);
+  }
+
+  getBids(adID): Promise<any> {
     this.newBid.adID = adID
-    return this.http.post<Bidding[]>(this.getAllBids_url,this.newBid);
+    return this.http.post<Bidding[]>(this.getAllBids_url,this.newBid).toPromise();
   }
 
   addBid(formData): any {

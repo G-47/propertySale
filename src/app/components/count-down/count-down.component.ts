@@ -60,7 +60,7 @@ export class CountDownComponent implements OnInit {
   }
   user: User;
   notifyUser(_id){
-    this.biddingService.getBids(_id).subscribe(
+    this.biddingService.getBids(_id).then(
       (result) => {
         this.authService.getUser(result[0].userID).then(
           (res) => {

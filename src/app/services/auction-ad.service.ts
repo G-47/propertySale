@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { AuctionLandAd } from '../models/auctionLandAd.model';
 import { AuctionHouseAd } from '../models/auctionHouseAd.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpInterceptor } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuctionAdService {
+export class AuctionAdService implements HttpInterceptor{
 
   adLand = {} as AuctionLandAd;
   adHouse = {} as AuctionHouseAd;
@@ -21,6 +21,15 @@ export class AuctionAdService {
 
   constructor(private http:HttpClient) {}
 
+  intercept(req, next): any {
+    const tokenizedReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return next.handle(tokenizedReq);
+  }
+  
   setSelectedLandAd(arr){
     this.adLand = arr;
   }

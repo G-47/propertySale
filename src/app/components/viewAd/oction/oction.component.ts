@@ -50,11 +50,16 @@ export class OctionComponent implements OnInit {
         // this.isSubscribed = true;
       }
     );
-    this.biddingService.getBids(this.arr._id).subscribe(
+    this.biddingService.getBids(this.arr._id).then(
       (results) => {
         this.bids = results;
-        this.currentBid = this.bids[0].biddingAmount;
-        this.nextBid = (this.currentBid * 1.1);
+        if(results.length > 0){
+          this.currentBid = this.bids[0].biddingAmount;
+          this.nextBid = (this.currentBid * 1.1);
+        }else{
+          this.currentBid = 0;
+          this.nextBid = this.arr.startBid;
+        }
         results.forEach(element => {
           this.authService.getUser(element.userID).then(
             (res) => {
@@ -103,7 +108,7 @@ export class OctionComponent implements OnInit {
     this.biddingService.addBid(formDetails).subscribe(
       (res) => {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
-        // this.router.navigate(['/']);
+        this.router.navigate(['/auctions']);
         this.BiddingForm.reset();
       },
       (err) => {
