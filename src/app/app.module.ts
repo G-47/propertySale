@@ -52,6 +52,7 @@ import { UserCardComponent } from './components/cards/user-card/user-card.compon
 import { ReviewUserComponent } from './components/review-user/review-user.component';
 import { ViewHouseComponent } from './components/view-house/view-house.component';
 import { ViewLandComponent } from './components/view-land/view-land.component';
+import { EditprofileComponent } from './components/editprofile/editprofile.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ViewLandComponent } from './components/view-land/view-land.component';
     ReviewUserComponent,
     ViewHouseComponent,
     ViewLandComponent,
+    EditprofileComponent,
   ],
   imports: [
     BrowserModule,

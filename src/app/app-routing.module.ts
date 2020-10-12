@@ -22,6 +22,8 @@ import { NewAuctionComponent } from './components/manager/auction/new-auction/ne
 import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 import { UserDashboardComponent } from './components/Dashboard/user-dashboard/user-dashboard.component';
 import { ReviewUserComponent } from './components/review-user/review-user.component';
+import { EditprofileComponent } from './components/editprofile/editprofile.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +46,8 @@ const routes: Routes = [
   { path: 'reviewUser/:id', component: ReviewUserComponent },
   { path: 'viewLand/:id', component: ViewLandComponent },
   { path: 'viewHouse/:id', component: ViewHouseComponent },
+  { path: 'editprofile', component: EditprofileComponent },
+  
   {
     path: 'directHousePostByAdmin',
     component: DirectHousePostByAdminComponent,
