@@ -55,7 +55,7 @@
   <div *ngIf="nav === 4" class="content">
     <div class="result-container" *ngFor="let temp of bidedLands">
       <app-auction-card
-        (click)="openAd('land')"
+        (click)="openAuctionAd(temp, 'land')"
         [_id]="temp._id"
         [title]="temp.title"
         [type]="temp.type"
@@ -68,7 +68,6 @@
         [startDate]="temp.startDate"
         [endDate]="temp.endDate"
         [startBid]="temp.startBid"
-        [currentBid]="temp.currentBid"
         [postedTime]="temp.postedTime"
       ></app-auction-card>
     </div>
@@ -76,7 +75,7 @@
   <div *ngIf="nav === 5" class="content">
     <div class="result-container" *ngFor="let temp of bidedHouses">
       <app-auction-card
-        (click)="openAd('house')"
+        (click)="openAuctionAd(temp, 'house')"
         [_id]="temp._id"
         [title]="temp.title"
         [bedRooms]="temp.bedRooms"
@@ -88,7 +87,6 @@
         [startDate]="temp.startDate"
         [endDate]="temp.endDate"
         [startBid]="temp.startBid"
-        [currentBid]="temp.currentBid"
         [postedTime]="temp.postedTime"
       ></app-auction-card>
     </div>

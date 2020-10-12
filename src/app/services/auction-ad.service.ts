@@ -16,8 +16,6 @@ export class AuctionAdService implements HttpInterceptor {
   private postAuctionLandAd_url = 'http://localhost:3000/api/addAuctionLandAd';
   private postAuctionHouseAd_url =
     'http://localhost:3000/api/addAuctionHouseAd';
-  private postAuctionHouseAd_url =
-    'http://localhost:3000/api/addAuctionHouseAd';
   private getAuctionLandAdById_url =
     'http://localhost:3000/api/getAuctionLandAdById';
   private getAuctionHouseAdById_url =

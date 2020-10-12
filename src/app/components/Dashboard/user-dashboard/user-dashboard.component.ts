@@ -113,4 +113,12 @@ export class UserDashboardComponent implements OnInit {
       this.router.navigate(['/viewHouse', property._id]);
     }
   }
+
+  openAuctionAd(arr, type) {
+    if (type === 'land') {
+      this.router.navigate(['/viewAuctionLandAd', arr._id]);
+    } else if (type === 'house') {
+      this.router.navigate(['/viewAuctionHouseAd', arr._id]);
+    }
+  }
 }
