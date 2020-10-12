@@ -118,6 +118,7 @@ export class PostAuctionAdComponent implements OnInit {
         //   'Lanka Properties',
         //   `Your have successfully submitted your House advertisement. Our agent will come to you soon. Your advertisement will be live after verified your House by our agent.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
         // );
+        this.router.navigate(['/adminDashboard']);
       },
       (err) => {}
     );

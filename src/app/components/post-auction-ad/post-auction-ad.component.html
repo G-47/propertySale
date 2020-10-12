@@ -172,7 +172,7 @@
             [class.is-invalid]="
               LandForm.get('startDate').invalid && LandForm.get('startDate').touched
             "
-            type="date"
+            type="datetime-local"
             formControlName="startDate"
             class="form-control"
             required
@@ -191,7 +191,7 @@
             [class.is-invalid]="
               LandForm.get('endDate').invalid && LandForm.get('endDate').touched
             "
-            type="date"
+            type="datetime-local"
             formControlName="endDate"
             class="form-control"
             required
@@ -409,7 +409,7 @@
             [class.is-invalid]="
              HouseForm.get('startDate').invalid && HouseForm.get('startDate').touched
             "
-            type="date"
+            type="datetime-local"
             formControlName="startDate"
             class="form-control"
             required
@@ -428,7 +428,7 @@
             [class.is-invalid]="
               HouseForm.get('endDate').invalid && HouseForm.get('endDate').touched
             "
-            type="date"
+            type="datetime-local"
             formControlName="endDate"
             class="form-control"
             required
