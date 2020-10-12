@@ -1,0 +1,68 @@
+.property-type-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 500px;
+  
+    .property-type-header {
+      text-align: center;
+    }
+  
+    .property-type-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .property-type-button {
+        margin: 10px;
+  
+        .input-element {
+          display: none;
+        }
+  
+        .card-input {
+          padding: 10px;
+          img {
+            width: 100px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+  
+        .card-input:hover {
+          cursor: pointer;
+        }
+  
+        .input-element:checked + .card-input {
+          box-shadow: 0 0 5px 3px #343557;
+        }
+      }
+    }
+  }
+  
+  .container {
+    margin: 100px auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: auto;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    padding-bottom: 40px;
+  }
+  
+  .checkbox-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    margin: 0px 5px 0px 5px 0px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  

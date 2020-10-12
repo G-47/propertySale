@@ -66,11 +66,11 @@ export class PageComponent implements OnInit {
   search(form) {
     if (this.selectedArrayIndex === 1) {
       this.selectedArray = this.lands.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
     } else {
       this.selectedArray = this.houses.filter((item) =>
-        item.location.toLowerCase().includes(form.word.toLowerCase())
+        item.locationName.toLowerCase().includes(form.word.toLowerCase())
       );
     }
   }

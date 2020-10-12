@@ -1,0 +1,21 @@
+<div class="container" (click)="toggle()">
+  <div id="chatbot">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div id="chatbot-corner"></div>
+  <div id="antenna">
+    <div id="beam"></div>
+    <div id="beam-pulsar"></div>
+  </div>
+</div>
+<iframe
+  [ngClass]="status ? '' : 'hide'"
+  id="chatBox"
+  allow="microphone;"
+  width="350"
+  height="430"
+  src="https://console.dialogflow.com/api-client/demo/embedded/f48ee271-7a77-425f-91a8-089cc3c160ea"
+>
+</iframe>

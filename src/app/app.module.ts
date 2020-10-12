@@ -55,7 +55,9 @@ import { AuctionLandComponent } from './components/viewAd/auction-land/auction-l
 import { ViewHouseComponent } from './components/view-house/view-house.component';
 import { ViewLandComponent } from './components/view-land/view-land.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
-
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { PostAuctionLandAdComponent } from './components/post-auction-land-ad/post-auction-land-ad.component';
+import { PostAuctionHouseAdComponent } from './components/post-auction-house-ad/post-auction-house-ad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,6 +101,9 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     ViewHouseComponent,
     ViewLandComponent,
     EditprofileComponent,
+    ChatbotComponent,
+    PostAuctionLandAdComponent,
+    PostAuctionHouseAdComponent,
   ],
   imports: [
     BrowserModule,
