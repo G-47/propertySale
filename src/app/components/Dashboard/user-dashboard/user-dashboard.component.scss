@@ -70,6 +70,25 @@ div.content {
   }
 }
 
+.result-container {
+  app-card {
+    outline: transparent;
+  }
+
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0px 20px 0px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  outline: transparent;
+
+  app-auction-card {
+    padding: 10px 20px 10px 20px;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .myContainer {
     display: block;

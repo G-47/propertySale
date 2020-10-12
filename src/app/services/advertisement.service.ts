@@ -9,6 +9,9 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DirectLand } from '../models/direct-land.model';
+import { BidedProperty } from '../models/bided-property.model';
+import { AuctionHouseAd } from '../models/auctionHouseAd.model';
+import { AuctionLandAd } from '../models/auctionLandAd.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +31,12 @@ export class AdvertisementService implements HttpInterceptor {
 
   private getLandByIdUrl = 'http://localhost:3000/api/getLandById';
   private getHouseByIdUrl = 'http://localhost:3000/api/getHouseById';
+
+  private getBidedPropertyIdsByUserId =
+    'http://localhost:3000/api/getBidedPropertyIds';
+
+  private getBidedLandAds = 'http://localhost:3000/api/getBidedLands';
+  private getBidedHousesAds = 'http://localhost:3000/api/getBidedHouses';
 
   constructor(private http: HttpClient) {}
 
@@ -91,6 +100,24 @@ export class AdvertisementService implements HttpInterceptor {
   getHouseById(id: string): Promise<DirectHouse> {
     return this.http
       .post<any>(this.getHouseByIdUrl, { id })
+      .toPromise();
+  }
+
+  getBidedPropertyIds(type: string): Promise<string[]> {
+    return this.http
+      .post<any>(this.getBidedPropertyIdsByUserId, { type })
+      .toPromise();
+  }
+
+  getBidedLands(ids: string[]): Promise<AuctionLandAd[]> {
+    return this.http
+      .post<any>(this.getBidedLandAds, { ids })
+      .toPromise();
+  }
+
+  getBidedHouses(ids: string[]): Promise<AuctionHouseAd[]> {
+    return this.http
+      .post<any>(this.getBidedHousesAds, { ids })
       .toPromise();
   }
 }
