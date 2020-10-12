@@ -1,7 +1,7 @@
 export class Message {
-    _id: string;
-    adminId:String;
-    name: string;
-    message: string;
-  }
-  
+  _id: string;
+  adminId: String;
+  name: string;
+  message: string;
+  timestamp: number;
+}
