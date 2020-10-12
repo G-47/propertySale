@@ -1,17 +1,17 @@
 <div class="container" id="container">
-  <form [formGroup]="RegisterForm">
+  <form [formGroup]="UpdateForm">
     <fieldset class="p-4">
       <div class="form-group">
         <label>Profile Picture :</label>
         <!-- input field coloured red when given data is failed validation -->
         <app-image-uploader
-          [defaultImage]="'/assets/images/image-placeholder-user.png'"
+          [defaultImage]="user.profilePicture"
           [cloudFolder]="'profilePictures'"
           (upload)="setProfilePicture($event)"
         ></app-image-uploader>
         <!-- show error message for validation error -->
         <small
-          *ngIf="RegisterForm.get('profilePicture').invalid"
+          *ngIf="UpdateForm.get('profilePicture').invalid"
           class="text-danger"
           >*Profile Picture is required !</small
         >
@@ -23,8 +23,8 @@
           <!-- input field coloured red when given data is failed validation -->
           <input
             [class.is-invalid]="
-              RegisterForm.get('firstName').invalid &&
-              RegisterForm.get('firstName').touched
+              UpdateForm.get('firstName').invalid &&
+              UpdateForm.get('firstName').touched
             "
             type="text"
             formControlName="firstName"
@@ -34,8 +34,8 @@
           <!-- show error message for validation error -->
           <small
             *ngIf="
-              RegisterForm.get('firstName').invalid &&
-              RegisterForm.get('firstName').touched
+              UpdateForm.get('firstName').invalid &&
+              UpdateForm.get('firstName').touched
             "
             class="text-danger"
             >*First Name is required !</small
@@ -47,8 +47,8 @@
           <!-- input field coloured red when given data is failed validation -->
           <input
             [class.is-invalid]="
-              RegisterForm.get('lastName').invalid &&
-              RegisterForm.get('lastName').touched
+              UpdateForm.get('lastName').invalid &&
+              UpdateForm.get('lastName').touched
             "
             type="text"
             formControlName="lastName"
@@ -59,8 +59,8 @@
           <small
             class="text-danger"
             *ngIf="
-              RegisterForm.get('lastName').invalid &&
-              RegisterForm.get('lastName').touched
+              UpdateForm.get('lastName').invalid &&
+              UpdateForm.get('lastName').touched
             "
             >*Last Name is required !</small
           >
@@ -72,8 +72,8 @@
         <!-- input field coloured red when given data is failed validation -->
         <input
           [class.is-invalid]="
-            RegisterForm.get('mobileNumber').invalid &&
-            RegisterForm.get('mobileNumber').touched
+            UpdateForm.get('mobileNumber').invalid &&
+            UpdateForm.get('mobileNumber').touched
           "
           type="text"
           formControlName="mobileNumber"
@@ -83,81 +83,36 @@
         <!-- show error message for validation error -->
         <div
           *ngIf="
-            RegisterForm.get('mobileNumber').invalid &&
-            RegisterForm.get('mobileNumber').touched
+            UpdateForm.get('mobileNumber').invalid &&
+            UpdateForm.get('mobileNumber').touched
           "
         >
           <small
             class="text-danger"
-            *ngIf="RegisterForm.get('mobileNumber').errors.required"
+            *ngIf="UpdateForm.get('mobileNumber').errors.required"
             >*Mobile Number is required !</small
           >
           <small
             class="text-danger"
-            *ngIf="RegisterForm.get('mobileNumber').errors.invalidMobileNumber"
+            *ngIf="UpdateForm.get('mobileNumber').errors.invalidMobileNumber"
             >*Enter valid mobile number !</small
           >
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Email :</label>
-        <!-- input field coloured red when given data is failed validation -->
-        <input
-          [class.is-invalid]="
-            RegisterForm.get('email').invalid &&
-            RegisterForm.get('email').touched
-          "
-          type="email"
-          formControlName="email"
-          class="form-control"
-          required
-        />
-        <div
-          *ngIf="
-            RegisterForm.get('email').invalid &&
-            RegisterForm.get('email').touched
-          "
-        >
-          <!-- show error message for validation error -->
-          <small
-            class="text-danger"
-            *ngIf="RegisterForm.get('email').errors.required"
-            >*Email is required !</small
-          >
-          <small
-            class="text-danger"
-            *ngIf="RegisterForm.get('email').errors.email"
-            >*Email is badly formatted !</small
-          >
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>NIC number :</label>
-        <!-- input field coloured red when given data is failed validation -->
-        <input
-          [class.is-invalid]="
-            RegisterForm.get('nicNumber').invalid &&
-            RegisterForm.get('nicNumber').touched
-          "
-          type="text"
-          formControlName="nicNumber"
-          class="form-control"
-          required
-        />
-        <!-- show error message for validation error -->
-        <small
-          class="text-danger"
-          *ngIf="
-            RegisterForm.get('nicNumber').invalid &&
-            RegisterForm.get('nicNumber').touched
-          "
-          >*NIC is required !</small
-        >
-      </div>
       <div class="btn float-right">
-        <button type="button" class="btn btn-lg btn-primary" disabled>
+        <button
+          type="button"
+          class="btn btn-lg btn-primary"
+          (click)="
+            updateUser(
+              UpdateForm.get('profilePicture'),
+              UpdateForm.get('firstName'),
+              UpdateForm.get('lastName'),
+              UpdateForm.get('mobileNumber')
+            )
+          "
+        >
           Save
         </button>
       </div>
