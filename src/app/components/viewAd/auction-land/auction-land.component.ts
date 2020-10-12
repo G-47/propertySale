@@ -132,11 +132,11 @@ export class AuctionLandComponent implements OnInit {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
         this.BiddingForm.reset();
         location.reload();
-        // this.emailService.sendEmail(
-        //   this.currentUser.email,
-        //   'LankaProperties Auction: ' + this.arr.title,
-        //   'Bid worth: ' + formData.biddingAmount + ' was successfully added !'
-        // );
+        this.emailService.sendEmail(
+          this.currentUser.email,
+          'LankaProperties Auction: ' + this.arr.title,
+          'Bid worth: ' + formData.biddingAmount + ' was successfully added !'
+        );
       },
       (err) => {
         this.errorMessage = err.error[0];
@@ -150,6 +150,7 @@ export class AuctionLandComponent implements OnInit {
     if (this.currentUser === null) {
       this.router.navigate(['/login']);
     } else {
+      this.router.navigateByUrl("/payment");
       this.biddingService
         .addUser_bids(this.arr._id, this.currentUser._id, 'Land')
         .subscribe(

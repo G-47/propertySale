@@ -134,10 +134,10 @@ export class OctionComponent implements OnInit {
   }
 
   enterBid(){
-    // this.router.navigateByUrl("/payment");
     if(this.currentUser === null){
       this.router.navigate(['/login']);
     }else{
+    this.router.navigateByUrl("/payment");
     this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"House").subscribe(
       (result) => {
         console.log(result);
