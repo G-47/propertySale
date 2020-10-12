@@ -13,6 +13,7 @@ export class AuthService implements HttpInterceptor {
   private getUserUrl = 'http://localhost:3000/api/getUser';
   private getUsersUrl = 'http://localhost:3000/api/getUsers';
   private approveUserUrl = 'http://localhost:3000/api/approveUser';
+  private updateUserUrl = 'http://localhost:3000/api/updateUser';
 
   constructor(private http: HttpClient) {}
 
@@ -89,6 +90,26 @@ export class AuthService implements HttpInterceptor {
   approveUser(id: string): Promise<User> {
     return this.http
       .post<any>(this.approveUserUrl, { id })
+      .toPromise();
+  }
+
+  updateUser(
+    profilePicture: string,
+    firstName: string,
+    lastName: string,
+    mobileNumber: string,
+    email: string,
+    nic: string
+  ): Promise<User> {
+    return this.http
+      .put<any>(this.updateUserUrl, {
+        profilePicture,
+        firstName,
+        lastName,
+        mobileNumber,
+        email,
+        nic,
+      })
       .toPromise();
   }
 }
