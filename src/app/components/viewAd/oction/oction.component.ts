@@ -24,30 +24,25 @@ export class OctionComponent implements OnInit {
     private authService: AuthService
     ) {}
 
-  kirama = {lat: 6.2074, lng: 80.6672};
   currentDate = Date.now();
   arr = {} as AuctionHouseAd;
   bids = [];
   currentBid: number;
+  nextBid: number;
   public errorMsg;
   isSubscribed = false;
   currentUser: any;
+  bidHistory= [];
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
     this.arr = this.auctionAdService.getSelectedHouseAd();
+    console.log(this.arr.locationMap);
   
     this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
       (result) => {
         if(result.length>0){
-          this.isSubscribed = true;
-          this.biddingService.getBids(this.arr._id).subscribe(
-            (results) => {
-              this.bids = results;
-              this.currentBid = this.bids[0].biddingAmount;
-            },
-            (error) => (this.errorMsg = error)
-          );
+          this.isSubscribed = true;          
         }
         
       },
@@ -55,6 +50,32 @@ export class OctionComponent implements OnInit {
         // this.isSubscribed = true;
       }
     );
+    this.biddingService.getBids(this.arr._id).subscribe(
+      (results) => {
+        this.bids = results;
+        this.currentBid = this.bids[0].biddingAmount;
+        this.nextBid = (this.currentBid * 1.1);
+        results.forEach(element => {
+          this.authService.getUser(element.userID).then(
+            (res) => {
+              var temp = {
+                "userName": res.firstName,
+                "bidAmount": element.biddingAmount,
+                "email": res.email,
+                "phoneNumber": res.mobileNumber
+              }
+              this.bidHistory.push(temp);
+            },
+            (err) => {
+              console.log(err);
+            }
+          )
+        });
+      },
+      (error) => (this.errorMsg = error)
+    );
+
+      
   }
 
   scroll(el: HTMLElement): void {
@@ -62,7 +83,7 @@ export class OctionComponent implements OnInit {
   }
 
   BiddingForm = this.formBuilder.group({
-    biddingAmount: [null, this.bidValueValidator ],
+    biddingAmount: [''],
   });
 
   bidValueValidator(control: AbstractControl):{[key: string]: boolean} | null {

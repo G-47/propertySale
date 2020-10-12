@@ -59,8 +59,7 @@
         src="../../../../assets/images/360.svg"
         (click)="scroll(roundView)"
       />
-      <img src="../../../../assets/images/extracts.svg" />
-      <img src="../../../../assets/images/map.svg" (click)="scroll(map)" />
+      <img src="../../../../assets/images/map.svg" (click)="scroll(map)"/>
     </div>
   </div>
   <div class="countDown-container">
@@ -68,13 +67,13 @@
     [endDate]="arr.endDate"></app-count-down></div>
 </div>
 
-<div class="price-container">Starting Bid LKR {{arr.startBid}}</div>
-<div *ngIf="currentUser.userType === 0">
-  <div *ngIf="(currentDate > arr.startDate) && isSubscribed; else elseBlock">
+<div class="price-container">Starting Bid {{arr.startBid | currency:'LKR ':'code'}}</div>
+<div *ngIf="(currentDate > arr.startDate) && currentUser.userType === 0">
+  <div *ngIf="isSubscribed; else elseBlock">
     <!-- bidding container -->
   <div class="bidding-container">
     <div class="f-line">
-      Curent bid:<div class="inner">LKR&nbsp;<div class="bolding">{{bids[0].biddingAmount}}</div> &nbsp; [{{bids.length}} bids]</div>
+      Curent bid:<div class="inner">&nbsp;<div class="bolding">{{curretBid | currency:'LKR ':'code'}}</div> &nbsp; [{{bids.length}} bids]</div>
     </div>  
     <div class="bidding-form-container">
       <form [formGroup]="BiddingForm">
@@ -89,7 +88,7 @@
       </form>&nbsp;
       <button type="button" class="btn btn-primary" (click)="addBid(BiddingForm.value)">Place Bid</button>
     </div>
-    <div class="bidding-bottom">Enter LKR {{bids[0].biddingAmount}} or more</div>
+    <div class="bidding-bottom">Enter {{currentBid | currency:'LKR ':'code'}} or more</div>
   </div>
   </div>
   <ng-template #elseBlock>
@@ -110,7 +109,7 @@
     </div>
     <div class="land-description-item" style="margin-left: auto">
       <div class="topic">Bath Rooms :</div>
-      <div class="text">{{arr.bathRooms}} perches</div>
+      <div class="text">{{arr.bathRooms}}</div>
     </div>
   </div>
   <div class="bottom">
@@ -124,19 +123,37 @@
 </div>
 
 <div #roundView>
-  <app-three-sixty-image class="roundView"></app-three-sixty-image>
+  <app-three-sixty-image
+    [type]="'house'"
+    class="roundView"
+  ></app-three-sixty-image>
 </div>
-
-<!--<div #roundView class="roundView">-->
-<!--  <img src="../../../../assets/images/360view.png" />-->
-<!--</div>-->
 
 <div #map class="map" id="map">
-  <app-map [inputPlace]="kirama"></app-map>
-  <!-- <img src="../../../../assets/images/googlemap.png" /> -->
+  <app-map style="width: 100%" [inputPlace]="arr.locationMap"></app-map>
 </div>
 
-<div class="seller">
+<div class="seller" *ngIf="currentUser.userType === 0">
   <img src="../../../../assets/images/seller.png" />
 </div>
 
+<div class="table-container" *ngIf="bidHistory.length > 0 && currentUser.userType !== 0">
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Bid Amount</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of bidHistory">
+        <td>{{detail.userName}}</td>
+        <td>{{detail.bidAmount | currency:'LKR ':'code'}}</td>
+        <td>{{detail.email}}</td>
+        <td>{{detail.phoneNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
