@@ -49,7 +49,12 @@ const routes: Routes = [
     canActivate: [RouteGuardService],
     data: { type: [1, 2] },
   },
-  { path: 'postAuctionHouseAd', component: PostAuctionHouseAdComponent },
+  {
+    path: 'postAuctionHouseAd',
+    component: PostAuctionHouseAdComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1, 2] },
+  },
   { path: 'profile', component: ProfileComponent },
   { path: 'auctions', component: PageComponent },
   {
@@ -97,19 +102,24 @@ const routes: Routes = [
   },
   { path: 'viewLand/:id', component: ViewLandComponent },
   { path: 'viewHouse/:id', component: ViewHouseComponent },
-  { path: 'editprofile', component: EditprofileComponent },
-  
+  {
+    path: 'editprofile',
+    component: EditprofileComponent,
+    canActivate: [RouteGuardService],
+    data: { type: [1, 2, 3] },
+  },
+
   {
     path: 'directHousePostByAdmin',
     component: DirectHousePostByAdminComponent,
     canActivate: [RouteGuardService],
-    data: { type: [1] },
+    data: { type: [1, 2] },
   },
   {
     path: 'directLandPostByAdmin',
     component: DirectLandPostByAdminComponent,
     canActivate: [RouteGuardService],
-    data: { type: [1] },
+    data: { type: [1, 2] },
   },
   {
     path: 'userDashboard',

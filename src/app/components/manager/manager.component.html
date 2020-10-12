@@ -1,12 +1,23 @@
 <div class="navbar-fix"></div>
 <nav class="nav nav-pills flex-column flex-sm-row pad">
-  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'admin' ? 'active' : ''"
-    (click)="moveToAdmin()">Administrators</a>
-  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'auction' ? 'active' : ''"
-    (click)="moveToAuction()">Auctions</a>
-  <a class="flex-sm-fill text-sm-center nav-link" [ngClass]="state == 'activity' ? 'active' : ''"
-    (click)="moveToActivity()">Activity log</a>
-
+  <a
+    class="flex-sm-fill text-sm-center nav-link"
+    [ngClass]="state == 'admin' ? 'active' : ''"
+    (click)="moveToAdmin()"
+    >Administrators</a
+  >
+  <a
+    class="flex-sm-fill text-sm-center nav-link"
+    [ngClass]="state == 'auction' ? 'active' : ''"
+    (click)="moveToAuction()"
+    >Sell Property</a
+  >
+  <a
+    class="flex-sm-fill text-sm-center nav-link"
+    [ngClass]="state == 'activity' ? 'active' : ''"
+    (click)="moveToActivity()"
+    >Activity log</a
+  >
 </nav>
 
 <div [hidden]="state !== 'admin'" class="adminsclass">

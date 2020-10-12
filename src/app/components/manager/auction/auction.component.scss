@@ -1,17 +1,23 @@
-.auction-header{
-    padding-left: 5%;
-    padding-right: 5%;
-}
+.selector-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 
-.auction-image{
-    width: 60%;
-    height: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 10px;
-}
+  .selector-item {
+    margin: 30px;
+    cursor: pointer;
+    padding: 20px;
 
-.new-auction{
-    padding-bottom: 10px;
-    padding-left: auto;
+    img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  .selector-item:hover {
+    box-shadow: 0 0 5px 2px #343557;
+  }
 }
