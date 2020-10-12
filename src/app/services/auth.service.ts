@@ -93,19 +93,7 @@ export class AuthService implements HttpInterceptor {
       .toPromise();
   }
 
-  updateUser(
-    profilePicture: string,
-    firstName: string,
-    lastName: string,
-    mobileNumber: string
-  ): Promise<User> {
-    return this.http
-      .put<any>(this.updateUserUrl, {
-        profilePicture,
-        firstName,
-        lastName,
-        mobileNumber,
-      })
-      .toPromise();
+  updateUser(newData: User): Promise<User> {
+    return this.http.put<any>(this.updateUserUrl, newData).toPromise();
   }
 }

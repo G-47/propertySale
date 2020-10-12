@@ -104,23 +104,16 @@
         <button
           type="button"
           class="btn btn-lg btn-primary"
-          (click)="
-            updateUser(
-              UpdateForm.get('profilePicture'),
-              UpdateForm.get('firstName'),
-              UpdateForm.get('lastName'),
-              UpdateForm.get('mobileNumber')
-            )
-          "
+          (click)="updateUser(UpdateForm.value)"
         >
           Save
         </button>
       </div>
       <div class="btn float-right">
         <button
+          (click)="gotoDashboard()"
           type="button"
           class="btn btn-secondary btn-lg"
-          routerLink="/userDashboard"
         >
           Cancel
         </button>

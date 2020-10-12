@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user.model';
+import { UserCardComponent } from '../cards/user-card/user-card.component';
 
 @Component({
   selector: 'app-editprofile',
@@ -56,8 +57,33 @@ export class EditprofileComponent implements OnInit {
     console.log('profile picture is : ' + url);
   }
 
-  updateUser(profilePicture, firstName, lastName, email): void {
-    this.authService.updateUser(profilePicture, firstName, lastName, email);
-    this.router.navigate(['/profile']);
+  updateUser(newData: User): void {
+    this.authService.updateUser(newData).then(
+      (res) => {
+        this.toastr.success('', 'Updated Successfully');
+        localStorage.setItem('currentUser', JSON.stringify(res));
+        location.reload();
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  gotoDashboard(): void {
+    switch (this.user.userType) {
+      case 0:
+        this.router.navigate(['/userDashboard']);
+        break;
+
+      case 1:
+        this.router.navigate(['/adminDashboard']);
+        break;
+
+      case 2:
+        this.router.navigate(['/managerDashboard']);
+        break;
+    }
   }
 }
