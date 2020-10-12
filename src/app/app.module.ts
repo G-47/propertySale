@@ -54,6 +54,7 @@ import { PostAuctionAdComponent } from './components/post-auction-ad/post-auctio
 import { AuctionLandComponent } from './components/viewAd/auction-land/auction-land.component';
 import { ViewHouseComponent } from './components/view-house/view-house.component';
 import { ViewLandComponent } from './components/view-land/view-land.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ViewLandComponent } from './components/view-land/view-land.component';
     AuctionLandComponent,
     ViewHouseComponent,
     ViewLandComponent,
+    ChatbotComponent,
   ],
   imports: [
     BrowserModule,
