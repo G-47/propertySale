@@ -106,7 +106,7 @@ const routes: Routes = [
     path: 'editprofile',
     component: EditprofileComponent,
     canActivate: [RouteGuardService],
-    data: { type: [1, 2, 3] },
+    data: { type: [0, 1, 2] },
   },
 
   {
