@@ -1,6 +1,6 @@
 import { DirectHouse } from './../../models/direct-house.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AdvertisementService } from 'src/app/services/advertisement.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -20,12 +20,15 @@ export class ViewHouseComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private advertisementService: AdvertisementService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
+
+  currentUser: User;
 
   ngOnInit(): void {
     this.houseId = this.activatedRoute.snapshot.paramMap.get('id');
-
+    this.currentUser = this.authService.getCurrentUser();
     this.setHouse(this.houseId);
   }
 
@@ -54,5 +57,16 @@ export class ViewHouseComponent implements OnInit {
 
   scroll(el: HTMLElement): void {
     el.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  deleteAd(): void {
+    this.advertisementService.deleteHouse(this.houseId).then(
+      (res) => {
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

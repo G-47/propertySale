@@ -110,4 +110,12 @@
       </div>
     </div>
   </div>
+
+  <button
+    class="btn btn-danger"
+    *ngIf="owner._id == currentUser._id"
+    (click)="deleteAd()"
+  >
+    Delete
+  </button>
 </div>
