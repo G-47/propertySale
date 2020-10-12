@@ -133,11 +133,8 @@
   <app-map style="width: 100%" [inputPlace]="arr.locationMap"></app-map>
 </div>
 
-<div class="seller" *ngIf="currentUser.userType === 0">
-  <img src="../../../../assets/images/seller.png" />
-</div>
-
 <div class="table-container" *ngIf="bidHistory.length > 0 && currentUser.userType !== 0">
+  <h1 style="text-align: center;">Bidding History</h1>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
