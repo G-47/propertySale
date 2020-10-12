@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuctionHouseAd } from 'src/app/models/auctionHouseAd.model';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-oction',
@@ -21,7 +22,8 @@ export class OctionComponent implements OnInit {
     private biddingService: BiddingService,
     private toastr: ToastrService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private emailService: EmailService
     ) {}
 
   currentDate = Date.now();
@@ -110,6 +112,7 @@ export class OctionComponent implements OnInit {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
         this.router.navigate(['/auctions']);
         this.BiddingForm.reset();
+        this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'Bid worth: '+formData.biddingAmount+' was successfully added !');
       },
       (err) => {
         this.errorMessage = err.error[0];
@@ -124,6 +127,7 @@ export class OctionComponent implements OnInit {
     this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"House").subscribe(
       (result) => {
         console.log(result);
+        this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'You have joined the bid successfully !');
       },
       (error) => {
         console.log(error);
