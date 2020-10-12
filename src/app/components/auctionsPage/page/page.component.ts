@@ -76,19 +76,12 @@ export class PageComponent implements OnInit {
   }
 
   openAd(arr) {
-    const isLogged = localStorage.getItem('token') !== null;
-
-    if (isLogged) {
       if(this.selectedArrayIndex === 1){
         this.auctionAdService.setSelectedLandAd(arr);
         this.router.navigate(['/viewAuctionLandAd']);
       }else{
         this.auctionAdService.setSelectedHouseAd(arr);
         this.router.navigate(['/viewAuctionHouseAd']);
-      }
-    } else {
-      this.router.navigate(['/login']);
-    }
-    
+      }    
   }
 }

@@ -57,7 +57,7 @@ export class OctionComponent implements OnInit {
         this.bids = results;
         if(results.length > 0){
           this.currentBid = this.bids[0].biddingAmount;
-          this.nextBid = (this.currentBid * 1.1);
+          this.nextBid = this.currentBid + (this.arr.startBid * 0.1);
         }else{
           this.currentBid = 0;
           this.nextBid = this.arr.startBid;
@@ -110,7 +110,7 @@ export class OctionComponent implements OnInit {
     this.biddingService.addBid(formDetails).subscribe(
       (res) => {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
-        this.router.navigate(['/auctions']);
+        location.reload();
         this.BiddingForm.reset();
         this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'Bid worth: '+formData.biddingAmount+' was successfully added !');
       },
@@ -123,15 +123,18 @@ export class OctionComponent implements OnInit {
 
   enterBid(){
     // this.router.navigateByUrl("/payment");
-
+    if(this.currentUser === null){
+      this.router.navigate(['/login']);
+    }else{
     this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"House").subscribe(
       (result) => {
         console.log(result);
-        this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'You have joined the bid successfully !');
+        this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr.title,'You have joined the bid successfully !');
       },
       (error) => {
         console.log(error);
       } 
     );
+    }
   }
 }

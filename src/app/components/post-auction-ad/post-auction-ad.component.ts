@@ -47,7 +47,7 @@ export class PostAuctionAdComponent implements OnInit {
   });
 
   errorMessage = 'temp';
-  successMessage = 'temp';
+  successMessage = 'temp'; 
 
   landImages = [];
   houseImages = [];
@@ -108,7 +108,7 @@ export class PostAuctionAdComponent implements OnInit {
       ...formData,
       images: this.houseImages,
       startDate: new Date(formData.startDate).getTime(),
-      endDate: new Date(formData.startDate).getTime()
+      endDate: new Date(formData.endDate).getTime()
     };
     console.log(houseDetails);
     this.advertisementService.postAuctionHouse(houseDetails).then(
@@ -123,5 +123,21 @@ export class PostAuctionAdComponent implements OnInit {
       (err) => {}
     );
     // this.router.navigate(['/payment']);
+  }
+
+  gotoDashboard(): void {
+    switch (this.currentUser.userType) {
+      case 0:
+        this.router.navigate(['/userDashboard']);
+        break;
+
+      case 1:
+        this.router.navigate(['/adminDashboard']);
+        break;
+
+      case 2:
+        this.router.navigate(['/managerDashboard']);
+        break;
+    }
   }
 }

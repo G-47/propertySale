@@ -68,35 +68,38 @@
 </div>
 
 <div class="price-container">Starting Bid {{arr.startBid | currency:'LKR ':'code'}}</div>
-<div *ngIf="(currentDate > arr.startDate) && currentUser.userType === 0">
-  <div *ngIf="isSubscribed; else elseBlock">
-    <!-- bidding container -->
-  <div class="bidding-container">
-    <div class="f-line">
-      Curent bid:<div class="inner">&nbsp;<div class="bolding">{{curretBid | currency:'LKR ':'code'}}</div> &nbsp; [{{bids.length}} bids]</div>
-    </div>  
-    <div class="bidding-form-container">
-      <form [formGroup]="BiddingForm">
-        <input
-        type="text"
-        [class.is-invalid]="
-            BiddingForm.get('biddingAmount').invalid && BiddingForm.get('biddingAmount').touched
-            " 
-        formControlName="biddingAmount"
-        class="form-control"
-        required> 
-      </form>&nbsp;
-      <button type="button" class="btn btn-primary" (click)="addBid(BiddingForm.value)">Place Bid</button>
+<div *ngIf="currentUser !== null">
+  <div *ngIf="(currentDate > arr.startDate) && currentUser.userType === 0">
+    <div *ngIf="isSubscribed; else elseBlock">
+      <!-- bidding container -->
+    <div class="bidding-container">
+      <div class="f-line">
+        Curent bid:<div class="inner">&nbsp;<div class="bolding">{{curretBid | currency:'LKR ':'code'}}</div> &nbsp; [{{bids.length}} bids]</div>
+      </div>  
+      <div class="bidding-form-container">
+        <form [formGroup]="BiddingForm">
+          <input
+          type="text"
+          [class.is-invalid]="
+              BiddingForm.get('biddingAmount').invalid && BiddingForm.get('biddingAmount').touched
+              " 
+          formControlName="biddingAmount"
+          class="form-control"
+          required> 
+        </form>&nbsp;
+        <button type="button" class="btn btn-primary" (click)="addBid(BiddingForm.value)">Place Bid</button>
+      </div>
+      <div class="bidding-bottom">Enter {{currentBid | currency:'LKR ':'code'}} or more</div>
     </div>
-    <div class="bidding-bottom">Enter {{currentBid | currency:'LKR ':'code'}} or more</div>
-  </div>
-  </div>
-  <ng-template #elseBlock>
-    <div class="else-container">
-      <button type="button" class="btn btn-primary" (click)="enterBid()">Enter Bid</button>
     </div>
-  </ng-template>
+    <ng-template #elseBlock>
+      <div class="else-container">
+        <button type="button" class="btn btn-primary" (click)="enterBid()">Enter Bid</button>
+      </div>
+    </ng-template>
+  </div>
 </div>
+
 
 
 

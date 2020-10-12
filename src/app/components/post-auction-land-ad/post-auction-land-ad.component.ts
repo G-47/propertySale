@@ -59,7 +59,7 @@ export class PostAuctionLandAdComponent implements OnInit {
       ...formData,
       images: this.landImages,
       startDate: new Date(formData.startDate).getTime(),
-      endDate: new Date(formData.startDate).getTime()
+      endDate: new Date(formData.endDate).getTime()
     };
     console.log(landDetails);
     this.advertisementService.postAuctionLand(landDetails).then(
@@ -69,10 +69,27 @@ export class PostAuctionLandAdComponent implements OnInit {
         //   'Lanka Properties',
         //   `Your have successfully submitted your Land advertisement. Our agent will come to you soon. Your advertisement will be live after verified your land by our agent.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
         // );
+        this.gotoDashboard();
       },
       (err) => {}
     );
     // this.router.navigate(['/payment']);
   } 
+
+  gotoDashboard(): void {
+    switch (this.currentUser.userType) {
+      case 0:
+        this.router.navigate(['/userDashboard']);
+        break;
+
+      case 1:
+        this.router.navigate(['/adminDashboard']);
+        break;
+
+      case 2:
+        this.router.navigate(['/managerDashboard']);
+        break;
+    }
+  }
 
 }

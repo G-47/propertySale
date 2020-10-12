@@ -40,24 +40,27 @@ export class AuctionLandComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
     this.arr = this.auctionAdService.getSelectedLandAd();
   
-    this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
-      (result) => {
-        if(result.length>0){
-          this.isSubscribed = true;
+    if(this.currentUser !== null){
+      this.biddingService.getUser_bids(this.arr._id,this.currentUser._id).subscribe(
+        (result) => {
+          if(result.length>0){
+            this.isSubscribed = true;
+            
+          }
           
+        },
+        (errors) => {
+          // this.isSubscribed = true;
         }
-        
-      },
-      (errors) => {
-        // this.isSubscribed = true;
-      }
-    );
+      );
+    }
+    
     this.biddingService.getBids(this.arr._id).then(
       (results) => {        
         this.bids = results;
         if(results.length > 0){
           this.currentBid = this.bids[0].biddingAmount;
-          this.nextBid = (this.currentBid * 1.1);
+          this.nextBid = this.currentBid + (this.arr.startBid * 0.1);
         }else{
           this.currentBid = 0;
           this.nextBid = this.arr.startBid;
@@ -110,7 +113,7 @@ export class AuctionLandComponent implements OnInit {
       (res) => {
         this.toastr.success('Addign a Bid', 'Bid added successfully');
         this.BiddingForm.reset();
-        this.router.navigate(['/auctions']);
+        location.reload();
         this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'Bid worth: '+formData.biddingAmount+' was successfully added !');
       },
       (err) => {
@@ -122,15 +125,19 @@ export class AuctionLandComponent implements OnInit {
 
   enterBid(){
     // this.router.navigateByUrl("/payment");
-
-    this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"Land").subscribe(
-      (result) => {
-        console.log(result);
-        this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr._id,'You have joined the bid successfully !');
-      },
-      (error) => {
-        console.log(error);
-      } 
-    );
+    if(this.currentUser === null){
+      this.router.navigate(['/login']);
+    }else{
+      this.biddingService.addUser_bids(this.arr._id,this.currentUser._id,"Land").subscribe(
+        (result) => {
+          console.log(result);
+          this.emailService.sendEmail(this.currentUser.email,'LankaProperties Auction: '+this.arr.title,'You have joined the bid successfully !');
+        },
+        (error) => {
+          console.log(error);
+        } 
+      );
+    }
+    
   }
 }
