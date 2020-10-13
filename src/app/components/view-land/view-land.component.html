@@ -60,7 +60,9 @@
   </div>
 </div>
 
-<div class="price-container">LKR {{ land.price }} per perch</div>
+<div class="price-container">
+  {{ land.price | currency: "LKR ":"code" }} per perch
+</div>
 
 <div class="detail-container">
   <div class="top">

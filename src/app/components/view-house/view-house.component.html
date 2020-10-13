@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<div class="price-container">LKR {{ house.price }} /=</div>
+<div class="price-container">{{ house.price | currency: "LKR ":"code" }}</div>
 
 <div class="detail-container">
   <div class="top">

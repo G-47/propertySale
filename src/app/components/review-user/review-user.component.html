@@ -43,11 +43,33 @@
       <img class="value" [src]="user.nicBackImage" alt="" />
     </div>
   </div>
-  <button
-    *ngIf="user.status != 1"
-    class="btn btn-primary float-right m-5"
-    (click)="approveUser()"
+
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    "
   >
-    Approve
-  </button>
+    <button
+      *ngIf="user.status != -1"
+      class="btn btn-danger"
+      style="width: 100px; margin: 0px 30px"
+      (click)="declineUser()"
+    >
+      Reject
+    </button>
+
+    <button
+      *ngIf="user.status != 1"
+      class="btn btn-success"
+      style="width: 100px; margin: 0px 30px"
+      (click)="approveUser()"
+    >
+      Approve
+    </button>
+  </div>
 </div>

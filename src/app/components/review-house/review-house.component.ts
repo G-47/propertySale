@@ -56,13 +56,30 @@ export class ReviewHouseComponent implements OnInit {
   }
 
   accept(id: string): void {
-    this.advertisementService.acceptDirectHouse(id).then(
+    this.advertisementService.acceptOrDeleteDirectHouse(id, 1).then(
       (res) => {
         console.log(res);
         this.emailService.sendEmail(
           this.owner.email,
           'Lanka Properties',
           `Your advertisement, "${this.house.title}" has been accepted by Lanka Properties. Now your advertisement is live in our web site.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
+        );
+        this.router.navigate(['/adminDashboard']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  decline(id: string): void {
+    this.advertisementService.acceptOrDeleteDirectHouse(id, -1).then(
+      (res) => {
+        console.log(res);
+        this.emailService.sendEmail(
+          this.owner.email,
+          'Lanka Properties',
+          `Your advertisement, "${this.house.title}" has been Declined by Lanka Properties.\n\nThis email has been sent automatically. Please do not reply this email.\n\nThank you !`
         );
         this.router.navigate(['/adminDashboard']);
       },

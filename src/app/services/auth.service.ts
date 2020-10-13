@@ -12,7 +12,8 @@ export class AuthService implements HttpInterceptor {
   private getCurrentUserUrl = 'http://localhost:3000/api/getCurrentUser';
   private getUserUrl = 'http://localhost:3000/api/getUser';
   private getUsersUrl = 'http://localhost:3000/api/getUsers';
-  private approveUserUrl = 'http://localhost:3000/api/approveUser';
+  private approveOrDeleteUserUrl =
+    'http://localhost:3000/api/approveOrDeleteUser';
   private updateUserUrl = 'http://localhost:3000/api/updateUser';
 
   constructor(private http: HttpClient) {}
@@ -87,9 +88,9 @@ export class AuthService implements HttpInterceptor {
       .toPromise();
   }
 
-  approveUser(id: string): Promise<User> {
+  approveOrDeleteUser(id: string, status: number): Promise<User> {
     return this.http
-      .post<any>(this.approveUserUrl, { id })
+      .post<any>(this.approveOrDeleteUserUrl, { id, status })
       .toPromise();
   }
 

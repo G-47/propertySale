@@ -23,8 +23,10 @@ export class AdvertisementService implements HttpInterceptor {
   private getDirectLandsUrl = 'http://localhost:3000/api/getDirectLands';
   private getDirectHousesUrl = 'http://localhost:3000/api/getDirectHouses';
 
-  private acceptDirectLandsUrl = 'http://localhost:3000/api/acceptDirectLand';
-  private acceptDirectHousesUrl = 'http://localhost:3000/api/acceptDirectHouse';
+  private acceptOrDeleteDirectLandUrl =
+    'http://localhost:3000/api/acceptOrDeleteDirectLand';
+  private acceptOrDeleteDirectHouseUrl =
+    'http://localhost:3000/api/acceptOrDeleteDirectHouse';
 
   private getLandsByUserId = 'http://localhost:3000/api/getLandsByUserId';
   private getHousesByUserId = 'http://localhost:3000/api/getHousesByUserId';
@@ -74,15 +76,15 @@ export class AdvertisementService implements HttpInterceptor {
       .toPromise();
   }
 
-  acceptDirectLand(id: string): Promise<DirectLand> {
+  acceptOrDeleteDirectLand(id: string, status: number): Promise<DirectLand> {
     return this.http
-      .put<any>(this.acceptDirectLandsUrl, { id })
+      .put<any>(this.acceptOrDeleteDirectLandUrl, { id, status })
       .toPromise();
   }
 
-  acceptDirectHouse(id: string): Promise<DirectHouse> {
+  acceptOrDeleteDirectHouse(id: string, status: number): Promise<DirectHouse> {
     return this.http
-      .put<any>(this.acceptDirectHousesUrl, { id })
+      .put<any>(this.acceptOrDeleteDirectHouseUrl, { id, status })
       .toPromise();
   }
 
